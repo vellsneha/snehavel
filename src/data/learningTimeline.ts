@@ -11,7 +11,7 @@ export type LearningEntry = {
   mediaType: "image" | "video";
 };
 
-/** Newest first — add new entries to the top of this list. Keep descriptions to ~2 lines. */
+/** Newest first, add new entries to the top of this list. Keep descriptions to ~2 lines. */
 export const learningTimeline: LearningEntry[] = [
   {
     id: "vista",

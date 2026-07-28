@@ -16,7 +16,7 @@ export const experienceItems: ExperienceItem[] = [
   {
     id: "xfoundry-video",
     category: "more",
-    period: "2025 — 2026",
+    period: "2025 - 2026",
     role: "Video Editing Intern",
     company: "xFoundry",
     companyUrl: "https://www.xfoundry.org/",
@@ -27,7 +27,7 @@ export const experienceItems: ExperienceItem[] = [
   {
     id: "tltc-math-coach",
     category: "work",
-    period: "2025 — 2026",
+    period: "2025 - 2026",
     role: "Math Coach",
     company: "TLTC's Math Success Program at UMD",
     companyUrl: "https://tltc.umd.edu/students/math-success-program",
@@ -63,8 +63,8 @@ export const experienceItems: ExperienceItem[] = [
   {
     id: "umd-grad",
     category: "work",
-    period: "2024 — 2026",
-    role: "Graduate Student — Applied Machine Learning",
+    period: "2024 - 2026",
+    role: "Graduate Student, Applied Machine Learning",
     company: "University of Maryland",
     companyUrl: "https://cmns.umd.edu/",
     logo: "https://framerusercontent.com/images/GSDsGMvqfy4ib2r896jBzkOK0.png?width=2400&height=2400",
@@ -74,7 +74,7 @@ export const experienceItems: ExperienceItem[] = [
   {
     id: "frosthacks",
     category: "more",
-    period: "2023 — 2024",
+    period: "2023 - 2024",
     role: "Organizer",
     company: "MLH FrostHacks",
     companyUrl: "https://unstop.com/hackathons/frost-hacks-institute-of-aeronautical-engineering-iare-hyderabad-836326",
@@ -85,7 +85,7 @@ export const experienceItems: ExperienceItem[] = [
   {
     id: "venkys",
     category: "work",
-    period: "2023 — 2024",
+    period: "2023 - 2024",
     role: "Software Engineer Intern",
     company: "Venkys.io (now ZenV Academy)",
     companyUrl: "https://www.linkedin.com/company/venkysio/",
@@ -96,7 +96,7 @@ export const experienceItems: ExperienceItem[] = [
   {
     id: "advantage",
     category: "work",
-    period: "2023 — 2024",
+    period: "2023 - 2024",
     role: "Product Director",
     company: "AdVantage Ecosystem",
     companyUrl: "https://www.linkedin.com/company/advantagecommunity/",
@@ -107,7 +107,7 @@ export const experienceItems: ExperienceItem[] = [
   {
     id: "tedx",
     category: "more",
-    period: "2022 — 2023",
+    period: "2022 - 2023",
     role: "Core Committee",
     company: "TEDxIARE",
     companyUrl: "https://www.ted.com/tedx/events/52558",
@@ -119,7 +119,7 @@ export const experienceItems: ExperienceItem[] = [
   {
     id: "gdsc",
     category: "more",
-    period: "2022 — 2023",
+    period: "2022 - 2023",
     role: "Public Relations",
     company: "GDSCxIARE",
     companyUrl: "https://gdsciare-docs.vercel.app/about",
@@ -141,7 +141,7 @@ export const experienceItems: ExperienceItem[] = [
   {
     id: "edam",
     category: "more",
-    period: "2021 — 2023",
+    period: "2021 - 2023",
     role: "Lead Mentor and Engineer",
     company: "e-DAM The Technical Club",
     companyUrl: "https://www.linkedin.com/company/edamcommunity/posts/?feedView=all",

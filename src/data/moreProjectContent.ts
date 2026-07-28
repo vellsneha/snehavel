@@ -5,14 +5,14 @@ export const fingraphContent: ProjectContentSection[] = [
     label: "Problem",
     title: "How do freelancers prove financial stability?",
     paragraphs: [
-      "Freelancers and gig workers struggle to prove financial stability to lenders, landlords, or clients. Traditional credit scores miss irregular income, client concentration risk, and cash runway — the things that matter when you don't get a paycheck every two weeks.",
+      "Freelancers and gig workers struggle to prove financial stability to lenders, landlords, or clients. Traditional credit scores miss irregular income, client concentration risk, and cash runway, the things that matter when you don't get a paycheck every two weeks.",
     ],
   },
   {
     label: "Context",
     title: "Capital One hackathon at Technica UMD",
     paragraphs: [
-      "Financial data is spread across deposits, withdrawals, bills, and transfers — but no single view answers: How stable is my income? How diversified are my clients? How many months of runway do I have?",
+      "Financial data is spread across deposits, withdrawals, bills, and transfers, but no single view answers: How stable is my income? How diversified are my clients? How many months of runway do I have?",
     ],
   },
   {
@@ -20,7 +20,7 @@ export const fingraphContent: ProjectContentSection[] = [
     title: "A knowledge-graph-powered 0–100 Financial Identity Score",
     variant: "callout",
     paragraphs: [
-      "FinGraph turns banking history into a reproducible financial health score with an LLM-generated narrative — banks get a single number and an explanation, not a raw CSV.",
+      "FinGraph turns banking history into a reproducible financial health score with an LLM-generated narrative, banks get a single number and an explanation, not a raw CSV.",
     ],
     grid: [
       { title: "Income", items: ["Stability", "Volatility", "Low-income months"] },
@@ -32,7 +32,7 @@ export const fingraphContent: ProjectContentSection[] = [
   {
     label: "Validation",
     paragraphs: [
-      "We used Capital One's Nessie sandbox API to pull real transaction shapes — thousands of deposits, irregular client payments, monthly bills — and proved a graph structure captures relationships flat spreadsheets miss.",
+      "We used Capital One's Nessie sandbox API to pull real transaction shapes, thousands of deposits, irregular client payments, monthly bills, and proved a graph structure captures relationships flat spreadsheets miss.",
     ],
   },
   {
@@ -49,8 +49,8 @@ export const fingraphContent: ProjectContentSection[] = [
     label: "User persona",
     variant: "steps",
     steps: [
-      { label: "Login", description: "Email/password — bcrypt-hashed Auth nodes in Neo4j" },
-      { label: "Analyze", description: "POST /analysis/{customer_id}/full — one shot, everything loaded" },
+      { label: "Login", description: "Email/password, bcrypt-hashed Auth nodes in Neo4j" },
+      { label: "Analyze", description: "POST /analysis/{customer_id}/full, one shot, everything loaded" },
       { label: "Dashboard", description: "Score gauge, cashflow charts, income, client donut, runway" },
       { label: "Explore", description: "Force-directed graph of accounts, deposits, merchants, bills" },
     ],
@@ -62,9 +62,9 @@ export const fingraphContent: ProjectContentSection[] = [
     ],
     bullets: [
       "Python 3.11 · FastAPI · Neo4j AuraDB · Nessie Enterprise API",
-      "Gemini 2.0 Flash — explanations and recommendation parsing only",
+      "Gemini 2.0 Flash, explanations and recommendation parsing only",
       "React 18 · Vite · Tailwind · Recharts · NeoVis.js",
-      "Google Cloud Run — backend + frontend Docker images",
+      "Google Cloud Run, backend + frontend Docker images",
     ],
   },
   {
@@ -72,7 +72,7 @@ export const fingraphContent: ProjectContentSection[] = [
     variant: "callout",
     paragraphs: [
       "Nessie API limitations shaped the design: no merchant_id on deposits (text substring matching), bills not linked to accounts (MD5-hash offset workaround). Each workaround is documented with honest trade-offs.",
-      "Scoring weights — 35% income stability, 25% diversification, 20% volatility, 20% cushion — prioritize income regularity for freelancers.",
+      "Scoring weights, 35% income stability, 25% diversification, 20% volatility, 20% cushion, prioritize income regularity for freelancers.",
     ],
   },
   {
@@ -87,12 +87,12 @@ export const fingraphContent: ProjectContentSection[] = [
       },
       {
         title: "Deterministic agents",
-        description: "Agents 1–4 — no LLM, reproducible.",
+        description: "Agents 1–4, no LLM, reproducible.",
         items: ["Income stability", "Cashflow volatility", "Client diversification", "Weighted 0–100 scorer"],
       },
       {
         title: "LLM layer",
-        description: "Agents 5–6 — human-facing text.",
+        description: "Agents 5–6, human-facing text.",
         items: ["Gemini explanation", "Structured recommendations", "Template fallback", "Rule-based parser fallback"],
       },
       {
@@ -108,7 +108,7 @@ export const fingraphContent: ProjectContentSection[] = [
         "35% income stability",
         "20% cashflow volatility (inverted)",
         "25% client diversification",
-        "20% cushion — runway ÷ 6 months",
+        "20% cushion, runway ÷ 6 months",
       ],
     },
   },
@@ -117,14 +117,14 @@ export const fingraphContent: ProjectContentSection[] = [
     variant: "phases",
     subsections: [
       {
-        title: "Phase 1 — Ingestion (one-time)",
+        title: "Phase 1, Ingestion (one-time)",
         code: `Nessie Enterprise API (6 bulk endpoints)
     → Python pipeline orchestrator
     → Neo4j loader (nodes → relationships → derived transactions → merchant links)
     → Neo4j AuraDB populated`,
       },
       {
-        title: "Phase 2 — Analysis (per login)",
+        title: "Phase 2, Analysis (per login)",
         code: `User logs in → POST /analysis/{id}/full
     → Agent 1: income metrics
     → Agent 2: cashflow volatility
@@ -166,7 +166,7 @@ export const feedforwardContent: ProjectContentSection[] = [
       { value: "2nd", label: "Runner-up · UMD Smith School × Capital Area Food Bank" },
       { value: "441", label: "DC-area food agencies in MySQL" },
       { value: "24/7", label: "Voice and chat availability" },
-      { value: "2", label: "Languages — English and Spanish" },
+      { value: "2", label: "Languages, English and Spanish" },
     ],
   },
   {
@@ -208,8 +208,8 @@ export const feedforwardContent: ProjectContentSection[] = [
     label: "Research",
     variant: "callout",
     paragraphs: [
-      "Voice required sub-second audio — WebRTC directly to OpenAI, Flask only mints ephemeral keys. Chat benefited from server-side streaming via Socket.IO.",
-      "Form reliability was the hardest UX problem. Fix: tool-first design — the model must call structured form tools before each question, with client-side validation guarding progression.",
+      "Voice required sub-second audio, WebRTC directly to OpenAI, Flask only mints ephemeral keys. Chat benefited from server-side streaming via Socket.IO.",
+      "Form reliability was the hardest UX problem. Fix: tool-first design, the model must call structured form tools before each question, with client-side validation guarding progression.",
     ],
   },
   {
@@ -270,7 +270,7 @@ export const intelliRagsContent: ProjectContentSection[] = [
     label: "Problem",
     title: "Most RAG demos stop at a chatbot",
     paragraphs: [
-      "IntelliRAGs does ingestion and Q&A — but adds an evaluation harness that measures retrieval and answer quality on a real benchmark, so every design choice is backed by numbers instead of vibes.",
+      "IntelliRAGs does ingestion and Q&A, but adds an evaluation harness that measures retrieval and answer quality on a real benchmark, so every design choice is backed by numbers instead of vibes.",
     ],
   },
   {
@@ -284,7 +284,7 @@ export const intelliRagsContent: ProjectContentSection[] = [
   {
     label: "Validation",
     paragraphs: [
-      "Ran the full pipeline against Vectara's Open RAG Benchmark — 147 text-only queries over 120 academic papers. Clear diagnosis: retrieval was decent, but ranking needed work.",
+      "Ran the full pipeline against Vectara's Open RAG Benchmark, 147 text-only queries over 120 academic papers. Clear diagnosis: retrieval was decent, but ranking needed work.",
     ],
     variant: "table",
     table: {
@@ -293,8 +293,8 @@ export const intelliRagsContent: ProjectContentSection[] = [
         ["Hit@1", "0.46", "Right chunk ranked first ~46% of the time"],
         ["Recall@5", "0.69", "Gold chunk in top 5 ~69% of the time"],
         ["MRR", "0.60", "Mean reciprocal rank across queries"],
-        ["Faithfulness", "4.31 / 5", "LLM judge — answer grounded in context"],
-        ["Correctness", "4.29 / 5", "LLM judge — answer matches gold"],
+        ["Faithfulness", "4.31 / 5", "LLM judge, answer grounded in context"],
+        ["Correctness", "4.29 / 5", "LLM judge, answer matches gold"],
       ],
     },
   },
@@ -303,7 +303,7 @@ export const intelliRagsContent: ProjectContentSection[] = [
     variant: "stats",
     stats: [
       { value: "147", label: "Benchmark queries evaluated" },
-      { value: "0.22", label: "Recall@5 − Hit@1 gap — ranking opportunity" },
+      { value: "0.22", label: "Recall@5 − Hit@1 gap, ranking opportunity" },
       { value: "0.21s", label: "Average retrieval latency per query" },
       { value: "~8 min", label: "Full eval wall time" },
     ],
@@ -323,7 +323,7 @@ export const intelliRagsContent: ProjectContentSection[] = [
     label: "Research",
     variant: "callout",
     paragraphs: [
-      "Section-recall gold mapping evaluates 'does this chunk expose the answer?' not 'is this chunk identical to the gold section?' — an 8-gram overlap threshold of 0.30 with section-size denominator.",
+      "Section-recall gold mapping evaluates 'does this chunk expose the answer?' not 'is this chunk identical to the gold section?', an 8-gram overlap threshold of 0.30 with section-size denominator.",
       "Highest-leverage next step identified: reranking (e.g. Cohere Rerank) to close the Recall@5 vs Hit@1 gap. Not implemented yet.",
     ],
   },
@@ -380,7 +380,7 @@ export const intelliRagsContent: ProjectContentSection[] = [
     bullets: [
       "Baseline run (ragbench-baseline, git badf46c): Hit@1 0.46, Recall@5 0.69, MRR 0.60",
       "Generation latency: 2.19 s/query average",
-      "3 of 147 judge failures on LaTeX-heavy text — logged as 0, run continued",
+      "3 of 147 judge failures on LaTeX-heavy text, logged as 0, run continued",
     ],
   },
 ];
@@ -390,7 +390,7 @@ export const orchestratorContent: ProjectContentSection[] = [
     label: "Problem",
     title: "Provisioning GCP still means docs, flags, and 3am IAM errors",
     paragraphs: [
-      "Setting up a GCP pipeline — Pub/Sub → Dataflow → BigQuery — requires knowing service dependencies, CLI syntax, project configuration, and quota limits. People want to describe the outcome and have the system figure out the steps.",
+      "Setting up a GCP pipeline, Pub/Sub → Dataflow → BigQuery, requires knowing service dependencies, CLI syntax, project configuration, and quota limits. People want to describe the outcome and have the system figure out the steps.",
     ],
   },
   {
@@ -410,7 +410,7 @@ export const orchestratorContent: ProjectContentSection[] = [
   {
     label: "Validation",
     paragraphs: [
-      "Core test: can an LLM produce ordered, dependency-correct tool-call plans for real GCP operations — and can those plans execute via gcloud subprocess tools? Capability catalog defines 68 named actions; 34 fully implemented with parameter schemas.",
+      "Core test: can an LLM produce ordered, dependency-correct tool-call plans for real GCP operations, and can those plans execute via gcloud subprocess tools? Capability catalog defines 68 named actions; 34 fully implemented with parameter schemas.",
     ],
   },
   {
@@ -439,8 +439,8 @@ export const orchestratorContent: ProjectContentSection[] = [
     label: "Research",
     variant: "callout",
     paragraphs: [
-      "Plans parsed with ast.literal_eval (not eval) after stripping markdown fences — fast for demos, fragile for production. Production would use JSON schema or structured output.",
-      "Alternate DAG planner path (3 LLM calls: intent → service DAG → tool plan) built but not wired to active parent — direct planner uses 1 call for speed.",
+      "Plans parsed with ast.literal_eval (not eval) after stripping markdown fences, fast for demos, fragile for production. Production would use JSON schema or structured output.",
+      "Alternate DAG planner path (3 LLM calls: intent → service DAG → tool plan) built but not wired to active parent, direct planner uses 1 call for speed.",
     ],
   },
   {
@@ -456,7 +456,7 @@ export const orchestratorContent: ProjectContentSection[] = [
       {
         title: "Guard agent",
         description: "Budget + quota safety.",
-        items: ["check_budget — BLOCK at 100%", "check_quota — Service Usage API", "Quota increase mailto drafts", "check_quota_before_planning bridge"],
+        items: ["check_budget, BLOCK at 100%", "check_quota, Service Usage API", "Quota increase mailto drafts", "check_quota_before_planning bridge"],
       },
       {
         title: "Worker hub",
@@ -486,7 +486,7 @@ export const orchestratorContent: ProjectContentSection[] = [
       {
         title: "Agent topology",
         paragraphs: [
-          "Several root patterns coexist from iterative design: Conductor root (intent routing), Sequential root (Planner → Guard → Worker), and Planner parent (what app.py uses — delegates to direct_agent only).",
+          "Several root patterns coexist from iterative design: Conductor root (intent routing), Sequential root (Planner → Guard → Worker), and Planner parent (what app.py uses, delegates to direct_agent only).",
         ],
       },
     ],

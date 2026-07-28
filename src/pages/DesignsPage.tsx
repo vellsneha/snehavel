@@ -341,9 +341,7 @@ function DesignScreenGallery({
     const caption = screen.caption;
     const [captionTitle, captionDetail] = caption?.includes(": ")
       ? (caption.split(": ") as [string, string])
-      : caption?.includes(" — ")
-        ? (caption.split(" — ") as [string, string])
-        : [caption, undefined];
+      : [caption, undefined];
 
     return (
       <figure

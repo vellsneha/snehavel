@@ -8,7 +8,7 @@ export type Project = {
   hidden?: boolean;
 };
 
-/** Home sidebar cards only — kept free of media imports so `/` stays light. */
+/** Home sidebar cards only, kept free of media imports so `/` stays light. */
 export const projects: Project[] = [
   {
     id: "vista",
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     url: "https://github.com/shifamehreen-005/cloud-orchestrator",
     tags: ["Agents", "LLMs", "Cloud", "GCP"],
     description:
-      "Multi-agent ADK system that turns plain-English intents into 20+ GCP actions (GKE, Vertex, BigQuery) — no scripts needed.",
+      "Multi-agent ADK system that turns plain-English intents into 20+ GCP actions (GKE, Vertex, BigQuery), no scripts needed.",
   },
   {
     id: "feedforward",

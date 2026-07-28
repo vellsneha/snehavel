@@ -90,7 +90,7 @@ export const projectItems: ProjectItem[] = [
     ],
     overviewTitle: "Financial Identity Score for Freelancers",
     overview:
-      "A knowledge-graph-powered platform that turns banking history into a 0–100 financial health score — built for freelancers and gig workers whose irregular income patterns traditional credit scores miss.",
+      "A knowledge-graph-powered platform that turns banking history into a 0–100 financial health score, built for freelancers and gig workers whose irregular income patterns traditional credit scores miss.",
     description:
       "Multi-agent graph system that analyzes freelancer finances via Capital One's Nessie API and delivers an explainable 0–100 Financial Identity Score with AI recommendations.",
     sections: projectContentById.fingraph,
@@ -125,7 +125,7 @@ export const projectItems: ProjectItem[] = [
     ],
     overviewTitle: "Natural Language GCP Infrastructure Automation",
     overview:
-      "Tell it what you want in plain English — it plans, visualizes, and executes across 20 Google Cloud services with budget and quota guardrails.",
+      "Tell it what you want in plain English, it plans, visualizes, and executes across 20 Google Cloud services with budget and quota guardrails.",
     description:
       "Multi-agent ADK platform that turns natural-language infrastructure requests into ordered gcloud tool-call plans with DAG visualization.",
     sections: projectContentById.orchestrator,
@@ -157,7 +157,7 @@ export const projectItems: ProjectItem[] = [
     ],
     overviewTitle: "AI Food Assistance for Capital One Area Food Bank",
     overview:
-      "A multimodal platform that helps people find nearby food banks through voice or chat — runner-up at the UMD Smith School × Capital Area Food Bank hackathon.",
+      "A multimodal platform that helps people find nearby food banks through voice or chat, runner-up at the UMD Smith School × Capital Area Food Bank hackathon.",
     description:
       "24/7 AI assistance that walks users through intake by voice or chat, then searches 441 DC-area food agencies and returns ranked matches with transit directions.",
     sections: projectContentById.feedforward,
@@ -193,7 +193,7 @@ export const projectItems: ProjectItem[] = [
     overview:
       "A learning project that ingests documents, answers questions with source grounding, and proves quality with Hit@1, Recall@5, MRR, and LLM-judged faithfulness on Vectara's Open RAG Benchmark.",
     description:
-      "Production-style RAG pipeline with an evaluation harness that measures retrieval and answer quality on a real benchmark — every design choice backed by numbers.",
+      "Production-style RAG pipeline with an evaluation harness that measures retrieval and answer quality on a real benchmark, every design choice backed by numbers.",
     sections: projectContentById["intelli-rags"],
     media: intelliRagsImage,
     mediaType: "image",
@@ -219,9 +219,9 @@ export const projectItems: ProjectItem[] = [
     ],
     overviewTitle: "OpenCLIP finetuning for specialized content",
     overview:
-      "MangaSearch extracts panels from manga PDFs and lets users search by natural language — action, emotion, dialogue, or scene — with fine-tuned OpenCLIP reaching 0.52 MRR vs a 0.05 random baseline.",
+      "MangaSearch extracts panels from manga PDFs and lets users search by natural language, action, emotion, dialogue, or scene, with fine-tuned OpenCLIP reaching 0.52 MRR vs a 0.05 random baseline.",
     description:
-      "Multi-modal manga panel search with fine-tuned OpenCLIP — find action, emotion, dialogue, or scene by natural language.",
+      "Multi-modal manga panel search with fine-tuned OpenCLIP, find action, emotion, dialogue, or scene by natural language.",
     sections: projectContentById.openclip,
     media: openClipVideo,
     mediaType: "video",
@@ -267,7 +267,7 @@ export const projectItems: ProjectItem[] = [
     ],
     overviewTitle: "Early Alzheimer's detection from brain imaging",
     overview:
-      "A machine learning pipeline for classifying Alzheimer's-related patterns in neuroimaging data — built to explore early detection signals and model interpretability.",
+      "A machine learning pipeline for classifying Alzheimer's-related patterns in neuroimaging data, built to explore early detection signals and model interpretability.",
     description:
       "ML pipeline for Alzheimer's classification from brain imaging, with preprocessing, training, and evaluation workflows.",
     hidden: true,
