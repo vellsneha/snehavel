@@ -50,7 +50,7 @@ export const vistaContent: ProjectContentSection[] = [
     label: "Problem",
     title: "Why can't VLMs remember video in a spatio-temporal way?",
     paragraphs: [
-      "Frontier vision-language models describe the current frame well. They struggle when questions need memory across time and camera movement - where a tool fell, how long a worker was idle, or what changed off-screen.",
+      "Frontier vision-language models describe the current frame well. They struggle when questions need memory across time and camera movement.",
     ],
   },
   {
@@ -65,7 +65,7 @@ export const vistaContent: ProjectContentSection[] = [
     title: "Give hardhat-camera video a memory",
     variant: "callout",
     paragraphs: [
-      "VISTA watches egocentric construction video once, builds persistent spatio-temporal memory, then answers natural-language questions about it, ***without re-sending the whole video every time.***",
+      "VISTA watches egocentric construction video once, builds persistent spatio-temporal memory, then answers questions about it, ***without re-sending the whole video every time.***",
       "The core idea: give video object permanence through structured memory and intelligent retrieval, not embedding similarity alone.",
     ],
     grid: [
