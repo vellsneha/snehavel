@@ -1,0 +1,83 @@
+.safari-macbook {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.safari-macbook__lid {
+  width: 100%;
+  padding: clamp(8px, 1vw, 12px);
+  border-radius: clamp(14px, 1.6vw, 18px) clamp(14px, 1.6vw, 18px) 0 0;
+  background: linear-gradient(
+    180deg,
+    #d8dce3 0%,
+    #c4c9d2 42%,
+    #b8bec8 100%
+  );
+  box-shadow:
+    0 24px 48px color-mix(in srgb, #000 14%, transparent),
+    inset 0 1px 0 color-mix(in srgb, #fff 55%, transparent);
+}
+
+[data-theme="dark"] .safari-macbook__lid {
+  background: linear-gradient(
+    180deg,
+    #3a3f48 0%,
+    #2e333b 42%,
+    #262b32 100%
+  );
+  box-shadow:
+    0 28px 56px color-mix(in srgb, #000 38%, transparent),
+    inset 0 1px 0 color-mix(in srgb, #fff 12%, transparent);
+}
+
+.safari-macbook__bezel {
+  border-radius: clamp(10px, 1.2vw, 12px);
+  padding: clamp(6px, 0.8vw, 8px);
+  background: #0a0a0a;
+}
+
+.safari-macbook__screen {
+  overflow: hidden;
+  border-radius: clamp(6px, 0.7vw, 8px);
+  background: #ffffff;
+}
+
+.safari-macbook__base {
+  position: relative;
+  width: calc(100% + clamp(24px, 3vw, 40px));
+  height: clamp(8px, 1.1vh, 11px);
+  margin-top: -1px;
+  border-radius: 0 0 clamp(18px, 2vw, 24px) clamp(18px, 2vw, 24px);
+  background: linear-gradient(
+    180deg,
+    #b0b6c0 0%,
+    #9aa1ac 55%,
+    #8b929d 100%
+  );
+  box-shadow:
+    0 2px 0 color-mix(in srgb, #fff 25%, transparent) inset,
+    0 8px 20px color-mix(in srgb, #000 12%, transparent);
+}
+
+[data-theme="dark"] .safari-macbook__base {
+  background: linear-gradient(
+    180deg,
+    #343941 0%,
+    #2a2f36 55%,
+    #22262c 100%
+  );
+}
+
+.safari-macbook__notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(72px, 9vw, 96px);
+  height: clamp(4px, 0.5vh, 6px);
+  border-radius: 0 0 6px 6px;
+  background: color-mix(in srgb, #000 35%, #8b929d);
+}

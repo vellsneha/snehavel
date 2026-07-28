@@ -1,0 +1,19 @@
+.design-card-frame {
+  width: 100%;
+  overflow: hidden;
+  border-radius: clamp(8px, 1vw, 12px);
+  border: 1px solid var(--border-subtle);
+  background: #ffffff;
+  box-shadow: 0 16px 40px color-mix(in srgb, #000 8%, transparent);
+}
+
+[data-theme="dark"] .design-card-frame {
+  background: #12151a;
+  box-shadow: 0 20px 44px color-mix(in srgb, #000 28%, transparent);
+}
+
+.design-card-frame__media {
+  display: block;
+  width: 100%;
+  height: auto;
+}

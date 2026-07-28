@@ -1,0 +1,269 @@
+.safari-toolbar {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: clamp(8px, 1vw, 12px);
+  min-height: clamp(34px, 4vh, 40px);
+  padding: clamp(6px, 0.8vh, 8px) clamp(10px, 1.2vw, 14px);
+  background: linear-gradient(180deg, #f6f6f8 0%, #ececf0 100%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.safari-toolbar__traffic {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.safari-toolbar__light {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(0, 0, 0, 0.12);
+}
+
+.safari-toolbar__light--close {
+  background: #ff5f57;
+}
+
+.safari-toolbar__light--minimize {
+  background: #febc2e;
+}
+
+.safari-toolbar__light--maximize {
+  background: #28c840;
+}
+
+.safari-toolbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.safari-toolbar__nav-btn {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: color-mix(in srgb, #000 8%, transparent);
+  position: relative;
+}
+
+.safari-toolbar__nav-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-left: 1.5px solid #666;
+  border-bottom: 1.5px solid #666;
+  transform: translate(-35%, -50%) rotate(45deg);
+}
+
+.safari-toolbar__nav-btn--forward::after {
+  transform: translate(-65%, -50%) rotate(-135deg);
+}
+
+.safari-toolbar__address {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 0;
+  height: clamp(24px, 2.8vh, 28px);
+  padding: 0 clamp(10px, 1.2vw, 14px);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.safari-toolbar__lock {
+  display: flex;
+  color: #6b6b6b;
+  flex-shrink: 0;
+}
+
+.safari-toolbar__url {
+  min-width: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  font-size: clamp(11px, 1.2vh, 13px);
+  font-weight: 400;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.safari-toolbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.safari-toolbar__action {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  background: color-mix(in srgb, #000 10%, transparent);
+}
+
+.safari-toolbar__action--share {
+  border-radius: 50%;
+}
+
+.safari-toolbar__action--tabs {
+  width: 18px;
+  border-radius: 4px;
+}
+
+.safari-content {
+  max-height: min(58vh, 680px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  background: #ffffff;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.safari-content--compact {
+  max-height: min(48vh, 560px);
+}
+
+.safari-content--full {
+  max-height: none;
+  overflow: visible;
+}
+
+.safari-browser--full .safari-content {
+  max-height: none;
+  overflow: visible;
+}
+
+.safari-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.safari-content::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.safari-content__media {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.safari-content__media--fade {
+  animation: safari-media-in 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes safari-media-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .safari-content__media--fade {
+    animation: none;
+  }
+}
+
+.safari-content--video {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.safari-video {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+  overflow: hidden;
+}
+
+.safari-video .safari-content__media {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(min(58vh, 680px) - 44px);
+  object-fit: contain;
+  object-position: top center;
+  background: #fff;
+  cursor: pointer;
+}
+
+.safari-video-controls {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 8px 10px;
+  background: #1c1c1e;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 5;
+}
+
+.safari-video-btn {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f5f5f7;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.safari-video-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.safari-video-btn--play {
+  min-width: 52px;
+}
+
+.safari-video-seek {
+  flex: 1;
+  min-width: 0;
+  accent-color: #34c759;
+  cursor: pointer;
+}
+
+.safari-video-time {
+  flex-shrink: 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11px;
+  color: rgba(245, 245, 247, 0.78);
+  white-space: nowrap;
+  tabular-nums: true;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 720px) {
+  .safari-toolbar {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .safari-toolbar__nav {
+    display: none;
+  }
+
+  .safari-toolbar__actions .safari-toolbar__action:not(.safari-toolbar__action--share) {
+    display: none;
+  }
+}

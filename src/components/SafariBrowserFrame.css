@@ -1,0 +1,21 @@
+.safari-browser {
+  width: 100%;
+  overflow: hidden;
+  border-radius: clamp(10px, 1.2vw, 14px);
+  border: 1px solid color-mix(in srgb, #000 10%, transparent);
+  background: #ffffff;
+  box-shadow:
+    0 20px 44px color-mix(in srgb, #000 10%, transparent),
+    0 2px 8px color-mix(in srgb, #000 6%, transparent);
+}
+
+[data-theme="dark"] .safari-browser {
+  border-color: color-mix(in srgb, #fff 12%, transparent);
+  box-shadow:
+    0 24px 48px color-mix(in srgb, #000 32%, transparent),
+    0 2px 8px color-mix(in srgb, #000 20%, transparent);
+}
+
+.safari-browser--compact .safari-content {
+  max-height: min(42vh, 480px);
+}

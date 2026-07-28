@@ -1,0 +1,30 @@
+{
+  "name": "social",
+  "version": "1.0.0",
+  "description": "Exported Framer components: Social",
+  "type": "module",
+  "main": "Social.js",
+  "types": "Social.d.ts",
+  "exports": {
+    ".": {
+      "import": "./Social.js",
+      "types": "./Social.d.ts"
+    },
+    "./Social": {
+      "import": "./Social.js",
+      "types": "./Social.d.ts"
+    }
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "framer-motion": ">=10.0.0"
+  },
+  "keywords": [
+    "framer",
+    "react",
+    "components",
+    "exported"
+  ],
+  "license": "MIT"
+}

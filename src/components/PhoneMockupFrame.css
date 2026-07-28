@@ -1,0 +1,91 @@
+.phone-mockup {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.phone-mockup__device {
+  --phone-width: min(260px, 100%);
+  width: var(--phone-width);
+  padding: clamp(10px, 1.2vw, 12px);
+  border-radius: clamp(28px, 3.2vw, 36px);
+  background: linear-gradient(
+    160deg,
+    #3a3f48 0%,
+    #1a1d22 45%,
+    #0f1115 100%
+  );
+  box-shadow:
+    0 24px 48px color-mix(in srgb, #000 18%, transparent),
+    inset 0 1px 0 color-mix(in srgb, #fff 14%, transparent);
+}
+
+[data-theme="dark"] .phone-mockup__device {
+  background: linear-gradient(
+    160deg,
+    #4a5059 0%,
+    #252930 45%,
+    #14171c 100%
+  );
+  box-shadow:
+    0 28px 56px color-mix(in srgb, #000 36%, transparent),
+    inset 0 1px 0 color-mix(in srgb, #fff 10%, transparent);
+}
+
+.phone-mockup__bezel {
+  border-radius: clamp(22px, 2.6vw, 28px);
+  padding: clamp(4px, 0.5vw, 6px);
+  background: #0a0a0a;
+}
+
+.phone-mockup__screen {
+  position: relative;
+  aspect-ratio: 393 / 852;
+  overflow: hidden;
+  border-radius: clamp(18px, 2.2vw, 24px);
+  background: #ffffff;
+}
+
+.phone-mockup__island {
+  position: absolute;
+  top: clamp(8px, 1vh, 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: clamp(56px, 7vw, 72px);
+  height: clamp(16px, 1.8vh, 20px);
+  border-radius: 999px;
+  background: #0a0a0a;
+  pointer-events: none;
+}
+
+.phone-mockup__viewport {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.22) transparent;
+}
+
+.phone-mockup__viewport::-webkit-scrollbar {
+  width: 4px;
+}
+
+.phone-mockup__viewport::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.phone-mockup__media {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-height: 800px) {
+  .phone-mockup__device {
+    --phone-width: min(220px, 100%);
+  }
+}

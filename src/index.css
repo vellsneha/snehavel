@@ -1,0 +1,238 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-base: #ffffff;
+  --text-primary: #1a1a1a;
+  --text-heading: #333333;
+  --text-secondary: #555555;
+  --text-muted: #666666;
+  --text-faint: #888888;
+  --text-subtle: #999999;
+  --tab-inactive: #aaaaaa;
+
+  --accent: #7ea366;
+  --accent-strong: #6f9259;
+  --accent-hero: #5f7d4c;
+  --accent-bg: rgba(126, 163, 102, 0.1);
+  --accent-bg-hover: rgba(126, 163, 102, 0.16);
+  --accent-border: rgba(126, 163, 102, 0.2);
+  --border-accent: rgba(126, 163, 102, 0.4);
+  --border-accent-dashed: rgba(126, 163, 102, 0.5);
+
+  --accent-red: #ca2624;
+  --accent-red-strong: #ca2624;
+
+  --surface-elevated: rgba(255, 255, 255, 0.92);
+  --card-bg: rgba(255, 255, 255, 0.35);
+  --card-bg-soft: rgba(255, 255, 255, 0.4);
+  --card-bg-muted: rgba(255, 255, 255, 0.2);
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --nav-border: rgba(0, 0, 0, 0.04);
+
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-light: rgba(0, 0, 0, 0.1);
+
+  --stripe-a: #e8e8e8;
+  --stripe-b: #f5f5f5;
+
+  --shadow-float: 0 1px 1px rgba(0, 0, 0, 0.02);
+  --shadow-float-hover: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-thumb: none;
+
+  --pulse-color: rgba(126, 163, 102, 0.5);
+  --framer-text: #616161;
+  --framer-text-muted: #808080;
+  --framer-link: rgba(0, 0, 0, 0.6);
+
+  --font-display: "Tiempos", "Tiempos Text", Georgia, "Times New Roman", serif;
+  --font-sans: "Geist Variable", "Geist", system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", "Geist Mono", ui-monospace, monospace;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-base: #0f1117;
+  --text-primary: #eceef3;
+  --text-heading: #f2f4f8;
+  --text-secondary: #b4bac7;
+  --text-muted: #939aab;
+  --text-faint: #7a8294;
+  --text-subtle: #6b7385;
+  --tab-inactive: #5c6478;
+
+  --accent: #97b880;
+  --accent-strong: #a9c694;
+  --accent-hero: #7ea366;
+  --accent-bg: rgba(126, 163, 102, 0.12);
+  --accent-bg-hover: rgba(126, 163, 102, 0.2);
+  --accent-border: rgba(126, 163, 102, 0.28);
+  --border-accent: rgba(126, 163, 102, 0.38);
+  --border-accent-dashed: rgba(126, 163, 102, 0.45);
+
+  --accent-red: #ca2624;
+  --accent-red-strong: #e84543;
+
+  --surface-elevated: rgba(22, 25, 34, 0.94);
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-bg-soft: rgba(255, 255, 255, 0.07);
+  --card-bg-muted: rgba(255, 255, 255, 0.03);
+  --nav-bg: rgba(15, 17, 23, 0.9);
+  --nav-border: rgba(255, 255, 255, 0.06);
+
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-light: rgba(255, 255, 255, 0.12);
+
+  --stripe-a: #2a2e3a;
+  --stripe-b: #1e222c;
+
+  --shadow-float: 0 1px 1px rgba(0, 0, 0, 0.12);
+  --shadow-float-hover: 0 1px 2px rgba(0, 0, 0, 0.16);
+  --shadow-thumb: none;
+
+  --pulse-color: rgba(151, 184, 128, 0.55);
+  --framer-text: #b8beca;
+  --framer-text-muted: #939aab;
+  --framer-link: rgba(236, 238, 243, 0.72);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: color 0.25s ease;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
+
+/* Clickable elements turn accent on hover (home tabs/projects styled in HomePage.css) */
+:is(
+  a:not(.home-project-item),
+  button:not(:disabled):not(.home-right-tab):not(.designs-strip):not(.projects-strip):not(.designs-explorer-tab),
+  [role="button"]:not([aria-disabled="true"]):not(.designs-strip):not(.projects-strip),
+  [role="tab"]:not(.home-right-tab):not(.designs-explorer-tab)
+) {
+  transition: color 0.2s ease;
+}
+
+:is(
+  a:not(.home-project-item),
+  button:not(:disabled):not(.home-right-tab):not(.designs-strip):not(.projects-strip):not(.designs-explorer-tab),
+  [role="button"]:not([aria-disabled="true"]):not(.designs-strip):not(.projects-strip),
+  [role="tab"]:not(.home-right-tab):not(.designs-explorer-tab)
+):hover {
+  color: var(--accent-hero);
+}
+
+:is(
+  a:not(.home-project-item),
+  button:not(:disabled):not(.home-right-tab):not(.designs-strip):not(.projects-strip):not(.designs-explorer-tab),
+  [role="button"]:not(.designs-strip):not(.projects-strip),
+  [role="tab"]:not(.home-right-tab):not(.designs-explorer-tab)
+):hover
+  :is(p, span, h1, h2, h3, h4, h5, h6, li, em, strong, small) {
+  color: inherit;
+}
+
+.framer-section a:hover {
+  color: var(--accent-hero) !important;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  background-color: var(--bg-base);
+  transition: background-color 0.25s ease;
+}
+
+.page-content {
+  position: relative;
+  z-index: 1;
+}
+
+.framer-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.framer-section > * {
+  max-width: 100%;
+}
+
+.framer-section [style*="opacity: 0"] {
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto !important;
+}
+
+/* Framer export text — dark mode readability */
+[data-theme="dark"] .framer-section p,
+[data-theme="dark"] .framer-section h1,
+[data-theme="dark"] .framer-section h2,
+[data-theme="dark"] .framer-section h6 {
+  color: var(--framer-text) !important;
+}
+
+[data-theme="dark"] .framer-section .framer-styles-preset-1m9j37g,
+[data-theme="dark"] .framer-section .framer-styles-preset-1ng8xdu {
+  color: var(--framer-text-muted) !important;
+}
+
+[data-theme="dark"] .framer-section a {
+  color: var(--framer-link) !important;
+}
+
+[style*="Caveat"] {
+  font-family: var(--font-display) !important;
+}
+
+[style*="Inter"] {
+  font-family: var(--font-sans) !important;
+}
+
+[style*="JetBrains"] {
+  font-family: var(--font-mono) !important;
+  --framer-font-family: var(--font-mono) !important;
+}
+
+.framer-section {
+  --framer-font-family: var(--font-sans);
+  --framer-font-family-bold: var(--font-sans);
+  --framer-font-family-italic: var(--font-sans);
+  --framer-font-family-bold-italic: var(--font-sans);
+}
+
+.framer-section [class*="framer-styles-preset"] {
+  --framer-font-family: var(--font-sans) !important;
+  --framer-font-family-bold: var(--font-sans) !important;
+  --framer-font-family-italic: var(--font-sans) !important;
+  --framer-font-family-bold-italic: var(--font-sans) !important;
+}

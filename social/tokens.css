@@ -1,0 +1,83 @@
+/**
+ * Project design tokens extracted from the Framer canvas.
+ * Import this file once at the root of your app so the
+ * --token-<uuid> CSS variables referenced by exported components resolve.
+ */
+/* Fallback @imports for families not covered by @font-face above. */
+/* These rely on Google Fonts publishing the family under the exact name; */
+/* will silently 404 for custom or non-Google fonts. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --token-43eaa47c-57c1-4c38-be59-f43006688652: rgb(227, 129, 84);
+  --token-ea2bd454-4d4f-44d1-99b3-a769c4aac555: rgb(255, 166, 158);
+  --token-97749c83-c6b3-4946-8281-20e6ae7723a6: rgb(16, 18, 194);
+  --token-f80ec182-4046-4264-b628-1abde858f962: rgb(16, 18, 194);
+}
+
+.text-style-r0G8IN0jv {
+  font-family: 'Inter', sans-serif;
+  font-size: 40px;
+  line-height: 1.1em;
+  color: #000;
+}
+.text-style-BHICSVvgY {
+  font-family: 'Inter', sans-serif;
+  font-size: 30px;
+  line-height: 1.4em;
+  color: #000;
+}
+.text-style-ha1zXqVAN {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.4em;
+  color: #000;
+}
+.text-style-pafyZuIl4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 26px;
+  line-height: 1.4em;
+  color: #000;
+}
+.text-style-VSnZNWRbk {
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  line-height: 1.4em;
+  color: #000;
+}
+.text-style-f0IxJxjHL {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 1.4em;
+  color: #000;
+}
+.text-style-MFjKJJh22 {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.2em;
+  color: rgb(132, 133, 226);
+}
+.text-style-h8n4NWvi9 {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.4em;
+  color: rgb(128, 128, 128);
+}
+.text-style-ib6c64BdQ {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: rgb(150, 107, 237);
+}
+.text-style-UUbOiDhOG {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 2em;
+  color: #333;
+}
+.text-style-E0yGUIz1T {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: rgb(128, 128, 128);
+}

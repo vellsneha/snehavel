@@ -1,0 +1,63 @@
+/* Shared project media — consistent 16:9 hero across case study & detail views */
+
+.project-hero-github {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  color: var(--text-muted);
+  opacity: 0.72;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.project-hero-github svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.project-hero-github:hover {
+  color: #b39ddb;
+  opacity: 1;
+}
+
+.project-hero {
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  background: var(--card-bg-soft);
+  aspect-ratio: 16 / 9;
+  max-height: min(56vh, 540px);
+}
+
+.case-study .project-hero {
+  margin-bottom: clamp(40px, 5vh, 64px);
+}
+
+.project-hero-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.project-hero-media--placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    160deg,
+    var(--strip-color),
+    color-mix(in srgb, var(--strip-color) 65%, white)
+  );
+}
+
+[data-theme="dark"] .project-hero-media--placeholder {
+  background: linear-gradient(
+    160deg,
+    var(--strip-color-dark),
+    color-mix(in srgb, var(--strip-color-dark) 75%, black)
+  );
+}
