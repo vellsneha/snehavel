@@ -1,3 +1,5 @@
+import { withBase } from "../utils/withBase";
+
 /**
  * Weather GIF selection for Washington, DC
  *
@@ -46,18 +48,18 @@ export type WeatherGifId =
   | "cherry";
 
 export const WEATHER_GIF_SRC: Record<WeatherGifId, string> = {
-  sunny: "/weathergifs/sunny.gif",
-  clearnight: "/weathergifs/clearnight.gif",
-  "cloudy-cum-sunnyday": "/weathergifs/cloudy-cum-sunnyday.gif",
-  cloudyday: "/weathergifs/cloudyday.gif",
-  day: "/weathergifs/day.gif",
-  night: "/weathergifs/clearnight.gif",
-  sunset: "/weathergifs/sunset.gif",
-  rainy: "/weathergifs/rainy.gif",
-  mystical: "/weathergifs/mystical.gif",
-  "snow-light": "/weathergifs/50snow.gif",
-  "snow-heavy": "/weathergifs/100snow.gif",
-  cherry: "/weathergifs/cherry.gif",
+  sunny: withBase("weathergifs/sunny.gif"),
+  clearnight: withBase("weathergifs/clearnight.gif"),
+  "cloudy-cum-sunnyday": withBase("weathergifs/cloudy-cum-sunnyday.gif"),
+  cloudyday: withBase("weathergifs/cloudyday.gif"),
+  day: withBase("weathergifs/day.gif"),
+  night: withBase("weathergifs/clearnight.gif"),
+  sunset: withBase("weathergifs/sunset.gif"),
+  rainy: withBase("weathergifs/rainy.gif"),
+  mystical: withBase("weathergifs/mystical.gif"),
+  "snow-light": withBase("weathergifs/50snow.gif"),
+  "snow-heavy": withBase("weathergifs/100snow.gif"),
+  cherry: withBase("weathergifs/cherry.gif"),
 };
 
 const SNOW_HEAVY_CODES = new Set([75, 86]);

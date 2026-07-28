@@ -1,3 +1,5 @@
+import { withBase } from "../utils/withBase";
+
 export type ExperienceItem = {
   id: string;
   category: "work" | "more";
@@ -18,7 +20,7 @@ export const experienceItems: ExperienceItem[] = [
     role: "Video Editing Intern",
     company: "xFoundry",
     companyUrl: "https://www.xfoundry.org/",
-    logo: "/logos/xfoundry.png",
+    logo: withBase("logos/xfoundry.png"),
     description:
       "xFoundry is all about transforming colleges into solution engines for real world challenges, and being part of that is really cool. My work has been on the content side, editing raw footage with AI at every step of the process, cuts, stabilization, color grading, motion graphics, all of it.",
   },
@@ -30,7 +32,7 @@ export const experienceItems: ExperienceItem[] = [
     company: "TLTC's Math Success Program at UMD",
     companyUrl: "https://tltc.umd.edu/students/math-success-program",
     logo: "https://framerusercontent.com/images/GSDsGMvqfy4ib2r896jBzkOK0.png?width=2400&height=2400",
-    logoDark: "/logos/umd%20white%20logo.png?v=1",
+    logoDark: withBase("logos/umd white logo.png?v=1"),
     description:
       "Helping UMD students navigate through Algebra, Calculus, Probability and Statistics. The goal was never to just solve problems for them, but to guide them enough that they could figure it out themselves.",
   },
@@ -42,7 +44,7 @@ export const experienceItems: ExperienceItem[] = [
     company: "Academic Achievement Programs at UMD",
     companyUrl: "https://aap.umd.edu/math-ied-sss.html",
     logo: "https://framerusercontent.com/images/GSDsGMvqfy4ib2r896jBzkOK0.png?width=2400&height=2400",
-    logoDark: "/logos/umd%20white%20logo.png?v=1",
+    logoDark: withBase("logos/umd white logo.png?v=1"),
     description:
       "Never thought I'd enjoy teaching this much. Working with undergrad students, their drive to learn kept me just as motivated. Math works differently for everyone, so figuring out how to explain it in a way that made sense to each person was the real challenge.",
   },
@@ -54,7 +56,7 @@ export const experienceItems: ExperienceItem[] = [
     company: "Department of Mathematics at UMD",
     companyUrl: "https://sites.google.com/prod/view/haizhaoyang/group?authuser=0",
     logo: "https://framerusercontent.com/images/GSDsGMvqfy4ib2r896jBzkOK0.png?width=2400&height=2400",
-    logoDark: "/logos/umd%20white%20logo.png?v=1",
+    logoDark: withBase("logos/umd white logo.png?v=1"),
     description:
       "A short exploration into Numerical Methods. Really interesting to see ML being used in a mathematical context, a FEX system that regenerates mathematical equations from data, pretty cool stuff. Learned a lot in just 3 months under Prof. Haizhao Yang.",
   },
@@ -109,8 +111,8 @@ export const experienceItems: ExperienceItem[] = [
     role: "Core Committee",
     company: "TEDxIARE",
     companyUrl: "https://www.ted.com/tedx/events/52558",
-    logo: "/logos/TEDX%20logo.png?v=1",
-    logoDark: "/logos/TEDX%20logo.png?v=1",
+    logo: withBase("logos/TEDX logo.png?v=1"),
+    logoDark: withBase("logos/TEDX logo.png?v=1"),
     description:
       "What a mess, but such a fun event to be part of. Got to be involved in pretty much everything, from brand strategy and marketing to leading the design team, and making some really cool stuff along the way.",
   },

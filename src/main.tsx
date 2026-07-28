@@ -7,9 +7,11 @@ import "./fonts.css";
 import "./index.css";
 import "./hooks/useWashingtonDCWeather";
 
+const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, "") || "/";
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={routerBasename}>
       <ThemeProvider>
         <App />
       </ThemeProvider>
