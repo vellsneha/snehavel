@@ -1097,8 +1097,8 @@ body:has(.page-home) {
 
   .home-learning-video-wrap {
     flex: 0 0 auto;
-    height: 140px;
-    min-height: 140px;
+    height: 200px;
+    min-height: 200px;
   }
 
   .home-side-stack {
@@ -1261,8 +1261,8 @@ body:has(.page-home) {
   }
 
   .home-learning-video-wrap {
-    height: 112px;
-    min-height: 112px;
+    height: 180px;
+    min-height: 180px;
   }
 
   .home-side-column {

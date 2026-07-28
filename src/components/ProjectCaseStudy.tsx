@@ -256,7 +256,7 @@ export default function ProjectCaseStudy({ item }: { item: ProjectItem }) {
           {item.overviewTitle}
         </h2>
         <div className="case-study-lead-row">
-          <p className="case-study-lead">{item.overview}</p>
+          <p className="case-study-lead">{formatInlineText(item.overview)}</p>
           <ProjectGithubLink url={item.url} title={item.title} />
         </div>
       </header>
@@ -305,19 +305,11 @@ export default function ProjectCaseStudy({ item }: { item: ProjectItem }) {
         </div>
         <div className="case-study-meta-field">
           <span className="case-study-meta-label">Timeline</span>
-          <ul className="case-study-meta-skills">
-            {item.timeline.split(" · ").map((part) => (
-              <li key={part.trim()}>{part.trim()}</li>
-            ))}
-          </ul>
+          <p className="case-study-meta-value">{item.timeline}</p>
         </div>
         <div className="case-study-meta-field">
           <span className="case-study-meta-label">Team</span>
-          <ul className="case-study-meta-skills">
-            {item.team.split(",").map((name) => (
-              <li key={name.trim()}>{name.trim()}</li>
-            ))}
-          </ul>
+          <p className="case-study-meta-value">{item.team}</p>
         </div>
         <div className="case-study-meta-field">
           <span className="case-study-meta-label">Skills</span>

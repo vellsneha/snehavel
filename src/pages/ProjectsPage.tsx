@@ -126,19 +126,11 @@ function ProjectDetail({ item }: { item: ProjectItem }) {
         </div>
         <div className="projects-detail-field">
           <span className="projects-detail-label">Timeline</span>
-          <ul className="projects-detail-skills">
-            {item.timeline.split(" · ").map((part) => (
-              <li key={part.trim()}>{part.trim()}</li>
-            ))}
-          </ul>
+          <p className="projects-detail-value">{item.timeline}</p>
         </div>
         <div className="projects-detail-field">
           <span className="projects-detail-label">Team</span>
-          <ul className="projects-detail-skills">
-            {item.team.split(",").map((name) => (
-              <li key={name.trim()}>{name.trim()}</li>
-            ))}
-          </ul>
+          <p className="projects-detail-value">{item.team}</p>
         </div>
         <div className="projects-detail-field">
           <span className="projects-detail-label">Skills</span>

@@ -58,7 +58,7 @@ export const projectItems: ProjectItem[] = [
     ],
     overviewTitle: "Spatio-temporal memory layer for VLMs",
     overview:
-      "VISTA watches egocentric hardhat-camera video once, builds persistent spatio-temporal memory, and answers questions about where things were, when they changed, and what happened off-screen.",
+      "VISTA watches egocentric hardhat-camera video once, builds persistent spatio-temporal memory, and answers questions about *where* things were, *when* they changed, and *what* happened off-screen.",
     description:
       "A Spatio-Temporal RAG system that gives hardhat-camera video object permanence - structured memory any VLM can query.",
     sections: projectContentById.vista,
