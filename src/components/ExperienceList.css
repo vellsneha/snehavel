@@ -15,6 +15,19 @@
   overflow: visible;
 }
 
+.experience-summary {
+  min-width: 0;
+  overflow: visible;
+}
+
+.experience-summary-main {
+  min-width: 0;
+}
+
+.experience-toggle-hint {
+  display: none;
+}
+
 .experience-heading {
   margin: 0 0 clamp(3px, 0.5vh, 6px);
   font-family: var(--font-sans);
@@ -25,11 +38,6 @@
   color: var(--text-heading);
   overflow: visible;
   transition: color 0.2s ease;
-}
-
-.experience-summary {
-  min-width: 0;
-  overflow: visible;
 }
 
 .experience-item:is(:hover, :focus-visible, .is-active) .experience-heading {
@@ -212,4 +220,54 @@
   border: 1px solid var(--border-subtle);
   border-radius: 10px;
   background: var(--card-bg-soft);
+}
+
+@media (max-width: 720px) {
+  .experience-item {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .experience-summary {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .experience-summary-main {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .experience-toggle-hint {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    margin-top: 2px;
+    border: 1px dashed var(--border-accent);
+    border-radius: 999px;
+    color: var(--text-subtle);
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+    transition:
+      transform 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .experience-toggle-hint.is-open {
+    transform: rotate(180deg);
+    color: var(--accent-hero);
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+  }
+
+  .experience-item.is-active .experience-toggle-hint {
+    color: var(--accent-hero);
+    border-color: var(--accent);
+  }
 }

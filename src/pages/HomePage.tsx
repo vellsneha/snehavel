@@ -168,7 +168,7 @@ export default function HomePage() {
             </div>
 
             <aside className="home-col home-col-right">
-              <div className="home-right-tabs" role="tablist" aria-label="Projects, work, and more">
+              <div className="home-right-tabs" role="tablist" aria-label="Projects, experience, and community">
                 <button
                   type="button"
                   role="tab"
@@ -183,52 +183,65 @@ export default function HomePage() {
                   type="button"
                   role="tab"
                   aria-selected={rightPanel === "work"}
-                  data-label="Work"
+                  data-label="Experience"
                   className={`home-right-tab${rightPanel === "work" ? " is-active" : ""}`}
                   onClick={() => setRightPanel("work")}
                 >
-                  <span className="home-right-tab-label">Work</span>
+                  <span className="home-right-tab-label">Experience</span>
                 </button>
                 <button
                   type="button"
                   role="tab"
                   aria-selected={rightPanel === "more"}
-                  data-label="More"
+                  data-label="Community"
                   className={`home-right-tab${rightPanel === "more" ? " is-active" : ""}`}
                   onClick={() => setRightPanel("more")}
                 >
-                  <span className="home-right-tab-label">More</span>
+                  <span className="home-right-tab-label">Community</span>
                 </button>
               </div>
 
               <div className="home-right-panel" role="tabpanel">
                 {rightPanel === "projects" ? (
                   <ul className="home-projects-list">
-                    {projects.map((project) => (
-                      <li key={project.id}>
-                        <a
-                          href={project.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="home-project-item"
-                        >
-                          <div>
-                            <p className="home-project-title">
-                              {project.title}
-                              {project.featured ? (
-                                <img
-                                  src={trophyIcon}
-                                  alt=""
-                                  className="home-project-trophy"
-                                  aria-hidden="true"
-                                />
-                              ) : null}
-                            </p>
-                            <p className="home-project-desc">{project.description}</p>
-                          </div>
-                        </a>
-                      </li>
-                    ))}
+                    {projects.map((project) => {
+                      const opensOnProjectsPage = Boolean(project.projectPage);
+                      const content = (
+                        <div>
+                          <p className="home-project-title">
+                            {project.title}
+                            {project.featured ? (
+                              <img
+                                src={trophyIcon}
+                                alt=""
+                                className="home-project-trophy"
+                                aria-hidden="true"
+                              />
+                            ) : null}
+                          </p>
+                          <p className="home-project-desc">{project.description}</p>
+                        </div>
+                      );
+
+                      return (
+                        <li key={project.id}>
+                          {opensOnProjectsPage ? (
+                            <Link to={`/projects#${project.id}`} className="home-project-item">
+                              {content}
+                            </Link>
+                          ) : (
+                            <a
+                              href={project.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="home-project-item"
+                            >
+                              {content}
+                            </a>
+                          )}
+                        </li>
+                      );
+                    })}
                     <li className="home-projects-footnote">
                       <p>
                         <Link to="/projects" className="home-projects-footnote-link home-projects-footnote-link--page">

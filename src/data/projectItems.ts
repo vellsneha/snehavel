@@ -7,7 +7,7 @@ import weatherKinesisVideo from "../../projvids/WeatherKinesis.mp4?url";
 import neuraDanceImage from "../../projvids/NeuraDance.png?url";
 import feedForwardImage from "../../projvids/FeedForward.png?url";
 import stockMarketImage from "../../projvids/StockMarket.png?url";
-import openaiVideo from "../../projvids/openai.mp4?url";
+import cloudOrchestratorVideo from "../../projvids/CloudOrchestrator.mp4?url";
 import { projectContentById, type ProjectContentSection } from "./projectContent";
 
 export type ProjectItem = {
@@ -129,7 +129,7 @@ export const projectItems: ProjectItem[] = [
     description:
       "Multi-agent ADK platform that turns natural-language infrastructure requests into ordered gcloud tool-call plans with DAG visualization.",
     sections: projectContentById.orchestrator,
-    media: openaiVideo,
+    media: cloudOrchestratorVideo,
     mediaType: "video",
   },
   {

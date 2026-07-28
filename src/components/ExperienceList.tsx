@@ -143,6 +143,7 @@ export default function ExperienceList({ items }: ExperienceListProps) {
             data-id={item.id}
             className={`experience-item${overlay?.id === item.id || expandedId === item.id ? " is-active" : ""}`}
             tabIndex={0}
+            aria-expanded={isMobile ? expandedId === item.id : undefined}
             onClick={() => {
               if (!isMobile) return;
               setExpandedId((current) => (current === item.id ? null : item.id));
@@ -167,29 +168,50 @@ export default function ExperienceList({ items }: ExperienceListProps) {
             }}
           >
             <div className="experience-summary">
-              <p className="experience-heading">
-                <span className="experience-role">{item.role}</span>
-                <span className="experience-at">{" at\u00A0"}</span>
+              <div className="experience-summary-main">
+                <p className="experience-heading">
+                  <span className="experience-role">{item.role}</span>
+                  <span className="experience-at">{" at\u00A0"}</span>
                   <a
-                  href={item.companyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="experience-company-link"
+                    href={item.companyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="experience-company-link"
+                    onClick={(event) => {
+                      if (isMobile) event.stopPropagation();
+                    }}
+                  >
+                    <span className={getLogoWrapClass(item.id)}>
+                      <img
+                        src={theme === "dark" && item.logoDark ? item.logoDark : item.logo}
+                        alt=""
+                        className="experience-logo"
+                        loading="lazy"
+                      />
+                    </span>
+                    <span className="experience-company">{item.company}</span>
+                  </a>
+                </p>
+                <time className="experience-period" dateTime={item.period}>
+                  {item.period}
+                </time>
+              </div>
+              {isMobile ? (
+                <span
+                  className={`experience-toggle-hint${expandedId === item.id ? " is-open" : ""}`}
+                  aria-hidden="true"
                 >
-                  <span className={getLogoWrapClass(item.id)}>
-                    <img
-                      src={theme === "dark" && item.logoDark ? item.logoDark : item.logo}
-                      alt=""
-                      className="experience-logo"
-                      loading="lazy"
+                  <svg viewBox="0 0 12 12" width="12" height="12" fill="none" aria-hidden="true">
+                    <path
+                      d="M3 4.5 L6 7.5 L9 4.5"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
-                  </span>
-                  <span className="experience-company">{item.company}</span>
-                </a>
-              </p>
-              <time className="experience-period" dateTime={item.period}>
-                {item.period}
-              </time>
+                  </svg>
+                </span>
+              ) : null}
             </div>
             {isMobile && expandedId === item.id ? (
               <div className="experience-desc-inline">
