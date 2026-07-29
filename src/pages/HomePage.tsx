@@ -101,7 +101,7 @@ export default function HomePage() {
                   <div className="home-center-zone">
                     <div className="home-center-top">
                       <p className="home-bio">
-                        I&apos;m an AI Systems Engineer with a background in software engineering. I build
+                        AI Systems Engineer with a background in software engineering. I build
                         reliable AI systems, from multimodal agents and RAG pipelines to agentic
                         workflows.
                       </p>
