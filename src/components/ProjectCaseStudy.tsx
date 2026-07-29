@@ -90,11 +90,20 @@ function ProjectTable({ table }: { table: NonNullable<ProjectContentSection["tab
             </tr>
           </thead>
           <tbody>
-            {table.rows.map((row) => (
-              <tr key={row.join("|")}>
-                {row.map((cell) => (
-                  <td key={cell}>{cell}</td>
-                ))}
+            {table.rows.map((row, rowIndex) => (
+              <tr key={rowIndex}>
+                {row.map((cell, cellIndex) => {
+                  const text = typeof cell === "string" ? cell : cell.text;
+                  const tone = typeof cell === "string" ? undefined : cell.tone;
+                  return (
+                    <td
+                      key={cellIndex}
+                      className={tone ? `case-table-cell--${tone}` : undefined}
+                    >
+                      {text}
+                    </td>
+                  );
+                })}
               </tr>
             ))}
           </tbody>

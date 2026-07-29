@@ -27,7 +27,7 @@ export const designItems: DesignItem[] = [
     hue: 38,
     role: "Product Designer",
     timeline: "2025 to 2026",
-    team: "Santhi, Affan, Moneet, Me",
+    team: "Santhi, Afaan, Mohneet, Me",
     skills: [
       "Behavioral Data Visualization",
       "Dashboard Information Density",
@@ -153,19 +153,20 @@ export const designItems: DesignItem[] = [
     date: "2022",
     ndaProtected: true,
     description:
-      "The product experience for telecom tower ops, giving managers and techs remote visibility into site health.",
+      "Marketing website for PULSE, a service from NFC Solutions.",
     hue: 330,
     role: "UI UX Designer",
     timeline: "2022",
-    team: "Pulse product and engineering",
+    team: "UI UX team",
     skills: [
-      "B2B Product Design",
+      "Marketing Website Design",
       "Service Oriented Navigation",
       "Visual Storytelling",
       "Clean Interface Systems",
+      "Responsive Web Design",
     ],
-    overviewTitle: "Tower ops, readable at a glance",
+    overviewTitle: "A service page, not a product dump",
     overview:
-      "I learned how to simplify noisy operational data without stripping away what teams actually need. The work was less about decoration and more about helping someone scan the state of many sites in a few seconds.",
+      "I learned that marketing a service is mostly about restraint. Visitors needed a clear picture of PULSE fast, not every detail NFC already covered elsewhere.",
   },
 ];

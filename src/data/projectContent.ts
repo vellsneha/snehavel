@@ -3,10 +3,19 @@ export type ProjectStat = {
   label: string;
 };
 
+export type ProjectTableTone = "good" | "warn" | "bad";
+
+export type ProjectTableCell =
+  | string
+  | {
+      text: string;
+      tone?: ProjectTableTone;
+    };
+
 export type ProjectTable = {
   title?: string;
   headers: string[];
-  rows: string[][];
+  rows: ProjectTableCell[][];
 };
 
 export type ProjectStep = {
@@ -69,7 +78,7 @@ export const vistaContent: ProjectContentSection[] = [
       "The core idea: give video object permanence through structured memory and intelligent retrieval, not embedding similarity alone.",
     ],
     grid: [
-      { title: "Who", items: ["Workers", "Supervisors", "Equipment"] },
+      { title: "Who", items: ["Workers", "Supervisors"] },
       { title: "What", items: ["Objects", "Actions", "State changes"] },
       { title: "Where", items: ["Allocentric direction", "Scene position"] },
       { title: "When", items: ["Timelines", "Idle periods", "Events"] },
@@ -220,10 +229,30 @@ export const vistaContent: ProjectContentSection[] = [
     table: {
       headers: ["Question", "VISTA", "Gemini", "Molmo"],
       rows: [
-        ["Concrete walls at 30s?", "Right", "Right", "Wrong (left)"],
-        ["Ladder at 10s?", "Behind", "Right", "Wrong (right)"],
-        ["Worker idle duration?", "176s (7% error)", "299s (57% over)", "10s (95% under)"],
-        ["Bucket start vs end?", "Tracked movement", "Locked direction", "Locked direction"],
+        [
+          "Concrete walls at 30s?",
+          { text: "Right", tone: "good" },
+          { text: "Right", tone: "good" },
+          { text: "Wrong (left)", tone: "bad" },
+        ],
+        [
+          "Ladder at 10s?",
+          { text: "Behind", tone: "warn" },
+          { text: "Right", tone: "good" },
+          { text: "Wrong (right)", tone: "bad" },
+        ],
+        [
+          "Worker idle duration?",
+          { text: "176s (7% error)", tone: "good" },
+          { text: "299s (57% over)", tone: "bad" },
+          { text: "10s (95% under)", tone: "bad" },
+        ],
+        [
+          "Bucket start vs end?",
+          { text: "Tracked movement", tone: "good" },
+          { text: "Locked direction", tone: "bad" },
+          { text: "Locked direction", tone: "bad" },
+        ],
       ],
     },
     bullets: [
@@ -315,11 +344,11 @@ export const openClipContent: ProjectContentSection[] = [
       "Panel-level granularity requires reliable detection before any search works. Four query types need different retrieval strategies. Fine-tuning data must come from structured captions, not generic image descriptions.",
       "The architectural bet: separate visual and text vector collections so each query type can search the right signal. Type-aware routing beats one-size-fits-all retrieval.",
     ],
-    bullets: [
-      "YOLOv8 segmentation · OpenCLIP ViT-B/32 · EasyOCR · ChromaDB",
-      "FastAPI backend · Streamlit frontend",
-      "Gemini 2.5 Flash, captioning and eval ground truth",
-      "Qwen2.5-1.5B / RunPod, query classification with regex fallback",
+    chipRows: [
+      ["YOLOv8 segmentation", "OpenCLIP ViT-B/32", "EasyOCR", "ChromaDB"],
+      ["FastAPI backend", "Streamlit frontend"],
+      ["Gemini 2.5 Flash", "Captioning and eval ground truth"],
+      ["Qwen2.5-1.5B / RunPod", "Query classification with regex fallback"],
     ],
   },
   {

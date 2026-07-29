@@ -360,6 +360,7 @@
   font-weight: 500;
   line-height: 1.45;
   color: var(--text-secondary);
+  white-space: pre-line;
 }
 
 .projects-detail-skills {

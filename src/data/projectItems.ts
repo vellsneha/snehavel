@@ -74,8 +74,8 @@ export const projectItems: ProjectItem[] = [
     tags: ["LLMs", "Agents", "Data", "Graph"],
     hue: 38,
     role: "AI Engineer & Frontend",
-    timeline: "Nov 15–16, 2025 · ~20 hr",
-    team: "Santhi, Aafan, Moneet, Me",
+    timeline: "Nov 15–16, 2025\n~20 hr",
+    team: "Santhi, Afaan, Mohneet, Me",
     skills: [
       "Knowledge Graph",
       "Neo4j",
@@ -90,7 +90,7 @@ export const projectItems: ProjectItem[] = [
     ],
     overviewTitle: "Financial Identity Score for Freelancers",
     overview:
-      "A knowledge-graph-powered platform that turns banking history into a 0–100 financial health score, built for freelancers and gig workers whose irregular income patterns traditional credit scores miss.",
+      "A knowledge-graph-powered platform that turns banking history into a financial health score, built for freelancers and gig workers whose irregular income patterns traditional credit scores miss.",
     description:
       "Multi-agent graph system that analyzes freelancer finances via Capital One's Nessie API and delivers an explainable 0–100 Financial Identity Score with AI recommendations.",
     sections: projectContentById.fingraph,

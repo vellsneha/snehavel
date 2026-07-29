@@ -17,7 +17,7 @@ export const fingraphContent: ProjectContentSection[] = [
   },
   {
     label: "Solution",
-    title: "A knowledge-graph-powered 0–100 Financial Identity Score",
+    title: "A knowledge-graph-powered Financial Identity Score",
     variant: "callout",
     paragraphs: [
       "FinGraph turns banking history into a reproducible financial health score with an LLM-generated narrative, banks get a single number and an explanation, not a raw CSV.",
@@ -47,24 +47,41 @@ export const fingraphContent: ProjectContentSection[] = [
   },
   {
     label: "User persona",
+    title: "Freelancer proving financial health without a steady paycheck",
+    paragraphs: [
+      "Gig workers and freelancers need to show lenders, landlords, or clients that irregular income can still be stable. They want one clear score and a story behind it, not a raw bank CSV.",
+    ],
     variant: "steps",
     steps: [
-      { label: "Login", description: "Email/password, bcrypt-hashed Auth nodes in Neo4j" },
-      { label: "Analyze", description: "POST /analysis/{customer_id}/full, one shot, everything loaded" },
-      { label: "Dashboard", description: "Score gauge, cashflow charts, income, client donut, runway" },
-      { label: "Explore", description: "Force-directed graph of accounts, deposits, merchants, bills" },
+      {
+        label: "Login",
+        description: "Sign in and connect to their banking history for analysis",
+      },
+      {
+        label: "Analyze",
+        description: "One run loads income, cashflow, clients, and runway into the graph",
+      },
+      {
+        label: "Dashboard",
+        description: "See the health score with charts for cashflow, income mix, and cushion",
+      },
+      {
+        label: "Explore",
+        description: "Inspect the graph of accounts, deposits, merchants, and bills",
+      },
     ],
   },
   {
     label: "Tech stack",
+    title: "Deterministic scoring, LLM for language only",
     paragraphs: [
-      "The architectural bet: keep scoring deterministic in pure Python; use the LLM only for human-facing text. The graph is the memory; agents query it with minimal Cypher.",
+      "The architectural bet: keep scoring in pure Python so results stay reproducible; use the LLM only for explanations. The graph is the memory; agents query it with minimal Cypher.",
     ],
-    bullets: [
-      "Python 3.11 · FastAPI · Neo4j AuraDB · Nessie Enterprise API",
-      "Gemini 2.0 Flash, explanations and recommendation parsing only",
-      "React 18 · Vite · Tailwind · Recharts · NeoVis.js",
-      "Google Cloud Run, backend + frontend Docker images",
+    chipRows: [
+      ["Python 3.11", "FastAPI", "Neo4j AuraDB", "Nessie API"],
+      ["Gemini 2.0 Flash", "Explanations and recommendations only"],
+      ["React 18", "Vite", "Tailwind", "Recharts", "NeoVis.js"],
+      ["Google Cloud Run", "Docker backend + frontend"],
     ],
   },
   {
@@ -117,14 +134,14 @@ export const fingraphContent: ProjectContentSection[] = [
     variant: "phases",
     subsections: [
       {
-        title: "Phase 1, Ingestion (one-time)",
+        title: "Phase 1 - Ingestion (one-time)",
         code: `Nessie Enterprise API (6 bulk endpoints)
     → Python pipeline orchestrator
     → Neo4j loader (nodes → relationships → derived transactions → merchant links)
     → Neo4j AuraDB populated`,
       },
       {
-        title: "Phase 2, Analysis (per login)",
+        title: "Phase 2 - Analysis (per login)",
         code: `User logs in → POST /analysis/{id}/full
     → Agent 1: income metrics
     → Agent 2: cashflow volatility
@@ -198,10 +215,10 @@ export const feedforwardContent: ProjectContentSection[] = [
     paragraphs: [
       "Split AI plumbing from data plumbing. Flask handles LLM sessions; Express handles the database layer both agents share.",
     ],
-    bullets: [
-      "Flask · Express · MySQL on AWS RDS · JWT auth",
-      "OpenAI Realtime API (WebRTC) · GPT-4o (Socket.IO streaming)",
-      "Vanilla JS + Jinja2 · Webflow-exported site base",
+    chipRows: [
+      ["Flask", "Express", "MySQL on AWS RDS", "JWT auth"],
+      ["OpenAI Realtime API", "WebRTC", "GPT-4o", "Socket.IO streaming"],
+      ["Vanilla JS + Jinja2", "Webflow-exported site base"],
     ],
   },
   {
@@ -313,10 +330,10 @@ export const intelliRagsContent: ProjectContentSection[] = [
     paragraphs: [
       "Key design choices: asymmetric Cohere embeddings (search_document vs search_query), 500-word chunks with 50-word overlap, section-recall gold mapping, LLM-as-judge with documented same-model bias caveat.",
     ],
-    bullets: [
-      "FastAPI · Streamlit · ChromaDB · SQLite analytics",
-      "Cohere embed-english-v3.0 · command-r7b-12-2024",
-      "JWT auth · input/output guardrails",
+    chipRows: [
+      ["FastAPI", "Streamlit", "ChromaDB", "SQLite analytics"],
+      ["Cohere embed-english-v3.0", "command-r7b-12-2024"],
+      ["JWT auth", "Input/output guardrails"],
     ],
   },
   {
@@ -428,11 +445,11 @@ export const orchestratorContent: ProjectContentSection[] = [
     paragraphs: [
       "Multi-agent decomposition (plan → guard → execute) over a monolithic script. YAML catalog as source of truth for actions and agent routing. gcloud subprocess chosen over per-service SDKs for hackathon speed.",
     ],
-    bullets: [
-      "Google ADK 1.2.1 · Gemini 2.5-flash / 2.0-flash",
-      "YAML capability catalog · Cytoscape.js DAG",
-      "Docker → Cloud Run (2 Gi RAM, 2 CPU, gcloud bundled)",
-      "Vertex AI Reasoning Engine via AdkApp",
+    chipRows: [
+      ["Google ADK 1.2.1", "Gemini 2.5-flash", "Gemini 2.0-flash"],
+      ["YAML capability catalog", "Cytoscape.js DAG"],
+      ["Docker", "Cloud Run", "2 Gi RAM", "2 CPU", "gcloud bundled"],
+      ["Vertex AI Reasoning Engine", "AdkApp"],
     ],
   },
   {

@@ -91,6 +91,7 @@
   font-weight: 500;
   line-height: 1.45;
   color: var(--text-secondary);
+  white-space: pre-line;
 }
 
 .case-study-meta-skills {
@@ -264,6 +265,24 @@
 
 .case-table tr:last-child td {
   border-bottom: none;
+}
+
+.case-table td.case-table-cell--good {
+  color: #1b6b3a;
+  background: color-mix(in srgb, #2f9e5b 16%, white);
+  font-weight: 500;
+}
+
+.case-table td.case-table-cell--warn {
+  color: #8a6a12;
+  background: color-mix(in srgb, #e0b83a 18%, white);
+  font-weight: 500;
+}
+
+.case-table td.case-table-cell--bad {
+  color: #a12e2e;
+  background: color-mix(in srgb, #d64545 14%, white);
+  font-weight: 500;
 }
 
 .case-steps {
