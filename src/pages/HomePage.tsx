@@ -16,19 +16,13 @@ type RightPanelTab = "projects" | "work" | "more";
 
 const skills = [
   "Agentic AI",
-  "Food",
   "Harness Engineering",
-  "Semantic Search",
-  "Beach",
+  "RAG Systems",
   "Knowledge Graphs",
-  "Music",
-  "Computer Vision",
-  "Vacation",
   "Multimodal AI",
-  "Observability",
-  "Nature",
+  "Computer Vision",
+  "Model Evaluation",
   "LLM Fine-tuning",
-  "Art",
 ];
 
 export default function HomePage() {
@@ -53,7 +47,8 @@ export default function HomePage() {
                     <p className="home-role">
                       <em>building</em> ai systems
                       <br />
-                      <span className="home-role-with">with</span> design <em>thinking</em>
+                      <span className="home-role-with">with</span> design{" "}
+                      <em>thinking</em>
                     </p>
 
                     <p className="home-open-to-work">
@@ -101,13 +96,13 @@ export default function HomePage() {
                   <div className="home-center-zone">
                     <div className="home-center-top">
                       <p className="home-bio">
-                        AI Systems Engineer with a background in software engineering. I build
-                        reliable AI systems, from multimodal agents and RAG pipelines to agentic
-                        workflows.
+                        AI Systems Engineer building reliable AI systems with agents, eval loops,
+                        multimodal tools, and RAG pipelines. Working on enhancing the harness for
+                        better AI behavior.
                       </p>
 
                       <div className="home-skillset">
-                        <p className="home-skillset-heading">words that interest me</p>
+                        <p className="home-skillset-heading">capabilities</p>
                         <div className="home-skill-tags">
                           {skills.map((skill) => (
                             <span key={skill} className="home-skill-tag">

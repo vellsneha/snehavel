@@ -327,8 +327,7 @@ body:has(.page-home) {
   line-height: 1.15;
 }
 
-.home-role em,
-.home-role-sub em {
+.home-role em {
   font-style: italic;
   color: var(--accent-red-strong);
 }
@@ -336,15 +335,6 @@ body:has(.page-home) {
 .home-role-with {
   font-size: 0.62em;
   font-weight: 600;
-}
-
-.home-role-sub {
-  margin: 0 0 clamp(8px, 1.2vh, 14px);
-  font-family: var(--font-display);
-  font-size: clamp(20px, 2.6vh, 26px);
-  font-weight: 700;
-  color: var(--accent-strong);
-  line-height: 1.15;
 }
 
 .home-open-to-work {
@@ -431,7 +421,8 @@ body:has(.page-home) {
 
 .home-bio {
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.6;
   letter-spacing: 0.02em;
   color: var(--text-secondary);
@@ -458,7 +449,6 @@ body:has(.page-home) {
   display: flex;
   flex-wrap: wrap;
   gap: clamp(5px, 0.7vh, 8px);
-  overflow: hidden;
 }
 
 .home-skill-tag {
@@ -1229,7 +1219,7 @@ body:has(.page-home) {
   }
 
   .home-bio {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.7;
   }
 

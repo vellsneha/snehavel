@@ -233,13 +233,13 @@ export const vistaContent: ProjectContentSection[] = [
           "Concrete walls at 30s?",
           { text: "Right", tone: "good" },
           { text: "Right", tone: "good" },
-          { text: "Wrong (left)", tone: "bad" },
+          { text: "Left", tone: "bad" },
         ],
         [
           "Ladder at 10s?",
           { text: "Behind", tone: "warn" },
-          { text: "Right", tone: "good" },
-          { text: "Wrong (right)", tone: "bad" },
+          { text: "Right", tone: "bad" },
+          { text: "Right", tone: "bad" },
         ],
         [
           "Worker idle duration?",
