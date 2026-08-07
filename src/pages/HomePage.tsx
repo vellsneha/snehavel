@@ -22,6 +22,7 @@ const skills = [
   "Multimodal AI",
   "Computer Vision",
   "Model Evaluation",
+  "LangSmith",
   "LLM Fine-tuning",
 ];
 
@@ -97,8 +98,8 @@ export default function HomePage() {
                     <div className="home-center-top">
                       <p className="home-bio">
                         AI Systems Engineer building reliable AI systems with agents, eval loops,
-                        multimodal tools, and RAG pipelines. Working on enhancing the harness for
-                        better AI behavior.
+                        multimodal tools, and RAG pipelines. Working on{" "}
+                        <em>enhancing the harness for better AI behavior</em>.
                       </p>
 
                       <div className="home-skillset">

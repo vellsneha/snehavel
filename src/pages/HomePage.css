@@ -1160,7 +1160,7 @@ body:has(.page-home) {
 
 @media (max-width: 720px) {
   .home-page {
-    padding: 18px 18px 28px;
+    padding: 48px 18px 28px;
   }
 
   .home-grid {
@@ -1312,7 +1312,7 @@ body:has(.page-home) {
     align-items: center;
     grid-column: 1;
     grid-row: 4;
-    margin-top: 8px;
+    margin-top: 36px;
     width: 100%;
     text-align: center;
   }
