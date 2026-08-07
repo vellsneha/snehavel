@@ -55,6 +55,36 @@ export default function HomePage() {
                     <p className="home-open-to-work">
                       Open to startups, full-time roles and good ideas.
                     </p>
+
+                    <p className="home-bio home-bio--profile">
+                      AI Systems Engineer building reliable AI systems with agents, eval loops,
+                      multimodal tools, and RAG pipelines. Working on{" "}
+                      <em>enhancing the harness for better AI behavior</em>.
+                    </p>
+
+                    <div className="home-skillset home-skillset--profile">
+                      <p className="home-skillset-heading">capabilities</p>
+                      <div className="home-skill-tags">
+                        {skills.map((skill) => (
+                          <span key={skill} className="home-skill-tag">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="home-profile-banners">
+                      <Link to="/designs" className="home-card home-card-banner home-card-uiux">
+                        <span className="home-banner-label">
+                          Designs <em className="home-banner-label-sub">for users</em>
+                        </span>
+                      </Link>
+                      <Link to="/gallery" className="home-card home-card-banner home-card-gallery">
+                        <span className="home-banner-label">
+                          Gallery <em className="home-banner-label-sub">of memories</em>
+                        </span>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -96,13 +126,13 @@ export default function HomePage() {
                 <section className="home-col home-col-center">
                   <div className="home-center-zone">
                     <div className="home-center-top">
-                      <p className="home-bio">
+                      <p className="home-bio home-bio--center">
                         AI Systems Engineer building reliable AI systems with agents, eval loops,
                         multimodal tools, and RAG pipelines. Working on{" "}
                         <em>enhancing the harness for better AI behavior</em>.
                       </p>
 
-                      <div className="home-skillset">
+                      <div className="home-skillset home-skillset--center">
                         <p className="home-skillset-heading">capabilities</p>
                         <div className="home-skill-tags">
                           {skills.map((skill) => (
@@ -135,28 +165,28 @@ export default function HomePage() {
                         ))}
                       </div>
                     </div>
+
+                    <div className="home-side-column">
+                      <div className="home-weather-block home-weather-block--desktop">
+                        <div className="home-gif-wrap">
+                          <WeatherGif />
+                        </div>
+                      </div>
+                      <div className="home-side-stack">
+                        <Link to="/designs" className="home-card home-card-banner home-card-uiux">
+                          <span className="home-banner-label">
+                            Designs <em className="home-banner-label-sub">for users</em>
+                          </span>
+                        </Link>
+                        <Link to="/gallery" className="home-card home-card-banner home-card-gallery">
+                          <span className="home-banner-label">
+                            Gallery <em className="home-banner-label-sub">of memories</em>
+                          </span>
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </section>
-              </div>
-
-              <div className="home-side-column">
-                <div className="home-weather-block home-weather-block--desktop">
-                  <div className="home-gif-wrap">
-                    <WeatherGif />
-                  </div>
-                </div>
-                <div className="home-side-stack">
-                  <Link to="/designs" className="home-card home-card-banner home-card-uiux">
-                    <span className="home-banner-label">
-                      Designs <em className="home-banner-label-sub">for users</em>
-                    </span>
-                  </Link>
-                  <Link to="/gallery" className="home-card home-card-banner home-card-gallery">
-                    <span className="home-banner-label">
-                      Gallery <em className="home-banner-label-sub">of memories</em>
-                    </span>
-                  </Link>
-                </div>
               </div>
             </div>
 

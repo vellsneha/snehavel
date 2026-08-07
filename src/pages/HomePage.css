@@ -435,6 +435,27 @@ body:has(.page-home) {
   overflow: hidden;
 }
 
+.home-skillset--profile {
+  display: none;
+  margin-top: clamp(14px, 1.8vh, 22px);
+  flex-shrink: 0;
+  overflow: visible;
+  min-height: 0;
+}
+
+.home-bio--profile {
+  display: none;
+  margin-top: clamp(28px, 3.2vh, 40px);
+}
+
+.home-profile-banners {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: clamp(14px, 1.8vh, 22px);
+  width: 100%;
+}
+
 .home-skillset-heading {
   margin: 0 0 clamp(6px, 0.8vh, 10px);
   font-family: var(--font-mono);
@@ -620,6 +641,8 @@ body:has(.page-home) {
   gap: clamp(6px, 0.8vh, 8px);
   flex: 1 1 0;
   min-height: 0;
+  position: relative;
+  z-index: 0;
 }
 
 .home-placeholder-link {
@@ -643,10 +666,12 @@ body:has(.page-home) {
   flex: 1 1 0;
   width: 100%;
   min-height: clamp(110px, 14vh, 150px);
+  height: clamp(110px, 14vh, 150px);
   position: relative;
   overflow: hidden;
   border-radius: 4px;
   background: var(--card-bg-soft);
+  flex-shrink: 0;
 }
 
 .home-learning-video {
@@ -705,11 +730,191 @@ body:has(.page-home) {
   overflow: visible;
 }
 
-/* Desktop only — side column stacks weather + banner cards */
-@media (min-width: 1101px) {
+/* Mid ratio: bio + capabilities + designs/gallery on left; center stacks */
+@media (min-width: 721px) and (max-width: 1299px) {
+  .home-skillset--profile,
+  .home-bio--profile {
+    display: block;
+  }
+
+  .home-profile-banners {
+    display: flex;
+  }
+
+  .home-skillset--center,
+  .home-bio--center {
+    display: none;
+  }
+
+  .home-center-top {
+    display: none;
+  }
+
+  .home-col-center {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: visible;
+  }
+
+  .home-center-zone {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: auto;
+    overflow: visible;
+  }
+
+  .home-col2-lower {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 0 0 auto;
+    height: auto;
+  }
+
+  .home-card-large {
+    grid-column: auto;
+    grid-row: auto;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    flex: 0 0 auto;
+  }
+
+  .home-placeholder-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: auto;
+    overflow: visible;
+  }
+
+  .home-placeholder-item {
+    flex: 0 0 auto;
+    min-height: auto;
+  }
+
+  .home-learning-video-wrap {
+    flex: 0 0 auto;
+    height: 150px;
+    min-height: 150px;
+    max-height: 150px;
+  }
+
+  .home-side-column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+    margin-top: 0;
+  }
+
+  .home-side-stack .home-card-uiux,
+  .home-side-stack .home-card-gallery {
+    display: none;
+  }
+
+  .home-right-banners {
+    display: none !important;
+  }
+}
+
+/* Desktop: restore original 3-column layout */
+@media (min-width: 1300px) {
+  .home-skillset--profile,
+  .home-bio--profile,
+  .home-profile-banners {
+    display: none;
+  }
+
+  .home-skillset--center,
+  .home-bio--center {
+    display: block;
+  }
+
+  .home-center-top {
+    display: flex;
+    flex-direction: column;
+    grid-column: 2 / 4;
+    grid-row: 1;
+    gap: clamp(10px, 1.5vh, 20px);
+  }
+
+  .home-cluster-left {
+    grid-template-columns: minmax(280px, 300px) minmax(0, 1.05fr) minmax(260px, 0.95fr);
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    height: 100%;
+    align-items: stretch;
+  }
+
+  .home-col-left {
+    grid-column: 1;
+    grid-row: 1 / -1;
+  }
+
+  .home-col-center {
+    display: contents;
+  }
+
+  .home-center-zone {
+    display: contents;
+  }
+
+  .home-col2-lower {
+    display: contents;
+  }
+
+  .home-card-large {
+    grid-column: 2;
+    grid-row: 2 / 4;
+    align-self: stretch;
+    height: 100%;
+    min-height: clamp(180px, 22vh, 280px);
+    overflow: hidden;
+  }
+
+  .home-side-column {
+    grid-column: 3;
+    grid-row: 2 / 4;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(14px, 1.6vh, 20px);
+    width: 100%;
+  }
+
   .home-side-stack {
     height: auto;
     flex-shrink: 0;
+  }
+
+  .home-side-stack .home-card-uiux,
+  .home-side-stack .home-card-gallery {
+    display: flex;
+  }
+
+  .home-placeholder-stack {
+    gap: clamp(10px, 1.2vh, 14px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+  }
+
+  .home-placeholder-item {
+    flex: 1 1 0;
+    min-height: 0;
+  }
+
+  .home-learning-video-wrap {
+    flex: 1 1 0;
+    height: auto;
+    min-height: clamp(110px, 14vh, 150px);
+    max-height: none;
+  }
+
+  .home-gif-wrap {
+    height: clamp(130px, 17vh, 180px);
+    max-height: clamp(130px, 17vh, 180px);
   }
 }
 
@@ -779,34 +984,50 @@ body:has(.page-home) {
 }
 
 .home-right-tabs {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: clamp(10px, 1.5vw, 16px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 0;
   margin: 0 0 clamp(24px, 3.5vh, 36px);
   flex-shrink: 0;
+  border: 1px dashed var(--border-accent);
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .home-right-tab {
   display: inline-grid;
   grid-template-columns: 1fr;
-  padding: 0;
+  place-items: center;
+  justify-items: center;
+  padding: clamp(8px, 1vh, 10px) clamp(4px, 0.6vw, 8px);
   border: none;
+  border-right: 1px dashed var(--border-accent);
+  border-radius: 0;
   background: none;
   font-family: var(--font-mono);
-  font-size: clamp(14px, 1.55vh, 16px);
+  font-size: clamp(12px, 1.35vh, 14px);
   font-weight: 500;
   color: var(--text-secondary);
   cursor: pointer;
   letter-spacing: 0.01em;
-  transition: color 0.2s;
+  transition: color 0.2s, background 0.2s;
   white-space: nowrap;
+  text-align: center;
+  min-width: 0;
+  width: 100%;
+}
+
+.home-right-tab:last-child {
+  border-right: none;
 }
 
 .home-right-tab-label,
 .home-right-tab::after {
   grid-row: 1;
   grid-column: 1;
+  text-align: center;
+  width: 100%;
 }
 
 .home-right-tab::after {
@@ -828,6 +1049,7 @@ body:has(.page-home) {
 .home-right-tab.is-active:focus-visible {
   color: var(--accent-red-strong);
   font-weight: 600;
+  background: var(--card-bg-soft);
 }
 
 .home-right-panel {
@@ -975,7 +1197,7 @@ body:has(.page-home) {
 }
 
 /* Responsive — reflow columns as width shrinks */
-@media (max-width: 1100px) {
+@media (max-width: 1299px) {
   .page-home {
     height: auto;
     max-height: none;
@@ -1017,7 +1239,7 @@ body:has(.page-home) {
   .home-cluster-left {
     display: grid;
     grid-template-columns: minmax(200px, 1fr) minmax(0, 1.2fr);
-    grid-template-rows: auto auto;
+    grid-template-rows: auto;
     gap: clamp(12px, 1.5vw, 18px);
     grid-column: 1;
     grid-row: 1;
@@ -1079,40 +1301,43 @@ body:has(.page-home) {
   .home-placeholder-stack {
     height: auto;
     overflow: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
   .home-placeholder-item {
     flex: 0 0 auto;
+    min-height: auto;
   }
 
   .home-learning-video-wrap {
     flex: 0 0 auto;
-    height: 200px;
-    min-height: 200px;
+    height: 150px;
+    min-height: 150px;
+    max-height: 150px;
+  }
+
+  .home-side-column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    margin-top: 4px;
+    gap: 16px;
   }
 
   .home-side-stack {
-    grid-column: auto;
-    grid-row: auto;
     display: flex;
     flex-direction: column;
     gap: clamp(14px, 1.6vh, 20px);
     height: auto;
   }
+
   .home-side-stack .home-card-uiux,
   .home-side-stack .home-card-gallery {
     display: none;
-  }
-
-  .home-side-column {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    display: block;
-    width: 100% !important;
-    min-width: 100%;
-    max-width: none;
-    justify-self: stretch;
-    align-self: stretch;
   }
 
   .home-weather-block,
@@ -1243,22 +1468,39 @@ body:has(.page-home) {
   }
 
   .home-col2-lower {
-    gap: 16px;
+    gap: 20px;
     margin-top: 0;
   }
 
   .home-card-large {
+    height: auto;
     min-height: 0;
-  }
-
-  .home-placeholder-stack {
-    gap: 18px;
     overflow: visible;
   }
 
+  .home-placeholder-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    overflow: visible;
+    height: auto;
+  }
+
+  .home-placeholder-item {
+    flex: 0 0 auto;
+    min-height: auto;
+  }
+
   .home-learning-video-wrap {
-    height: 180px;
-    min-height: 180px;
+    flex: 0 0 auto;
+    height: 150px;
+    min-height: 150px;
+    max-height: 150px;
+  }
+
+  .home-right-banners {
+    gap: 16px;
+    margin-top: 8px;
   }
 
   /* Hide inline weather; show the one before socials instead */
@@ -1299,7 +1541,18 @@ body:has(.page-home) {
   }
 
   .home-right-tabs {
-    margin-bottom: 4px;
+    margin-bottom: 12px;
+    width: 100%;
+  }
+
+  .home-right-tab {
+    font-size: 12px;
+    padding: 10px 4px;
+  }
+
+  .home-right-tab-label {
+    text-align: center;
+    width: 100%;
   }
 
   .home-social-block--desktop {
