@@ -542,6 +542,10 @@ body:has(.page-home) {
   overflow: visible;
 }
 
+.home-weather-block--mobile {
+  display: none;
+}
+
 .home-weather-note {
   margin: clamp(6px, 0.8vh, 10px) 0 0;
   display: block;
@@ -1214,13 +1218,18 @@ body:has(.page-home) {
     line-height: 1.45;
   }
 
+  /* Mobile only: larger bio + space before project cards */
+  .home-center-zone {
+    gap: 80px;
+  }
+
   .home-center-top {
     gap: 16px;
   }
 
   .home-bio {
-    font-size: 15px;
-    line-height: 1.7;
+    font-size: 20px;
+    line-height: 1.65;
   }
 
   .home-skillset-heading {
@@ -1239,6 +1248,7 @@ body:has(.page-home) {
 
   .home-col2-lower {
     gap: 16px;
+    margin-top: 0;
   }
 
   .home-card-large {
@@ -1255,31 +1265,41 @@ body:has(.page-home) {
     min-height: 180px;
   }
 
+  /* Hide inline weather; show the one before socials instead */
+  .home-weather-block--desktop {
+    display: none;
+  }
+
   .home-side-column {
-    grid-column: 1 / -1;
+    display: none;
+  }
+
+  .home-weather-block--mobile {
+    display: block;
+    grid-column: 1;
+    grid-row: 3;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .home-weather-block--mobile .home-gif-wrap {
     display: block;
     width: 100% !important;
     min-width: 100%;
     max-width: none;
-    justify-self: stretch;
-    align-self: stretch;
-  }
-
-  .home-weather-block,
-  .home-gif-wrap {
-    display: block;
-    width: 100% !important;
-    min-width: 100%;
-    max-width: none;
-  }
-
-  .home-gif-wrap {
     height: 180px;
     max-height: 180px;
   }
 
-  .home-weather-note {
+  .home-weather-block--mobile .home-weather-note {
     margin-top: 12px;
+    text-align: center !important;
+  }
+
+  .home-weather-block--mobile .home-weather-note-text {
+    display: block;
+    text-align: center;
+    width: 100%;
   }
 
   .home-right-tabs {
@@ -1292,9 +1312,28 @@ body:has(.page-home) {
 
   .home-social-block--mobile {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 4;
     margin-top: 8px;
     width: 100%;
+    text-align: center;
+  }
+
+  .home-social-block--mobile .home-social-find {
+    align-items: center;
+  }
+
+  .home-social-block--mobile .home-social-row {
+    align-self: center;
+  }
+
+  .home-social-block--mobile .home-social-row.framer-section {
+    justify-content: center;
+  }
+
+  .home-social-block--mobile .home-social-row .framer-16m69h7 {
+    justify-content: center !important;
   }
 }

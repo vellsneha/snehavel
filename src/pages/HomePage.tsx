@@ -139,12 +139,12 @@ export default function HomePage() {
               </div>
 
               <div className="home-side-column">
-                <div className="home-weather-block">
+                <div className="home-weather-block home-weather-block--desktop">
                   <div className="home-gif-wrap">
                     <WeatherGif />
                   </div>
                   <p className="home-weather-note" aria-hidden="true">
-                    <span className="home-weather-note-text">a little window</span>
+                    <span className="home-weather-note-text">seasons</span>
                   </p>
                 </div>
                 <div className="home-side-stack">
@@ -277,6 +277,15 @@ export default function HomePage() {
                 <span className="home-footer-text">~ amor fati</span>
               </div>
             </aside>
+
+            <div className="home-weather-block home-weather-block--mobile">
+              <div className="home-gif-wrap">
+                <WeatherGif />
+              </div>
+              <p className="home-weather-note" aria-hidden="true">
+                <span className="home-weather-note-text">seasons</span>
+              </p>
+            </div>
 
             <div className="home-social-block home-social-block--mobile">
               <p className="home-social-lead">

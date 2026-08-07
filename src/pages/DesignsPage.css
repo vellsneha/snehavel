@@ -875,12 +875,14 @@
 @media (max-width: 900px) {
   .designs-mobile-picker {
     position: fixed;
-    left: 12px;
-    top: 108px;
+    right: 12px;
+    bottom: 20px;
+    left: auto;
+    top: auto;
     z-index: 40;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column-reverse;
+    align-items: flex-end;
     gap: 8px;
   }
 
@@ -891,7 +893,7 @@
     min-width: min(210px, calc(100vw - 36px));
     max-width: min(210px, calc(100vw - 36px));
     padding: 10px 14px;
-    border: 1px solid var(--border-light);
+    border: 0.5px solid var(--accent-red);
     border-radius: 18px;
     background: color-mix(in srgb, var(--bg-base) 96%, transparent);
     backdrop-filter: blur(14px);
