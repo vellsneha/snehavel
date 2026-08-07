@@ -20,16 +20,7 @@ export const projects: Project[] = [
     url: "https://github.com/shifamehreen-005/VISTA",
     tags: ["Computer Vision", "LLMs", "RAGs", "Agents"],
     description:
-      "A Spatio-Temporal RAG system that gives hardhat-camera video object permanence - structured memory any VLM can query.",
-  },
-  {
-    id: "fingraph",
-    title: "FinGraph",
-    projectPage: true,
-    url: "https://devpost.com/software/fingraph",
-    tags: ["LLMs", "Agents", "Data", "Graph"],
-    description:
-      "A multi-agent graph system analyzing freelancer finances to deliver explainable stability insights.",
+      "Spatio-temporal RAG that gives hardhat-camera video a lasting memory VLMs can query.",
   },
   {
     id: "orchestrator",
@@ -38,7 +29,7 @@ export const projects: Project[] = [
     url: "https://github.com/shifamehreen-005/cloud-orchestrator",
     tags: ["Agents", "LLMs", "Cloud", "GCP"],
     description:
-      "Multi-agent ADK system that turns plain-English intents into 20+ GCP actions (GKE, Vertex, BigQuery), no scripts needed.",
+      "Agents that turn plain-English intents into 20+ GCP actions, no scripts needed.",
   },
   {
     id: "feedforward",
@@ -48,7 +39,16 @@ export const projects: Project[] = [
     url: "https://github.com/shifamehreen-005/FeedForward",
     tags: ["LLMs", "Data", "Agents", "Voice AI"],
     description:
-      "A multi-modal agent built for the Capital One Food Bank Challenge.",
+      "Multimodal voice and chat agent for finding nearby food assistance.",
+  },
+  {
+    id: "fingraph",
+    title: "FinGraph",
+    projectPage: true,
+    url: "https://devpost.com/software/fingraph",
+    tags: ["LLMs", "Agents", "Data", "Graph"],
+    description:
+      "Multi-agent graph system that turns freelancer finances into explainable stability scores.",
   },
   {
     id: "intelli-rags",
@@ -57,7 +57,7 @@ export const projects: Project[] = [
     url: "https://github.com/vellsneha/IntelliRAGs",
     tags: ["LLMs", "NLP", "RAGs", "Evaluation"],
     description:
-      "A production-ready RAG platform leveraging embeddings and LLMs for semantic search and context-grounded Q&A.",
+      "Production RAG platform for semantic search with grounded Q&A and evals.",
   },
   {
     id: "neuradance",
@@ -65,7 +65,7 @@ export const projects: Project[] = [
     url: "https://github.com/vellsneha/vellsneha/blob/main/add-link",
     tags: ["Computer Vision", "Data", "Core ML"],
     description:
-      "Pose-based dance-form classifier using MediaPipe and Keras for real-time movement recognition.",
+      "Pose-based dance classifier with MediaPipe and Keras for real-time recognition.",
     hidden: true,
   },
   {
@@ -74,7 +74,7 @@ export const projects: Project[] = [
     url: "https://github.com/vellsneha/vellsneha/blob/main/add-link",
     tags: ["Core ML", "Data", "NLP"],
     description:
-      "Twitter sentiment analysis combined with ML baselines for market movement prediction.",
+      "Twitter sentiment plus ML baselines for predicting market moves.",
     hidden: true,
   },
   {
@@ -83,7 +83,7 @@ export const projects: Project[] = [
     url: "https://github.com/vellsneha/weather-kinesis",
     tags: ["Data", "Cloud"],
     description:
-      "A production-ready pipeline for ingesting, streaming, and analyzing weather data using AWS Kinesis, S3, and visualization tools.",
+      "AWS pipeline for ingesting, streaming, and analyzing live weather data.",
     hidden: true,
   },
 ];

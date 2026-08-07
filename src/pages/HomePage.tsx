@@ -143,9 +143,6 @@ export default function HomePage() {
                   <div className="home-gif-wrap">
                     <WeatherGif />
                   </div>
-                  <p className="home-weather-note" aria-hidden="true">
-                    <span className="home-weather-note-text">seasons</span>
-                  </p>
                 </div>
                 <div className="home-side-stack">
                   <Link to="/designs" className="home-card home-card-banner home-card-uiux">
@@ -272,19 +269,12 @@ export default function HomePage() {
                   </span>
                 </Link>
               </div>
-
-              <div className="home-card home-card-footer">
-                <span className="home-footer-text">~ amor fati</span>
-              </div>
             </aside>
 
             <div className="home-weather-block home-weather-block--mobile">
               <div className="home-gif-wrap">
                 <WeatherGif />
               </div>
-              <p className="home-weather-note" aria-hidden="true">
-                <span className="home-weather-note-text">seasons</span>
-              </p>
             </div>
 
             <div className="home-social-block home-social-block--mobile">

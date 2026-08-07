@@ -32,7 +32,7 @@ body:has(.page-home) {
 /* Main card shell — content sits centered on screen */
 .home-shell {
   width: 100%;
-  max-width: min(1400px, calc(100vw - clamp(32px, 5vw, 64px)));
+  max-width: min(1440px, calc(100vw - clamp(32px, 5vw, 64px)));
   height: min(920px, 90dvh);
   max-height: calc(100dvh - clamp(32px, 5vh, 56px));
   display: flex;
@@ -102,7 +102,7 @@ body:has(.page-home) {
   flex: 1;
   min-height: 0;
   display: grid;
-  grid-template-columns: minmax(280px, 300px) minmax(0, 1fr) minmax(220px, 280px);
+  grid-template-columns: minmax(280px, 300px) minmax(0, 1fr) minmax(220px, 320px);
   gap: clamp(28px, 4vw, 48px);
   align-items: stretch;
   overflow: hidden;
@@ -456,7 +456,7 @@ body:has(.page-home) {
   border: 1px solid var(--border-light);
   border-radius: 4px;
   font-family: var(--font-mono);
-  font-size: clamp(9px, 1vh, 11px);
+  font-size: clamp(11px, 1.2vh, 13px);
   color: var(--text-secondary);
   background: var(--card-bg-soft);
 }
@@ -794,7 +794,7 @@ body:has(.page-home) {
   border: none;
   background: none;
   font-family: var(--font-mono);
-  font-size: clamp(12px, 1.35vh, 14px);
+  font-size: clamp(14px, 1.55vh, 16px);
   font-weight: 500;
   color: var(--text-secondary);
   cursor: pointer;
@@ -872,7 +872,7 @@ body:has(.page-home) {
 
 .home-project-title {
   margin: 0 0 clamp(3px, 0.5vh, 6px);
-  font-size: clamp(12px, 1.3vh, 15px);
+  font-size: clamp(14px, 1.5vh, 17px);
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--text-heading);
@@ -893,14 +893,10 @@ body:has(.page-home) {
 .home-project-desc {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.5;
   color: var(--text-muted);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .home-projects-footnote {
@@ -910,7 +906,7 @@ body:has(.page-home) {
 .home-projects-footnote p {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
   line-height: 1.5;
   color: var(--text-faint);
@@ -1243,7 +1239,7 @@ body:has(.page-home) {
 
   .home-skill-tag {
     padding: 6px 10px;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .home-col2-lower {

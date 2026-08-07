@@ -148,7 +148,7 @@ export const designContentById: Record<string, DesignContent> = {
         screens: [
           {
             src: finGraphDashboard,
-            caption: "Hackathon dashboard, v1",
+            caption: "Dashboard: version 1",
             alt: "FinGraph dashboard with financial score, charts, and risk panels",
             frame: "browser",
             url: "fingraph.app/dashboard",
@@ -172,17 +172,17 @@ export const designContentById: Record<string, DesignContent> = {
       },
       {
         label: "Outcome",
-        title: "The score worked. The graph did not earn its keep.",
-        body: "Judges asked what the graph was actually for, and we did not have a sharp answer. The redesign keeps the score. The graph needs a real job before it stays.",
+        title: "Traceable score, unfinished graph",
+        body: "The financial score landed well. The graph did not, mostly because we ran out of time to design how it should be viewed and abstracted. In the redesign, the score stays central, and the graph only returns when that piece is clearer.",
       },
       {
         label: "Next",
-        title: "Redesigned dashboard, v2",
         layout: "full",
         screens: [
           {
             placeholder: true,
             placeholderLabel: "Redesign in progress",
+            caption: "Dashboard: version 2",
             alt: "FinGraph redesigned dashboard placeholder",
           },
         ],
@@ -431,8 +431,8 @@ export const designContentById: Record<string, DesignContent> = {
       },
       {
         label: "Outcome",
-        title: "Launched, with early community trials",
-        body: "The site went live. A handful of communities signed up for a trial.",
+        title: "We launched, then had to pivot",
+        body: "The website went live, and five communities signed up and started bringing their students onto the network. Cloud costs and the difficulty of expanding made it hard to keep going, so we pivoted the idea.",
       },
     ],
   },
