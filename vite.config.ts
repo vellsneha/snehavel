@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 
 // Project site: https://vellsneha.github.io/snehavel/
 export default defineConfig({
-  base: "/snehavel/",
+  base: "/",
   plugins: [react()],
   resolve: {
     alias: {
