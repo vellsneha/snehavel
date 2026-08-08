@@ -324,7 +324,7 @@ body:has(.page-home) {
   font-size: clamp(20px, 2.6vh, 26px);
   font-weight: 700;
   color: var(--accent-strong);
-  line-height: 1.15;
+  line-height: 1.28;
 }
 
 .home-role em {
@@ -1435,7 +1435,7 @@ body:has(.page-home) {
   .home-role {
     margin-bottom: 10px;
     font-size: clamp(32px, 8vw, 44px);
-    line-height: 0.98;
+    line-height: 1.12;
   }
 
   .home-open-to-work {
