@@ -42,9 +42,9 @@ export default function HomePage() {
               <div className="home-profile-block">
                 <div className="home-profile-row">
                   <div className="home-profile-text">
-                    <p className="home-greeting">
+                    <h1 className="home-greeting">
                       I&apos;m Sneha Vellelath
-                    </p>
+                    </h1>
                     <p className="home-role">
                       <em>building</em> ai systems
                       <br />
