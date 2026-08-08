@@ -778,7 +778,7 @@ export default function DesignsPage() {
         <div className={`designs-layout${isCentered ? " designs-layout--wide" : ""}`}>
           <aside className="designs-intro">
             <p className="designs-intro-lead">
-              I like designing interfaces that feel clear, calm, and easy to trust.
+              I enjoy planning and designing interfaces.
             </p>
           </aside>
 
