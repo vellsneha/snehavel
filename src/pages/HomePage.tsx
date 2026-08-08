@@ -48,7 +48,7 @@ export default function HomePage() {
                     <p className="home-role">
                       <em>building</em> ai systems
                       <br />
-                      <span className="home-role-with">with</span> design{" "}
+                      <span className="home-role-with">with</span> product{" "}
                       <em>thinking</em>
                     </p>
 
