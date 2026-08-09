@@ -115,6 +115,7 @@
 }
 
 .experience-company {
+  font-weight: 400;
   color: var(--text-heading);
 }
 

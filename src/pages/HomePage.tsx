@@ -1,5 +1,5 @@
 import trophyIcon from "../../icons8-trophy-100.png?url";
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import LayoutIsland from "@social/utils/LayoutIsland";
 import WeatherGif from "../components/WeatherGif";
@@ -13,6 +13,17 @@ import { Social } from "../framer-components";
 import "./HomePage.css";
 
 type RightPanelTab = "projects" | "work" | "more";
+type HomeRatio = "mobile" | "mid" | "desktop";
+
+/** Mid when the page is too narrow for the 3-col learning | weather row. */
+const MID_MAX_WIDTH = 1360;
+const MOBILE_MAX_WIDTH = 720;
+
+function homeRatioFromWidth(width: number): HomeRatio {
+  if (width <= MOBILE_MAX_WIDTH) return "mobile";
+  if (width < MID_MAX_WIDTH) return "mid";
+  return "desktop";
+}
 
 const skills = [
   "Agentic AI",
@@ -28,12 +39,38 @@ const skills = [
 
 export default function HomePage() {
   const [rightPanel, setRightPanel] = useState<RightPanelTab>("projects");
+  const pageRef = useRef<HTMLDivElement>(null);
+  const [homeRatio, setHomeRatio] = useState<HomeRatio>(() =>
+    typeof window !== "undefined" ? homeRatioFromWidth(window.innerWidth) : "desktop",
+  );
   // Toggle later: when you say "visible", flip this to true.
   const WRITING_LINKS_VISIBLE = false;
 
+  useLayoutEffect(() => {
+    const page = pageRef.current;
+    if (!page) return;
+
+    const apply = (ratio: HomeRatio) => {
+      setHomeRatio(ratio);
+      document.documentElement.dataset.homeRatio = ratio;
+    };
+
+    const update = () => apply(homeRatioFromWidth(page.clientWidth));
+    update();
+
+    const observer = new ResizeObserver(update);
+    observer.observe(page);
+    window.addEventListener("resize", update);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", update);
+      delete document.documentElement.dataset.homeRatio;
+    };
+  }, []);
+
   return (
     <PageLayout className="page page-home">
-      <div className="home-page">
+      <div className="home-page" ref={pageRef} data-home-ratio={homeRatio}>
         <div className="home-shell">
           <main className="home-grid">
             <div className="home-cluster-left">
