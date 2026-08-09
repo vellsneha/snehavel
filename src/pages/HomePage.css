@@ -1169,14 +1169,22 @@ body:has(.home-page[data-home-ratio="mobile"]) {
 
 .home-page[data-home-ratio="mid"] .home-grid,
 .home-page[data-home-ratio="mobile"] .home-grid {
-  grid-template-columns: minmax(0, 2.2fr) minmax(180px, 1fr);
-  grid-template-rows: auto;
   align-items: start;
   overflow: visible;
 }
 
-.home-page[data-home-ratio="mid"] .home-cluster-left,
-.home-page[data-home-ratio="mobile"] .home-cluster-left {
+.home-page[data-home-ratio="mid"] .home-grid {
+  grid-template-columns: minmax(0, 2.2fr) minmax(180px, 1fr);
+  grid-template-rows: auto;
+}
+
+.home-page[data-home-ratio="mobile"] .home-grid {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 24px;
+}
+
+.home-page[data-home-ratio="mid"] .home-cluster-left {
   display: grid;
   grid-template-columns: minmax(200px, 1fr) minmax(0, 1.2fr);
   grid-template-rows: auto;
@@ -1187,8 +1195,18 @@ body:has(.home-page[data-home-ratio="mobile"]) {
   height: auto;
 }
 
-.home-page[data-home-ratio="mid"] .home-cluster-top,
-.home-page[data-home-ratio="mobile"] .home-cluster-top {
+.home-page[data-home-ratio="mobile"] .home-cluster-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+  width: 100%;
+  height: auto;
+}
+
+.home-page[data-home-ratio="mid"] .home-cluster-top {
   display: grid;
   grid-template-columns: subgrid;
   grid-column: 1 / -1;
@@ -1197,12 +1215,27 @@ body:has(.home-page[data-home-ratio="mobile"]) {
   align-items: start;
 }
 
-.home-page[data-home-ratio="mid"] .home-col-left,
-.home-page[data-home-ratio="mobile"] .home-col-left {
+.home-page[data-home-ratio="mobile"] .home-cluster-top {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+
+.home-page[data-home-ratio="mid"] .home-col-left {
   grid-column: 1;
   grid-row: 1;
   overflow: visible;
   justify-content: flex-start;
+}
+
+.home-page[data-home-ratio="mobile"] .home-col-left {
+  grid-column: auto;
+  grid-row: auto;
+  width: 100%;
+  overflow: visible;
+  justify-content: flex-start;
+  gap: 12px;
 }
 
 .home-page[data-home-ratio="mid"] .home-col-center,
@@ -1212,6 +1245,10 @@ body:has(.home-page[data-home-ratio="mobile"]) {
   overflow: visible;
   min-height: 0;
   min-width: 0;
+}
+
+.home-page[data-home-ratio="mobile"] .home-col-center {
+  width: 100%;
 }
 
 .home-page[data-home-ratio="mid"] .home-center-zone,
@@ -1337,8 +1374,7 @@ body:has(.home-page[data-home-ratio="mobile"]) {
   max-height: 180px;
 }
 
-.home-page[data-home-ratio="mid"] .home-col-right,
-.home-page[data-home-ratio="mobile"] .home-col-right {
+.home-page[data-home-ratio="mid"] .home-col-right {
   grid-column: 2;
   grid-row: 1;
   display: flex;
@@ -1347,6 +1383,19 @@ body:has(.home-page[data-home-ratio="mobile"]) {
   align-self: start;
   overflow: visible;
   min-height: 0;
+}
+
+.home-page[data-home-ratio="mobile"] .home-col-right {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-self: stretch;
+  overflow: visible;
+  min-height: 0;
+  width: 100%;
+  margin-top: 40px;
 }
 
 .home-page[data-home-ratio="mid"] .home-right-panel,
@@ -1400,206 +1449,145 @@ body:has(.home-page[data-home-ratio="mobile"]) {
   display: none;
 }
 
+/* Mobile: stack profile content; hide duplicate center intro */
+.home-page[data-home-ratio="mobile"] .home-skillset--profile,
+.home-page[data-home-ratio="mobile"] .home-bio--profile {
+  display: block;
+}
+
+.home-page[data-home-ratio="mobile"] .home-profile-banners {
+  display: flex;
+}
+
+.home-page[data-home-ratio="mobile"] .home-skillset--center,
+.home-page[data-home-ratio="mobile"] .home-bio--center,
+.home-page[data-home-ratio="mobile"] .home-center-top {
+  display: none;
+}
+
+.home-page[data-home-ratio="mobile"] .home-center-zone {
+  gap: 80px;
+}
+
+.home-page[data-home-ratio="mobile"] .home-right-banners {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.home-page[data-home-ratio="mobile"] {
+  padding: 48px 18px 28px;
+}
+
+.home-page[data-home-ratio="mobile"] .home-profile-block {
+  gap: 14px;
+}
+
+.home-page[data-home-ratio="mobile"] .home-greeting {
+  margin-bottom: 6px;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.home-page[data-home-ratio="mobile"] .home-role {
+  margin-bottom: 10px;
+  font-size: clamp(32px, 8vw, 44px);
+  line-height: 1.12;
+}
+
+.home-page[data-home-ratio="mobile"] .home-open-to-work {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.home-page[data-home-ratio="mobile"] .home-bio {
+  font-size: 20px;
+  line-height: 1.65;
+}
+
+.home-page[data-home-ratio="mobile"] .home-skillset-heading {
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.home-page[data-home-ratio="mobile"] .home-skill-tags {
+  gap: 8px;
+}
+
+.home-page[data-home-ratio="mobile"] .home-skill-tag {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.home-page[data-home-ratio="mobile"] .home-placeholder-stack {
+  gap: 28px;
+}
+
+.home-page[data-home-ratio="mobile"] .home-col2-lower {
+  gap: 20px;
+  margin-top: 0;
+}
+
+.home-page[data-home-ratio="mobile"] .home-weather-block--mobile .home-weather-note {
+  margin-top: 12px;
+  text-align: center !important;
+}
+
+.home-page[data-home-ratio="mobile"] .home-weather-block--mobile .home-weather-note-text {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.home-page[data-home-ratio="mobile"] .home-right-tabs {
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.home-page[data-home-ratio="mobile"] .home-right-tab {
+  font-size: 12px;
+  padding: 10px 4px;
+}
+
+.home-page[data-home-ratio="mobile"] .home-right-tab-label {
+  text-align: center;
+  width: 100%;
+}
+
+.home-page[data-home-ratio="mobile"] .home-social-block--desktop {
+  display: none;
+}
+
+.home-page[data-home-ratio="mobile"] .home-social-block--mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-column: 1;
+  grid-row: 4;
+  margin-top: 36px;
+  width: 100%;
+  text-align: center;
+}
+
+.home-page[data-home-ratio="mobile"] .home-social-block--mobile .home-social-find {
+  align-items: center;
+}
+
+.home-page[data-home-ratio="mobile"] .home-social-block--mobile .home-social-row {
+  align-self: center;
+}
+
+.home-page[data-home-ratio="mobile"] .home-social-block--mobile .home-social-row.framer-section {
+  justify-content: center;
+}
+
+.home-page[data-home-ratio="mobile"] .home-social-block--mobile .home-social-row .framer-16m69h7 {
+  justify-content: center !important;
+}
+
 @media (max-width: 720px) {
+  /* Fallback padding only; layout is driven by data-home-ratio="mobile" */
   .home-page {
     padding: 48px 18px 28px;
-  }
-
-  .home-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    gap: 24px;
-  }
-
-  .home-cluster-left,
-  .home-col-right {
-    grid-column: 1;
-  }
-
-  .home-cluster-left {
-    gap: 24px;
-  }
-
-  .home-col-right {
-    grid-row: 2;
-    gap: 20px;
-    margin-top: 40px;
-  }
-
-  .home-cluster-top {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .home-col-left {
-    gap: 12px;
-  }
-
-  .home-profile-block {
-    gap: 14px;
-  }
-
-  .home-greeting {
-    margin-bottom: 6px;
-    font-size: 18px;
-    line-height: 1.35;
-  }
-
-  .home-role {
-    margin-bottom: 10px;
-    font-size: clamp(32px, 8vw, 44px);
-    line-height: 0.98;
-  }
-
-  .home-open-to-work {
-    font-size: 13px;
-    line-height: 1.45;
-  }
-
-  /* Mobile only: larger bio + space before project cards */
-  .home-center-zone {
-    gap: 80px;
-  }
-
-  .home-center-top {
-    gap: 16px;
-  }
-
-  .home-bio {
-    font-size: 20px;
-    line-height: 1.65;
-  }
-
-  .home-skillset-heading {
-    margin-bottom: 10px;
-    font-size: 12px;
-  }
-
-  .home-skill-tags {
-    gap: 8px;
-  }
-
-  .home-skill-tag {
-    padding: 6px 10px;
-    font-size: 12px;
-  }
-
-  .home-col2-lower {
-    gap: 20px;
-    margin-top: 0;
-  }
-
-  .home-card-large {
-    height: auto;
-    min-height: 0;
-    overflow: visible;
-  }
-
-  .home-placeholder-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-    overflow: visible;
-    height: auto;
-  }
-
-  .home-placeholder-item {
-    flex: 0 0 auto;
-    min-height: auto;
-  }
-
-  .home-learning-video-wrap {
-    flex: 0 0 auto;
-    height: 150px;
-    min-height: 150px;
-    max-height: 150px;
-  }
-
-  .home-right-banners {
-    gap: 16px;
-    margin-top: 8px;
-  }
-
-  /* Hide inline weather; show the one before socials instead */
-  .home-weather-block--desktop {
-    display: none;
-  }
-
-  .home-side-column {
-    display: none;
-  }
-
-  .home-weather-block--mobile {
-    display: block;
-    grid-column: 1;
-    grid-row: 3;
-    width: 100%;
-    margin-top: 8px;
-  }
-
-  .home-weather-block--mobile .home-gif-wrap {
-    display: block;
-    width: 100% !important;
-    min-width: 100%;
-    max-width: none;
-    height: 180px;
-    max-height: 180px;
-  }
-
-  .home-weather-block--mobile .home-weather-note {
-    margin-top: 12px;
-    text-align: center !important;
-  }
-
-  .home-weather-block--mobile .home-weather-note-text {
-    display: block;
-    text-align: center;
-    width: 100%;
-  }
-
-  .home-right-tabs {
-    margin-bottom: 12px;
-    width: 100%;
-  }
-
-  .home-right-tab {
-    font-size: 12px;
-    padding: 10px 4px;
-  }
-
-  .home-right-tab-label {
-    text-align: center;
-    width: 100%;
-  }
-
-  .home-social-block--desktop {
-    display: none;
-  }
-
-  .home-social-block--mobile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    grid-column: 1;
-    grid-row: 4;
-    margin-top: 36px;
-    width: 100%;
-    text-align: center;
-  }
-
-  .home-social-block--mobile .home-social-find {
-    align-items: center;
-  }
-
-  .home-social-block--mobile .home-social-row {
-    align-self: center;
-  }
-
-  .home-social-block--mobile .home-social-row.framer-section {
-    justify-content: center;
-  }
-
-  .home-social-block--mobile .home-social-row .framer-16m69h7 {
-    justify-content: center !important;
   }
 }
