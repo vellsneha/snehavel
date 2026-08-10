@@ -1408,8 +1408,7 @@ body:has(.home-page[data-home-ratio="mobile"]) {
   max-height: none;
 }
 
-.home-page[data-home-ratio="mid"] .home-right-banners,
-.home-page[data-home-ratio="mobile"] .home-right-banners {
+.home-page[data-home-ratio="mid"] .home-right-banners {
   display: flex;
   flex-direction: column;
   gap: clamp(8px, 1vh, 12px);
@@ -1470,9 +1469,7 @@ body:has(.home-page[data-home-ratio="mobile"]) {
 }
 
 .home-page[data-home-ratio="mobile"] .home-right-banners {
-  display: flex;
-  gap: 16px;
-  margin-top: 8px;
+  display: none;
 }
 
 .home-page[data-home-ratio="mobile"] {
