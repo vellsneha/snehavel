@@ -166,6 +166,10 @@ export default function ProjectsPage() {
     setMobilePickerOpen(false);
   }, [location.hash]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [activeId]);
+
   const selectProject = (id: string) => {
     if (id === activeId) {
       setMobilePickerOpen(false);
@@ -175,17 +179,6 @@ export default function ProjectsPage() {
     setMobilePickerOpen(false);
     window.history.replaceState(null, "", `#${id}`);
   };
-
-  // Scroll to detail only when arriving via URL hash (e.g. home learning cards), not strip clicks.
-  useEffect(() => {
-    if (!location.hash) return;
-
-    requestAnimationFrame(() => {
-      document
-        .querySelector(".case-study, .projects-detail")
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  }, [location.hash]);
 
   const stripColumns = useMemo(
     () =>
