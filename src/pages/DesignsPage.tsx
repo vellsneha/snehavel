@@ -627,6 +627,14 @@ function DesignDetail({
       className={`designs-detail${centerImages ? " designs-detail--centered" : ""}`}
       aria-labelledby={`design-detail-${item.id}`}
     >
+      <header className="designs-detail-intro">
+        <p className="designs-detail-eyebrow">{item.title}</p>
+        <h2 className="designs-detail-headline" id={`design-detail-${item.id}`}>
+          {item.overviewTitle}
+        </h2>
+        <p className="designs-detail-lead-copy">{item.overview}</p>
+      </header>
+
       <div className="designs-detail-meta">
         <div className="designs-detail-field">
           <span className="designs-detail-label">Role</span>
@@ -668,14 +676,8 @@ function DesignDetail({
 
       {content?.context ? <DesignContextBlock note={content.context} /> : null}
 
-      {columnIntroCount > 0 ? (
+      {columnSections.length > 0 ? (
         <div className="designs-detail-columns">
-          <DesignIntroColumn
-            label="Overview"
-            title={item.overviewTitle}
-            body={item.overview}
-            titleId={`design-detail-${item.id}`}
-          />
           {columnSections.map((section) => (
             <DesignIntroColumn
               key={section.label}
@@ -685,15 +687,7 @@ function DesignDetail({
             />
           ))}
         </div>
-      ) : (
-        <div className="designs-detail-overview">
-          <span className="designs-detail-section-label">Overview</span>
-          <h2 className="designs-detail-headline" id={`design-detail-${item.id}`}>
-            {item.overviewTitle}
-          </h2>
-          <p className="designs-detail-body">{item.overview}</p>
-        </div>
-      )}
+      ) : null}
 
       {restSections.map((section) => (
         <DesignSectionBlock
