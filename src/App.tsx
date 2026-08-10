@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Seo from "./components/Seo";
 import HomePage from "./pages/HomePage";
 
+const BlogsPage = lazy(() => import("./pages/BlogsPage"));
 const DesignsPage = lazy(() => import("./pages/DesignsPage"));
 const GalleryPage = lazy(() => import("./pages/GalleryPage"));
 const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
@@ -13,6 +14,7 @@ export default function App() {
       <Seo />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/blogs" element={<BlogsPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/designs" element={<DesignsPage />} />
         <Route path="/projects" element={<ProjectsPage />} />

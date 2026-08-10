@@ -36,6 +36,12 @@ const PAGE_SEO: Record<string, PageSeo> = {
     description: `Visual gallery from ${SITE_NAME}'s portfolio.`,
     path: "/gallery",
   },
+  "/blogs": {
+    title: `Blogs | ${SITE_NAME}`,
+    description:
+      "Writing by Sneha Vellelath — notes on AI systems, agents, evals, and building.",
+    path: "/blogs",
+  },
 };
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {

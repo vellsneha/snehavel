@@ -43,8 +43,8 @@ export default function HomePage() {
   const [homeRatio, setHomeRatio] = useState<HomeRatio>(() =>
     typeof window !== "undefined" ? homeRatioFromWidth(window.innerWidth) : "desktop",
   );
-  // Toggle later: when you say "visible", flip this to true.
-  const WRITING_LINKS_VISIBLE = false;
+  const BLOG_LINK_VISIBLE = false;
+  const PUBLICATIONS_LINK_VISIBLE = false;
 
   useLayoutEffect(() => {
     const page = pageRef.current;
@@ -129,16 +129,17 @@ export default function HomePage() {
               </div>
 
               <nav className="home-links">
-                <p
-                  className={`home-links-item${WRITING_LINKS_VISIBLE ? "" : " home-links-item--hidden"}`}
+                <Link
+                  to="/blogs"
+                  className={`home-links-item${BLOG_LINK_VISIBLE ? "" : " home-links-item--hidden"}`}
                 >
                   <span>Blogs</span>
                   <span className="home-links-arrow" aria-hidden="true">
                     ↗
                   </span>
-                </p>
+                </Link>
                 <p
-                  className={`home-links-item${WRITING_LINKS_VISIBLE ? "" : " home-links-item--hidden"}`}
+                  className={`home-links-item${PUBLICATIONS_LINK_VISIBLE ? "" : " home-links-item--hidden"}`}
                 >
                   <span>Publications</span>
                   <span className="home-links-arrow" aria-hidden="true">
