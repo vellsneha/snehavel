@@ -79,9 +79,9 @@ export const designItems: DesignItem[] = [
       "Emotional Design",
       "User Motivation Patterns",
     ],
-    overviewTitle: "Sell the network in one pass",
+    overviewTitle: "A front door for campus communities",
     overview:
-      "The site had to win over students looking for peers and communities looking for reach. Bold visuals, a clear story, and a short path to apply.",
+      "Students needed peers; communities needed discovery. The site had to explain AdVantage in seconds, feel bold for tier 3 campuses, and give both audiences a short path to join.",
   },
   {
     id: "d3",
@@ -99,9 +99,9 @@ export const designItems: DesignItem[] = [
       "Interaction Design",
       "User Journey Mapping",
     ],
-    overviewTitle: "Roles over more chat",
+    overviewTitle: "Community ops beyond group chats",
     overview:
-      "Members, leaders, and managers needed different views of the same community. The MVP covered the dashboard, events, forum, and profiles before we pivoted.",
+      "WhatsApp and Discord were fine for talk, not for discovery or roles. Members, leaders, and managers each needed their own view — so the MVP covered dashboards, events, forums, and profiles.",
   },
   {
     id: "d5",
