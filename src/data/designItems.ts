@@ -58,7 +58,7 @@ export const designItems: DesignItem[] = [
       "Simplified Communication Systems",
       "Trust and Clarity in UX",
     ],
-    overviewTitle: "Food matching without friction",
+    overviewTitle: "Food bank matching without friction",
     overview:
       "People come to find a food bank or volunteer. We kept the language plain, shipped English and Spanish, and added a phone call agent for anyone who would rather talk than tap.",
     projectId: "feedforward",
