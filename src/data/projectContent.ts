@@ -255,10 +255,6 @@ export const vistaContent: ProjectContentSection[] = [
         ],
       ],
     },
-    bullets: [
-      "Temporal: “When does the worker lay the first brick?” → 371s",
-      "Heading drift kept under 2° over 60 seconds of footage",
-    ],
   },
 ];
 
