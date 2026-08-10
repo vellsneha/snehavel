@@ -1455,7 +1455,7 @@ body:has(.home-page[data-home-ratio="mobile"]) {
 }
 
 .home-page[data-home-ratio="mobile"] .home-profile-banners {
-  display: flex;
+  display: none;
 }
 
 .home-page[data-home-ratio="mobile"] .home-skillset--center,
@@ -1469,7 +1469,10 @@ body:has(.home-page[data-home-ratio="mobile"]) {
 }
 
 .home-page[data-home-ratio="mobile"] .home-right-banners {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
 }
 
 .home-page[data-home-ratio="mobile"] {
