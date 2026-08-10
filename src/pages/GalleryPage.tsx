@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import PageLayout from "../components/PageLayout";
 import { galleryItems, type GalleryItem } from "../data/galleryItems";
@@ -37,15 +37,63 @@ function splitIntoColumns(items: GalleryItem[], columnCount: number) {
   return columns;
 }
 
-function GalleryMasonryItem({ item }: { item: GalleryItem }) {
+function GalleryMasonryItem({
+  item,
+  index,
+}: {
+  item: GalleryItem;
+  index: number;
+}) {
+  const itemRef = useRef<HTMLElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const [inView, setInView] = useState(false);
+  const [loaded, setLoaded] = useState(!item.image);
+
+  useEffect(() => {
+    const node = itemRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setInView(true);
+        observer.disconnect();
+      },
+      { rootMargin: "120px 0px", threshold: 0.05 },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const image = imageRef.current;
+    if (!image) return;
+    if (image.complete && image.naturalWidth > 0) setLoaded(true);
+  }, [item.image]);
+
+  const revealed = inView && loaded;
+
   return (
-    <article className="gallery-masonry-item">
+    <article
+      ref={itemRef}
+      className={`gallery-masonry-item${revealed ? " is-revealed" : ""}`}
+      style={
+        {
+          "--reveal-delay": `${Math.min(index % 6, 5) * 70}ms`,
+        } as CSSProperties
+      }
+    >
       {item.image ? (
         <img
+          ref={imageRef}
           src={item.image}
           alt=""
           className="gallery-masonry-media"
           loading="lazy"
+          decoding="async"
+          onLoad={() => setLoaded(true)}
+          onError={() => setLoaded(true)}
         />
       ) : (
         <div
@@ -55,7 +103,7 @@ function GalleryMasonryItem({ item }: { item: GalleryItem }) {
               aspectRatio: item.aspectRatio,
               "--placeholder-color": `hsl(${item.hue}, 58%, 82%)`,
               "--placeholder-color-dark": `hsl(${item.hue}, 42%, 32%)`,
-            } as React.CSSProperties
+            } as CSSProperties
           }
           aria-hidden="true"
         />
@@ -72,6 +120,11 @@ export default function GalleryPage() {
     () => splitIntoColumns(galleryItems, columnCount),
     [columnCount],
   );
+  const itemIndexById = useMemo(() => {
+    const map = new Map<string, number>();
+    galleryItems.forEach((item, index) => map.set(item.id, index));
+    return map;
+  }, []);
 
   return (
     <PageLayout className="page page-gallery">
@@ -88,7 +141,11 @@ export default function GalleryPage() {
           {columns.map((column, columnIndex) => (
             <div key={columnIndex} className="gallery-masonry-column">
               {column.map((item) => (
-                <GalleryMasonryItem key={item.id} item={item} />
+                <GalleryMasonryItem
+                  key={item.id}
+                  item={item}
+                  index={itemIndexById.get(item.id) ?? 0}
+                />
               ))}
             </div>
           ))}
