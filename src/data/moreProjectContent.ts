@@ -436,7 +436,7 @@ export const orchestratorContent: ProjectContentSection[] = [
     steps: [
       { label: "Auth", description: "Check gcloud login, list/create/set GCP project" },
       { label: "Plan", description: "Type intent → planner generates 3–5 tool calls" },
-      { label: "Visualize", description: "DAG opens in browser (Cytoscape.js)" },
+      { label: "Visualize", description: "DAG opens in browser" },
       { label: "Execute", description: "Worker hub runs gcloud tools → resources provisioned" },
     ],
   },
