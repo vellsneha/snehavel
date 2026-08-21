@@ -91,7 +91,6 @@
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 4px;
   object-fit: contain;
   background: var(--card-bg-soft);
 }
@@ -115,7 +114,7 @@
 
 .gallery-masonry-title {
   margin: clamp(8px, 1vh, 10px) 0 clamp(3px, 0.4vh, 4px);
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: clamp(15px, 1.75vh, 18px);
   font-weight: 600;
   color: var(--text-heading);
