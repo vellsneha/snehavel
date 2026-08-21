@@ -613,6 +613,43 @@
   max-width: 52ch;
 }
 
+.designs-detail-body strong,
+.designs-detail-points strong {
+  font-weight: 650;
+  color: var(--text-heading);
+}
+
+.designs-detail-points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.2vh, 12px);
+  max-width: 54ch;
+}
+
+.designs-detail-points li {
+  position: relative;
+  padding-left: 1.1em;
+  font-family: var(--font-sans);
+  font-size: clamp(13px, 1.45vh, 15px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.designs-detail-points li::before {
+  content: "";
+  position: absolute;
+  top: 0.55em;
+  left: 0;
+  width: 0.35em;
+  height: 0.35em;
+  border-radius: 50%;
+  background: var(--text-heading);
+}
+
 .designs-detail-section {
   display: flex;
   flex-direction: column;

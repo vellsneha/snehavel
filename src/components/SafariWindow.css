@@ -141,6 +141,33 @@
   overflow: visible;
 }
 
+.safari-content--embed {
+  max-height: min(58vh, 680px);
+  height: min(58vh, 680px);
+  overflow: hidden;
+}
+
+.safari-browser--full .safari-content--embed {
+  max-height: min(58vh, 680px);
+  height: min(58vh, 680px);
+  overflow: hidden;
+}
+
+.safari-content__embed-scaler {
+  width: var(--embed-width, 1280px);
+  height: var(--embed-height, 900px);
+  transform: scale(var(--embed-scale, 1));
+  transform-origin: top left;
+}
+
+.safari-content__embed {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #ffffff;
+}
+
 .safari-content::-webkit-scrollbar {
   width: 8px;
 }

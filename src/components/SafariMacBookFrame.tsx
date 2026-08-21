@@ -5,7 +5,7 @@ type SafariMacBookFrameProps = {
   src: string;
   alt: string;
   url?: string;
-  mediaType?: "image" | "video";
+  mediaType?: "image" | "video" | "embed";
   poster?: string;
 };
 

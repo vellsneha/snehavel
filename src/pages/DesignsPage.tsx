@@ -391,6 +391,16 @@ function DesignScreenGallery({
   );
 }
 
+function renderMarkedText(text: string): ReactNode {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return <strong key={index}>{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
+}
+
 function DesignSectionBlock({
   section,
   centerImages = false,
@@ -404,7 +414,16 @@ function DesignSectionBlock({
         <span className="designs-detail-section-label">{section.label}</span>
         {section.title ? <h3 className="designs-detail-section-title">{section.title}</h3> : null}
       </header>
-      {section.body ? <p className="designs-detail-body">{section.body}</p> : null}
+      {section.body ? (
+        <p className="designs-detail-body">{renderMarkedText(section.body)}</p>
+      ) : null}
+      {section.points?.length ? (
+        <ul className="designs-detail-points">
+          {section.points.map((point) => (
+            <li key={point}>{renderMarkedText(point)}</li>
+          ))}
+        </ul>
+      ) : null}
       {section.screens?.length ? (
         <DesignScreenGallery
           screens={section.screens}

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import "./SafariWindow.css";
 
 type SafariWindowProps = {
@@ -7,9 +7,12 @@ type SafariWindowProps = {
   url?: string;
   compact?: boolean;
   fullHeight?: boolean;
-  mediaType?: "image" | "video";
+  mediaType?: "image" | "video" | "embed";
   poster?: string;
 };
+
+/** Render live embeds at a real desktop width, then scale to fit the mockup. */
+const EMBED_VIEWPORT_WIDTH = 1280;
 
 function formatTime(seconds: number) {
   if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
@@ -33,12 +36,40 @@ export function SafariWindow({
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [embedScale, setEmbedScale] = useState(1);
+  const [embedInnerHeight, setEmbedInnerHeight] = useState(900);
 
   useEffect(() => {
     const root = containerRef.current;
     if (!root) return;
     root.scrollTop = 0;
   }, [src]);
+
+  useEffect(() => {
+    if (mediaType !== "embed") return;
+    const root = containerRef.current;
+    if (!root) return;
+
+    const updateScale = () => {
+      const width = root.clientWidth;
+      const height = root.clientHeight;
+      if (width <= 0 || height <= 0) return;
+      const scale = Math.min(1, width / EMBED_VIEWPORT_WIDTH);
+      setEmbedScale(scale);
+      setEmbedInnerHeight(height / scale);
+    };
+
+    updateScale();
+
+    if (typeof ResizeObserver === "undefined") {
+      window.addEventListener("resize", updateScale);
+      return () => window.removeEventListener("resize", updateScale);
+    }
+
+    const observer = new ResizeObserver(updateScale);
+    observer.observe(root);
+    return () => observer.disconnect();
+  }, [mediaType, src]);
 
   useEffect(() => {
     if (mediaType !== "video") return;
@@ -149,7 +180,16 @@ export function SafariWindow({
 
       <div
         ref={containerRef}
-        className={`safari-content${compact ? " safari-content--compact" : ""}${fullHeight ? " safari-content--full" : ""}${mediaType === "video" ? " safari-content--video" : ""}`}
+        className={`safari-content${compact ? " safari-content--compact" : ""}${fullHeight ? " safari-content--full" : ""}${mediaType === "video" ? " safari-content--video" : ""}${mediaType === "embed" ? " safari-content--embed" : ""}`}
+        style={
+          mediaType === "embed"
+            ? ({
+                "--embed-scale": embedScale,
+                "--embed-width": `${EMBED_VIEWPORT_WIDTH}px`,
+                "--embed-height": `${embedInnerHeight}px`,
+              } as CSSProperties)
+            : undefined
+        }
       >
         {mediaType === "video" ? (
           <div className="safari-video">
@@ -205,6 +245,18 @@ export function SafariWindow({
                 {formatTime(currentTime)} / {formatTime(duration)}
               </span>
             </div>
+          </div>
+        ) : mediaType === "embed" ? (
+          <div className="safari-content__embed-scaler">
+            <iframe
+              key={src}
+              src={src}
+              title={alt}
+              className="safari-content__embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allow="fullscreen"
+            />
           </div>
         ) : (
           <img

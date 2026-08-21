@@ -7,7 +7,7 @@ type SafariBrowserFrameProps = {
   url?: string;
   compact?: boolean;
   fullHeight?: boolean;
-  mediaType?: "image" | "video";
+  mediaType?: "image" | "video" | "embed";
   poster?: string;
 };
 

@@ -71,7 +71,7 @@ export type DesignScreen = {
   alt?: string;
   url?: string;
   frame?: DesignScreenFrame;
-  mediaType?: "image" | "video";
+  mediaType?: "image" | "video" | "embed";
   compact?: boolean;
   fullHeight?: boolean;
   placeholder?: boolean;
@@ -82,6 +82,8 @@ export type DesignContentSection = {
   label: string;
   title?: string;
   body?: string;
+  /** Short callouts; wrap key phrases in **double asterisks** for emphasis. */
+  points?: string[];
   screens?: DesignScreen[];
   layout?: DesignScreenLayout;
 };
@@ -173,17 +175,56 @@ export const designContentById: Record<string, DesignContent> = {
       {
         label: "Outcome",
         title: "Traceable score, unfinished graph",
-        body: "The financial score landed well. The graph did not, mostly because we ran out of time to design how it should be viewed and abstracted. In the redesign, the score stays central, and the graph only returns when that piece is clearer.",
+        body: "The financial score landed well. The graph did not — relationships without a clear decision path. That became the redesign brief: keep the **score** central, and only bring the graph back when it can answer what to do next.",
       },
       {
-        label: "Next",
+        label: "Redesign",
+        title: "Identity product, not a denser dashboard",
+        body: "Version 1 tried to show everything at once: score, gauges, charts, risk panels, and a decorative graph. The redesign reframes FinGraph as a **freelancer financial identity** — a **0–100 score** with evidence and actions — built for two lenses: **applicant** and **bank**.",
+        points: [
+          "**Score first, evidence second, action third** — each surface owns one job.",
+          "**Same identity, two products** — freelancers improve the signal; banks underwrite it.",
+          "Hi-fi UI mock with dummy persona data — product structure first, live Plaid / Neo4j / model later.",
+        ],
+      },
+      {
+        label: "Freelancer",
+        title: "Score → evidence → action → progress",
+        body: "Home leads with the **Financial Identity Score** and runway. Drivers and the 6-month trend stay behind **subtle disclose pills**, not dumped on load. Overview cards make concentration, volatility, and payment reliability visible — then hand off into Coach.",
+        points: [
+          "**Impact** replaces the decorative graph with ranked cause → effect pathways and estimated score lift.",
+          "**One job per tab:** Home overview · Accounts cash flow · Impact diagnose · Coach act · Progress record.",
+          "**Progress** makes verified improvements auditable — part of the identity, not a side note.",
+        ],
         layout: "full",
         screens: [
           {
-            placeholder: true,
-            placeholderLabel: "Redesign in progress",
-            caption: "Dashboard: version 2",
-            alt: "FinGraph redesigned dashboard placeholder",
+            src: "https://fingraph-redesign.vercel.app",
+            caption: "Freelancer: Home and identity surfaces",
+            alt: "Live FinGraph redesigned freelancer dashboard",
+            frame: "browser",
+            mediaType: "embed",
+            url: "fingraph-redesign.vercel.app",
+          },
+        ],
+      },
+      {
+        label: "Bank",
+        title: "Underwriting the same identity",
+        body: "The bank view is a **sibling product surface**, not a freelancer nav item. It is a read-only decision workspace on the same identity: score, risk history, **system recommendation**, policy checks, drivers, and verified improvements from the journal.",
+        points: [
+          "Built to **decide**, not coach — Approve / Conditional / Decline as the job.",
+          "No raw transaction dump — the file is the **explained identity** a lender can act on.",
+        ],
+        layout: "full",
+        screens: [
+          {
+            src: "https://fingraph-redesign.vercel.app/bank",
+            caption: "Bank: underwriting review",
+            alt: "Live FinGraph bank view of freelancer performance",
+            frame: "browser",
+            mediaType: "embed",
+            url: "fingraph-redesign.vercel.app/bank",
           },
         ],
       },
