@@ -191,7 +191,7 @@ body:has(.page-home) {
   flex-direction: row !important;
   align-items: center !important;
   justify-content: flex-start !important;
-  gap: clamp(8px, 1vw, 12px) !important;
+  gap: clamp(12px, 1.5vw, 20px) !important;
   width: auto !important;
   height: auto !important;
   min-height: 0 !important;
@@ -988,7 +988,7 @@ html[data-home-ratio="desktop"] .home-gif-wrap,
 .home-right-tab.is-active:focus-visible {
   color: var(--accent-red-strong);
   font-weight: 600;
-  background: var(--card-bg-soft);
+  background: none;
 }
 
 .home-right-panel {

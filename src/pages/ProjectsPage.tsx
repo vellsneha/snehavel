@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import PageLayout from "../components/PageLayout";
 import ProjectCaseStudy from "../components/ProjectCaseStudy";
@@ -8,6 +8,27 @@ import "../styles/projectHero.css";
 import "./ProjectsPage.css";
 
 const visibleProjectItems = projectItems.filter((item) => !item.hidden);
+
+/** Matches projects accordion slide duration (1.2s). */
+const PROJECT_STRIP_TRANSITION_MS = 1200;
+const SCROLLABLE_MOCKUP_SELECTOR = ".safari-content, .phone-mockup__viewport";
+
+function resetScrollInContainer(root: ParentNode) {
+  root.querySelectorAll<HTMLElement>(SCROLLABLE_MOCKUP_SELECTOR).forEach((element) => {
+    element.scrollTop = 0;
+  });
+}
+
+function scrollElementToPageTop(element: Element, offset = 12) {
+  const top = element.getBoundingClientRect().top + window.scrollY;
+  window.scrollTo({ top: Math.max(0, top - offset), behavior: "auto" });
+}
+
+function runAfterLayout(callback: () => void) {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(callback);
+  });
+}
 
 function ProjectStrip({
   item,
@@ -62,86 +83,118 @@ function ProjectStrip({
   );
 }
 
-function ProjectDetail({ item }: { item: ProjectItem }) {
+function ProjectDetail({
+  item,
+  scrollToken = 0,
+}: {
+  item: ProjectItem;
+  scrollToken?: number;
+}) {
+  const detailRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollToken === 0) return;
+
+    const detail = detailRef.current;
+    if (!detail) return;
+
+    const resetDetailView = () => {
+      resetScrollInContainer(detail);
+      scrollElementToPageTop(detail);
+    };
+
+    const timeout = window.setTimeout(() => {
+      runAfterLayout(resetDetailView);
+    }, PROJECT_STRIP_TRANSITION_MS);
+
+    return () => window.clearTimeout(timeout);
+  }, [item.id, scrollToken]);
+
   if (item.sections?.length) {
-    return <ProjectCaseStudy item={item} />;
+    return (
+      <div ref={detailRef} className="projects-detail-anchor">
+        <ProjectCaseStudy item={item} />
+      </div>
+    );
   }
 
   const eyebrow = `${item.tags.slice(0, 2).join(" · ").toUpperCase()} · ${item.status.toUpperCase()} ${item.date.split(" ").pop()}`;
 
   return (
-    <section className="projects-detail" aria-labelledby={`project-detail-${item.id}`}>
-      <p className="projects-detail-eyebrow">{eyebrow}</p>
+    <div ref={detailRef} className="projects-detail-anchor">
+      <section className="projects-detail" aria-labelledby={`project-detail-${item.id}`}>
+        <p className="projects-detail-eyebrow">{eyebrow}</p>
 
-      <h2 className="projects-detail-headline" id={`project-detail-${item.id}`}>
-        {item.overviewTitle}
-      </h2>
+        <h2 className="projects-detail-headline" id={`project-detail-${item.id}`}>
+          {item.overviewTitle}
+        </h2>
 
-      <div className="projects-detail-lead-row">
-        <p className="projects-detail-lead">{item.overview}</p>
-        <ProjectGithubLink url={item.url} title={item.title} />
-      </div>
+        <div className="projects-detail-lead-row">
+          <p className="projects-detail-lead">{item.overview}</p>
+          <ProjectGithubLink url={item.url} title={item.title} />
+        </div>
 
-      <div className="project-hero">
-        {item.media ? (
-          item.mediaType === "video" ? (
-            <video
-              key={item.media}
-              src={item.media}
-              className="project-hero-media"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              aria-label={item.title}
-            />
+        <div className="project-hero">
+          {item.media ? (
+            item.mediaType === "video" ? (
+              <video
+                key={item.media}
+                src={item.media}
+                className="project-hero-media"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                aria-label={item.title}
+              />
+            ) : (
+              <img
+                key={item.media}
+                src={item.media}
+                alt=""
+                className="project-hero-media"
+                loading="lazy"
+              />
+            )
           ) : (
-            <img
-              key={item.media}
-              src={item.media}
-              alt=""
-              className="project-hero-media"
-              loading="lazy"
+            <div
+              className="project-hero-media project-hero-media--placeholder"
+              style={
+                {
+                  "--strip-color": `hsl(${item.hue}, 42%, 88%)`,
+                  "--strip-color-dark": `hsl(${item.hue}, 32%, 28%)`,
+                } as React.CSSProperties
+              }
+              aria-hidden="true"
             />
-          )
-        ) : (
-          <div
-            className="project-hero-media project-hero-media--placeholder"
-            style={
-              {
-                "--strip-color": `hsl(${item.hue}, 42%, 88%)`,
-                "--strip-color-dark": `hsl(${item.hue}, 32%, 28%)`,
-              } as React.CSSProperties
-            }
-            aria-hidden="true"
-          />
-        )}
-      </div>
+          )}
+        </div>
 
-      <div className="projects-detail-meta">
-        <div className="projects-detail-field">
-          <span className="projects-detail-label">Role</span>
-          <p className="projects-detail-value">{item.role}</p>
+        <div className="projects-detail-meta">
+          <div className="projects-detail-field">
+            <span className="projects-detail-label">Role</span>
+            <p className="projects-detail-value">{item.role}</p>
+          </div>
+          <div className="projects-detail-field">
+            <span className="projects-detail-label">Timeline</span>
+            <p className="projects-detail-value">{item.timeline}</p>
+          </div>
+          <div className="projects-detail-field">
+            <span className="projects-detail-label">Team</span>
+            <p className="projects-detail-value">{item.team}</p>
+          </div>
+          <div className="projects-detail-field">
+            <span className="projects-detail-label">Skills</span>
+            <ul className="projects-detail-skills">
+              {item.skills.map((skill) => (
+                <li key={skill}>{skill}</li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <div className="projects-detail-field">
-          <span className="projects-detail-label">Timeline</span>
-          <p className="projects-detail-value">{item.timeline}</p>
-        </div>
-        <div className="projects-detail-field">
-          <span className="projects-detail-label">Team</span>
-          <p className="projects-detail-value">{item.team}</p>
-        </div>
-        <div className="projects-detail-field">
-          <span className="projects-detail-label">Skills</span>
-          <ul className="projects-detail-skills">
-            {item.skills.map((skill) => (
-              <li key={skill}>{skill}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
 
@@ -157,18 +210,22 @@ export default function ProjectsPage() {
     const fromHash = resolveProjectIdFromHash(window.location.hash);
     return fromHash ?? visibleProjectItems[0]?.id ?? "";
   });
+  const [scrollToken, setScrollToken] = useState(() =>
+    resolveProjectIdFromHash(window.location.hash) ? 1 : 0,
+  );
   const activeItem =
     visibleProjectItems.find((item) => item.id === activeId) ?? visibleProjectItems[0];
 
   useEffect(() => {
     const fromHash = resolveProjectIdFromHash(location.hash);
-    if (fromHash) setActiveId(fromHash);
+    if (!fromHash) return;
+
+    setActiveId((current) => {
+      if (current !== fromHash) setScrollToken((token) => token + 1);
+      return fromHash;
+    });
     setMobilePickerOpen(false);
   }, [location.hash]);
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, [activeId]);
 
   const selectProject = (id: string) => {
     if (id === activeId) {
@@ -176,6 +233,7 @@ export default function ProjectsPage() {
       return;
     }
     setActiveId(id);
+    setScrollToken((token) => token + 1);
     setMobilePickerOpen(false);
     window.history.replaceState(null, "", `#${id}`);
   };
@@ -262,7 +320,9 @@ export default function ProjectsPage() {
             ))}
           </div>
 
-          {activeItem ? <ProjectDetail key={activeItem.id} item={activeItem} /> : null}
+          {activeItem ? (
+            <ProjectDetail key={activeItem.id} item={activeItem} scrollToken={scrollToken} />
+          ) : null}
         </div>
       </div>
     </PageLayout>

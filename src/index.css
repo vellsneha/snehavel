@@ -52,14 +52,14 @@
   --framer-link: rgba(0, 0, 0, 0.6);
 
   --font-display: "Tiempos", "Tiempos Text", Georgia, "Times New Roman", serif;
-  --font-sans: "Geist Variable", "Geist", system-ui, sans-serif;
+  --font-sans: "Figtree Variable", "Figtree", system-ui, sans-serif;
   --font-mono: "Geist Mono Variable", "Geist Mono", ui-monospace, monospace;
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
 
-  --bg-base: #0f1117;
+  --bg-base: #0a0a0a;
   --text-primary: #eceef3;
   --text-heading: #f2f4f8;
   --text-secondary: #b4bac7;
@@ -80,18 +80,18 @@
   --accent-red: #ca2624;
   --accent-red-strong: #e84543;
 
-  --surface-elevated: rgba(22, 25, 34, 0.94);
+  --surface-elevated: rgba(18, 18, 18, 0.94);
   --card-bg: rgba(255, 255, 255, 0.05);
   --card-bg-soft: rgba(255, 255, 255, 0.07);
   --card-bg-muted: rgba(255, 255, 255, 0.03);
-  --nav-bg: rgba(15, 17, 23, 0.9);
+  --nav-bg: rgba(10, 10, 10, 0.9);
   --nav-border: rgba(255, 255, 255, 0.06);
 
   --border-subtle: rgba(255, 255, 255, 0.1);
   --border-light: rgba(255, 255, 255, 0.12);
 
-  --stripe-a: #2a2e3a;
-  --stripe-b: #1e222c;
+  --stripe-a: #222222;
+  --stripe-b: #141414;
 
   --shadow-float: 0 1px 1px rgba(0, 0, 0, 0.12);
   --shadow-float-hover: 0 1px 2px rgba(0, 0, 0, 0.16);
