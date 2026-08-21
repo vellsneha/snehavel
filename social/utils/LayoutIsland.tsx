@@ -10,8 +10,8 @@
  *   on motion nodes. The exporter prefixes those ids per-component
  *   (so a Badge inside Stack and a Badge inside Center no longer
  *   share `layoutId="eTnAKyjwo"`). But if the consumer mounts the
- *   SAME component multiple times on one page — three Badges inside
- *   a Stack, say — framer-motion's shared-layout machinery still
+ *   SAME component multiple times on one page - three Badges inside
+ *   a Stack, say - framer-motion's shared-layout machinery still
  *   picks one as the "live" instance and animates the rest to ghost
  *   positions with opacity: 0. The text disappears.
  *
@@ -20,7 +20,7 @@
  *   `inherit={false}` so the inner group doesn't merge with any
  *   outer LayoutGroup.
  *
- * IMPORTANT LIMIT — INNER-SIBLING COLLISIONS:
+ * IMPORTANT LIMIT - INNER-SIBLING COLLISIONS:
  *   LayoutIsland isolates *across* component imports. It does NOT
  *   solve collisions when a single exported component renders N
  *   copies of an internal sub-component (e.g. `Stack` rendering
@@ -29,8 +29,8 @@
  *   layoutId inside Stack's own internal LayoutGroup, so 1 stays
  *   visible and the other N−1 ghost.
  *
- *   When you see this symptom — a Stack/List of N items where
- *   only one renders its text — apply the CSS escape-hatch on the
+ *   When you see this symptom - a Stack/List of N items where
+ *   only one renders its text - apply the CSS escape-hatch on the
  *   ghosted nodes:
  *
  *     .ghosted-class {
@@ -51,11 +51,11 @@
  *   import LayoutIsland from "./utils/LayoutIsland";
  *
  *   <LayoutIsland>
- *     <Stack />     {/* Stack renders 3 Badges internally — all isolated *​/}
+ *     <Stack />     {/* Stack renders 3 Badges internally - all isolated *​/}
  *   </LayoutIsland>
  *
  *   <LayoutIsland>
- *     <Center />    {/* separate island — Badge inside Center won't collide *​/}
+ *     <Center />    {/* separate island - Badge inside Center won't collide *​/}
  *   </LayoutIsland>
  */
 "use client";

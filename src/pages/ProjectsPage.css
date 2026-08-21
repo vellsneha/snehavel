@@ -77,7 +77,7 @@
   max-width: 22ch;
 }
 
-/* Vertical text strips — matches designs page */
+/* Vertical text strips - matches designs page */
 .projects-accordion {
   display: grid;
   grid-template-columns: var(--strip-columns);
@@ -270,7 +270,7 @@
   transition-delay: 0.4s;
 }
 
-/* Detail panel — Medium-style centered column */
+/* Detail panel - Medium-style centered column */
 .projects-detail {
   display: flex;
   flex-direction: column;

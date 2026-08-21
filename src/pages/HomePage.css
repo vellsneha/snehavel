@@ -1,4 +1,4 @@
-/* Single viewport — no scroll */
+/* Single viewport - no scroll */
 .page-home {
   height: 100dvh;
   max-height: 100dvh;
@@ -29,7 +29,7 @@ body:has(.page-home) {
   overflow: hidden;
 }
 
-/* Main card shell — content sits centered on screen */
+/* Main card shell - content sits centered on screen */
 .home-shell {
   width: 100%;
   max-width: min(1440px, calc(100vw - clamp(32px, 5vw, 64px)));
@@ -186,7 +186,7 @@ body:has(.page-home) {
   max-width: 100%;
 }
 
-/* Framer Social export — horizontal row: GitHub, LinkedIn, X, Email */
+/* Framer Social export - horizontal row: GitHub, LinkedIn, X, Email */
 .home-social-row .framer-16m69h7 {
   flex-direction: row !important;
   align-items: center !important;
@@ -208,7 +208,7 @@ body:has(.page-home) {
   overflow: visible !important;
 }
 
-/* Icons are 20px inside 40px Framer links — left-align so row matches text */
+/* Icons are 20px inside 40px Framer links - left-align so row matches text */
 .home-social-row a[class*="framer-"],
 .home-social-row .framer-o1qm0t {
   width: 20px !important;
@@ -445,7 +445,7 @@ body:has(.page-home) {
   overflow: hidden;
 }
 
-/* Mid + desktop skillset placement defaults — overridden per breakpoint below */
+/* Mid + desktop skillset placement defaults - overridden per breakpoint below */
 .home-skillset--profile {
   display: none;
   margin-top: clamp(14px, 1.8vh, 22px);
@@ -618,7 +618,7 @@ body:has(.page-home) {
   display: none;
 }
 
-/* Inner cards — light frosted panels, dots still visible */
+/* Inner cards - light frosted panels, dots still visible */
 .home-card {
   border: 1px dashed var(--border-accent);
   border-radius: 4px;

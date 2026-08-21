@@ -22,13 +22,13 @@ const PAGE_SEO: Record<string, PageSeo> = {
   "/projects": {
     title: `Projects | ${SITE_NAME}`,
     description:
-      "Projects by Sneha Vellelath — AI systems, agents, RAG pipelines, multimodal tools, and product engineering work.",
+      "Projects by Sneha Vellelath: AI systems, agents, RAG pipelines, multimodal tools, and product engineering work.",
     path: "/projects",
   },
   "/designs": {
     title: `Designs | ${SITE_NAME}`,
     description:
-      "Interface and product design work by Sneha Vellelath — planning and designing clear, calm interfaces.",
+      "Interface and product design work by Sneha Vellelath: planning and designing clear, calm interfaces.",
     path: "/designs",
   },
   "/gallery": {
@@ -39,7 +39,7 @@ const PAGE_SEO: Record<string, PageSeo> = {
   "/blogs": {
     title: `Blogs | ${SITE_NAME}`,
     description:
-      "Writing by Sneha Vellelath — notes on AI systems, agents, evals, and building.",
+      "Writing by Sneha Vellelath: notes on AI systems, agents, evals, and building.",
     path: "/blogs",
   },
 };

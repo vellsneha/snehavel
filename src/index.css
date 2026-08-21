@@ -193,7 +193,7 @@ img {
   pointer-events: auto !important;
 }
 
-/* Framer export text — dark mode readability */
+/* Framer export text - dark mode readability */
 [data-theme="dark"] .framer-section p,
 [data-theme="dark"] .framer-section h1,
 [data-theme="dark"] .framer-section h2,

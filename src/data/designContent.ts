@@ -182,15 +182,15 @@ export const designContentById: Record<string, DesignContent> = {
       {
         label: "Outcome",
         title: "Traceable score, unfinished graph",
-        body: "The financial score landed well. The graph did not — relationships without a clear decision path. That became the redesign brief: keep the **score** central, and only bring the graph back when it can answer what to do next.",
+        body: "The financial score landed well. The graph did not: relationships without a clear decision path. That became the redesign brief: keep the **score** central, and only bring the graph back when it can answer what to do next.",
       },
       {
         label: "Redesign",
         title: "Identity product, not a denser dashboard",
         body: "Version 1 tried to show everything at once: score, gauges, charts, risk panels, and a decorative graph. The redesign makes the hierarchy clearer across two lenses: **applicant** and **bank**.",
         points: [
-          "**Score first, evidence second, action third** — each surface owns one job.",
-          "**Same identity, two products** — freelancers improve the signal; banks underwrite it.",
+          "**Score first, evidence second, action third**. Each surface owns one job.",
+          "**Same identity, two products**. Freelancers improve the signal; banks underwrite it.",
         ],
       },
       {
@@ -233,7 +233,7 @@ export const designContentById: Record<string, DesignContent> = {
       {
         label: "Bank",
         title: "What lenders need to decide",
-        body: "Banks need a clear view of the freelancer’s score, proof that the signal is valid, and documentation they can act on — so they can approve, add conditions, or decline with confidence.",
+        body: "Banks need a clear view of the freelancer’s score, proof that the signal is valid, and documentation they can act on, so they can approve, add conditions, or decline with confidence.",
         layout: "full",
         screens: [
           {

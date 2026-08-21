@@ -19,7 +19,7 @@
   overflow-x: clip;
 }
 
-/* Header — matches gallery page */
+/* Header - matches gallery page */
 .designs-page-header {
   flex-shrink: 0;
   margin-bottom: clamp(16px, 2vh, 24px);
@@ -961,7 +961,7 @@
   width: 100%;
 }
 
-/* Lock mockup viewport to Community Profile proportions — taller pages scroll */
+/* Lock mockup viewport to Community Profile proportions - taller pages scroll */
 .designs-explorer .safari-content {
   aspect-ratio: 5168 / 3248;
   width: 100%;
