@@ -199,6 +199,10 @@
   border: 1px dashed var(--accent);
 }
 
+[data-theme="dark"] .case-stat {
+  background: transparent;
+}
+
 .case-stat-value {
   font-family: var(--font-display);
   font-size: clamp(28px, 3.5vh, 40px);
