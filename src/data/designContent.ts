@@ -430,16 +430,6 @@ export const designContentById: Record<string, DesignContent> = {
         body: "The audience was tier 3 students who usually see less polish. We went modern and loud instead of generic startup clean.",
       },
       {
-        label: "Process",
-        title: "Wireframe to final",
-        body: "A few lo fi passes locked the structure before visual polish.",
-        layout: "pair",
-        screens: [
-          { src: adLofiWire1, caption: "Early wireframe", alt: "AdVantage wireframe", frame: "card" },
-          { src: adLofiHome, caption: "Lo fi home exploration", alt: "AdVantage lo fi home", frame: "card" },
-        ],
-      },
-      {
         label: "Selected screens",
         title: "Website 2.0",
         body: "Home through contact. The live marketing surface.",
@@ -493,6 +483,16 @@ export const designContentById: Record<string, DesignContent> = {
         label: "Outcome",
         title: "We launched, then had to pivot",
         body: "The website went live, and five communities signed up and started bringing their students onto the network. Cloud costs and the difficulty of expanding made it hard to keep going, so we pivoted the idea.",
+      },
+      {
+        label: "Process",
+        title: "Wireframe to final",
+        body: "A few lo fi passes locked the structure before visual polish.",
+        layout: "pair",
+        screens: [
+          { src: adLofiWire1, caption: "Early wireframe", alt: "AdVantage wireframe", frame: "card" },
+          { src: adLofiHome, caption: "Lo fi home exploration", alt: "AdVantage lo fi home", frame: "card" },
+        ],
       },
     ],
   },
