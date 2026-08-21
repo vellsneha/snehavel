@@ -78,12 +78,19 @@ export type DesignScreen = {
   placeholderLabel?: string;
 };
 
+export type DesignExplainBox = {
+  title: string;
+  body: string;
+};
+
 export type DesignContentSection = {
   label: string;
   title?: string;
   body?: string;
   /** Short callouts; wrap key phrases in **double asterisks** for emphasis. */
   points?: string[];
+  /** Simple titled boxes (e.g. one job per page). */
+  boxes?: DesignExplainBox[];
   screens?: DesignScreen[];
   layout?: DesignScreenLayout;
 };
@@ -180,21 +187,36 @@ export const designContentById: Record<string, DesignContent> = {
       {
         label: "Redesign",
         title: "Identity product, not a denser dashboard",
-        body: "Version 1 tried to show everything at once: score, gauges, charts, risk panels, and a decorative graph. The redesign reframes FinGraph as a **freelancer financial identity** — a **0–100 score** with evidence and actions — built for two lenses: **applicant** and **bank**.",
+        body: "Version 1 tried to show everything at once: score, gauges, charts, risk panels, and a decorative graph. The redesign makes the hierarchy clearer across two lenses: **applicant** and **bank**.",
         points: [
           "**Score first, evidence second, action third** — each surface owns one job.",
           "**Same identity, two products** — freelancers improve the signal; banks underwrite it.",
-          "Hi-fi UI mock with dummy persona data — product structure first, live Plaid / Neo4j / model later.",
         ],
       },
       {
         label: "Freelancer",
-        title: "Score → evidence → action → progress",
-        body: "Home leads with the **Financial Identity Score** and runway. Drivers and the 6-month trend stay behind **subtle disclose pills**, not dumped on load. Overview cards make concentration, volatility, and payment reliability visible — then hand off into Coach.",
-        points: [
-          "**Impact** replaces the decorative graph with ranked cause → effect pathways and estimated score lift.",
-          "**One job per tab:** Home overview · Accounts cash flow · Impact diagnose · Coach act · Progress record.",
-          "**Progress** makes verified improvements auditable — part of the identity, not a side note.",
+        title: "Five pages, one job each",
+        boxes: [
+          {
+            title: "Home",
+            body: "Leads with the score and runway. Extra drivers stay hidden until you open them. Why: see financial health first, not every chart at once.",
+          },
+          {
+            title: "Accounts",
+            body: "Linked accounts plus money in and money out. Why: show where cash lives and how it moved.",
+          },
+          {
+            title: "Impact",
+            body: "Ranked cause-to-effect pathways with estimated score lift. Why: explain what is holding the score back, instead of a decorative graph.",
+          },
+          {
+            title: "Coach",
+            body: "The AI assistant for priority actions and what to do next. Why: turn the score into steps the freelancer can take.",
+          },
+          {
+            title: "Progress",
+            body: "A journal of verified improvements and open items. Why: make progress part of the identity, not a side note.",
+          },
         ],
         layout: "full",
         screens: [
@@ -210,12 +232,8 @@ export const designContentById: Record<string, DesignContent> = {
       },
       {
         label: "Bank",
-        title: "Underwriting the same identity",
-        body: "The bank view is a **sibling product surface**, not a freelancer nav item. It is a read-only decision workspace on the same identity: score, risk history, **system recommendation**, policy checks, drivers, and verified improvements from the journal.",
-        points: [
-          "Built to **decide**, not coach — Approve / Conditional / Decline as the job.",
-          "No raw transaction dump — the file is the **explained identity** a lender can act on.",
-        ],
+        title: "What lenders need to decide",
+        body: "Banks need a clear view of the freelancer’s score, proof that the signal is valid, and documentation they can act on — so they can approve, add conditions, or decline with confidence.",
         layout: "full",
         screens: [
           {

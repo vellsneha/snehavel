@@ -424,6 +424,16 @@ function DesignSectionBlock({
           ))}
         </ul>
       ) : null}
+      {section.boxes?.length ? (
+        <div className="designs-explain-boxes">
+          {section.boxes.map((box) => (
+            <div key={box.title} className="designs-explain-box">
+              <h4 className="designs-explain-box-title">{box.title}</h4>
+              <p className="designs-explain-box-body">{box.body}</p>
+            </div>
+          ))}
+        </div>
+      ) : null}
       {section.screens?.length ? (
         <DesignScreenGallery
           screens={section.screens}
@@ -647,11 +657,13 @@ function DesignDetail({
       aria-labelledby={`design-detail-${item.id}`}
     >
       <header className="designs-detail-intro">
-        <p className="designs-detail-eyebrow">{item.title}</p>
+        <p className="designs-detail-eyebrow">
+          {item.projectLabel ? `${item.projectLabel} · ${item.date}` : `Design · ${item.date}`}
+        </p>
         <h2 className="designs-detail-headline" id={`design-detail-${item.id}`}>
-          {item.overviewTitle}
+          {item.headline}
         </h2>
-        <p className="designs-detail-lead-copy">{item.overview}</p>
+        <p className="designs-detail-lead-copy">{item.description}</p>
       </header>
 
       <div className="designs-detail-meta">
@@ -695,8 +707,13 @@ function DesignDetail({
 
       {content?.context ? <DesignContextBlock note={content.context} /> : null}
 
-      {columnSections.length > 0 ? (
+      {columnIntroCount > 0 ? (
         <div className="designs-detail-columns">
+          <DesignIntroColumn
+            label="Overview"
+            title={item.overviewTitle}
+            body={item.overview}
+          />
           {columnSections.map((section) => (
             <DesignIntroColumn
               key={section.label}

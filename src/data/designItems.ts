@@ -1,6 +1,8 @@
 export type DesignItem = {
   id: string;
   title: string;
+  /** Case-study header headline; kept distinct from overviewTitle. */
+  headline: string;
   date: string;
   description: string;
   hue: number;
@@ -21,9 +23,10 @@ export const designItems: DesignItem[] = [
   {
     id: "d1",
     title: "Freelancer dashboard",
+    headline: "Making irregular income easier to trust",
     date: "2026",
     description:
-      "A dashboard that turns freelancer income patterns into a credibility score banks can actually use.",
+      "A redesign that turns messy freelance deposits into one clear score — useful for freelancers, and for the banks reviewing them.",
     hue: 38,
     role: "Product Designer",
     timeline: "2025 to 2026",
@@ -45,9 +48,10 @@ export const designItems: DesignItem[] = [
   {
     id: "d2",
     title: "FeedForward",
+    headline: "A simple way to find food help",
     date: "2025",
     description:
-      "An accessible product that connects surplus food with people who need it, over chat or a phone call.",
+      "Built for people who need a food bank or want to volunteer — in plain language, over chat or a phone call.",
     hue: 168,
     role: "Product Designer",
     timeline: "2025",
@@ -67,9 +71,10 @@ export const designItems: DesignItem[] = [
   {
     id: "d4",
     title: "AdVantage",
+    headline: "Helping students find their people",
     date: "2024",
     description:
-      "The marketing site for AdVantage, meant to pull tier 3 students and communities into one network.",
+      "A welcoming marketing site that explains AdVantage quickly and gives students and communities an easy way to join.",
     hue: 280,
     role: "Web Designer",
     timeline: "2024",
@@ -79,16 +84,17 @@ export const designItems: DesignItem[] = [
       "Emotional Design",
       "User Motivation Patterns",
     ],
-    overviewTitle: "A front door for campus communities",
+    overviewTitle: "Students and communities, one pitch",
     overview:
       "Students needed peers; communities needed discovery. The site had to explain AdVantage in seconds, feel bold for tier 3 campuses, and give both audiences a short path to join.",
   },
   {
     id: "d3",
     title: "Advantage Ecosystem",
+    headline: "An easier way to run student groups",
     date: "2025",
     description:
-      "A role based community platform for student groups, built for what WhatsApp and Discord never handled well.",
+      "A shared place for discovery, events, and roles — so communities do not have to live only inside WhatsApp threads.",
     hue: 210,
     role: "Product Designer",
     timeline: "2024 to 2025",
@@ -99,17 +105,18 @@ export const designItems: DesignItem[] = [
       "Interaction Design",
       "User Journey Mapping",
     ],
-    overviewTitle: "Community ops beyond group chats",
+    overviewTitle: "Roles instead of endless threads",
     overview:
       "WhatsApp and Discord were fine for talk, not for discovery or roles. Members, leaders, and managers each needed their own view — so the MVP covered dashboards, events, forums, and profiles.",
   },
   {
     id: "d5",
     title: "TASK app",
+    headline: "Work tickets that feel easy on a phone",
     date: "2022",
     ndaProtected: true,
     description:
-      "A mobile first ticket app that replaced NFC’s slow legacy web tool for internal work tracking.",
+      "A mobile app that replaced a slow desktop tool, so people could update and track tickets more easily.",
     hue: 12,
     role: "Product Designer",
     timeline: "2022",
@@ -121,17 +128,18 @@ export const designItems: DesignItem[] = [
       "Cross Platform Consistency",
       "Microinteraction Thinking",
     ],
-    overviewTitle: "Tickets that fit a phone",
+    overviewTitle: "Internal tools still need care",
     overview:
       "I learned that internal tools still need care. The biggest shift was moving dense ticket workflows into something fast enough for a phone, without making people think harder to get basic work done.",
   },
   {
     id: "d6",
     title: "NFC Solutions",
+    headline: "A company website that makes sense fast",
     date: "2022",
     ndaProtected: true,
     description:
-      "The enterprise brand site for NFC, covering services, client work, and products in one place.",
+      "A clear brand site for NFC — services, proof, and contact in a path people can follow without getting lost.",
     hue: 195,
     role: "UI UX Designer",
     timeline: "2022",
@@ -150,10 +158,11 @@ export const designItems: DesignItem[] = [
   {
     id: "d7",
     title: "PULSE",
+    headline: "Explaining one service, simply",
     date: "2022",
     ndaProtected: true,
     description:
-      "Marketing website for PULSE, a service from NFC Solutions.",
+      "A focused marketing page for PULSE that tells the story quickly, without repeating everything on the main NFC site.",
     hue: 330,
     role: "UI UX Designer",
     timeline: "2022",
