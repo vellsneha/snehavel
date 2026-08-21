@@ -76,6 +76,28 @@ function DesignStrip({
       <div className="designs-strip-panel" aria-hidden={!isExpanded}>
         <div className="designs-strip-preview">
           <span className="designs-strip-preview-title">{item.title}</span>
+          <div className="designs-strip-meta">
+            <div className="designs-strip-field">
+              <span className="designs-strip-label">Role</span>
+              <p className="designs-strip-value">{item.role}</p>
+            </div>
+            <div className="designs-strip-field">
+              <span className="designs-strip-label">Timeline</span>
+              <p className="designs-strip-value">{item.timeline}</p>
+            </div>
+            <div className="designs-strip-field">
+              <span className="designs-strip-label">Team</span>
+              <p className="designs-strip-value">{item.team}</p>
+            </div>
+            <div className="designs-strip-field">
+              <span className="designs-strip-label">Skills</span>
+              <ul className="designs-strip-skills">
+                {item.skills.map((skill) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
 
         <div className="designs-strip-body">
@@ -160,7 +182,6 @@ function DesignScreenFrame({
   }
 }
 
-const DESIGN_STRIP_TRANSITION_MS = 780;
 const SCROLLABLE_MOCKUP_SELECTOR = ".safari-content, .phone-mockup__viewport";
 
 function resetScrollInContainer(root: ParentNode) {
@@ -401,6 +422,22 @@ function renderMarkedText(text: string): ReactNode {
   });
 }
 
+function renderExplainBoxBody(body: string): ReactNode {
+  const whyMatch = body.match(/^(.*?)\s*(Why:\s*)(.*)$/s);
+  if (!whyMatch) return body;
+
+  const [, lead, whyLabel, whyText] = whyMatch;
+  return (
+    <>
+      {lead.trimEnd()}
+      <span className="designs-explain-box-why">
+        <span className="designs-explain-box-why-label">{whyLabel}</span>
+        {whyText}
+      </span>
+    </>
+  );
+}
+
 function DesignSectionBlock({
   section,
   centerImages = false,
@@ -411,7 +448,13 @@ function DesignSectionBlock({
   return (
     <section className="designs-detail-section">
       <header className="designs-detail-section-header">
-        <span className="designs-detail-section-label">{section.label}</span>
+        <span
+          className={`designs-detail-section-label${
+            section.label.toLowerCase() === "redesign" ? " designs-detail-section-label--accent" : ""
+          }`}
+        >
+          {section.label}
+        </span>
         {section.title ? <h3 className="designs-detail-section-title">{section.title}</h3> : null}
       </header>
       {section.body ? (
@@ -433,7 +476,7 @@ function DesignSectionBlock({
               </span>
               <div className="designs-explain-box-content">
                 <h4 className="designs-explain-box-title">{box.title}</h4>
-                <p className="designs-explain-box-body">{box.body}</p>
+                <p className="designs-explain-box-body">{renderExplainBoxBody(box.body)}</p>
               </div>
             </li>
           ))}
@@ -596,7 +639,6 @@ function DesignIntroColumn({
 function DesignDetail({
   item,
   centerImages = false,
-  scrollToken = 0,
   isLocked = false,
   onUnlock,
   unlockError,
@@ -604,13 +646,11 @@ function DesignDetail({
 }: {
   item: DesignItem;
   centerImages?: boolean;
-  scrollToken?: number;
   isLocked?: boolean;
   onUnlock: (password: string) => Promise<boolean>;
   unlockError: string | null;
   onClearUnlockError: () => void;
 }) {
-  const detailRef = useRef<HTMLElement>(null);
   const content = designContentById[item.id];
   const columnIntroCount = content?.columnIntroCount ?? 0;
   const columnSections =
@@ -618,35 +658,15 @@ function DesignDetail({
   const restSections =
     columnIntroCount > 0 ? content!.sections.slice(columnIntroCount) : content?.sections ?? [];
 
-  useEffect(() => {
-    if (scrollToken === 0 || isLocked) return;
-
-    const detail = detailRef.current;
-    if (!detail) return;
-
-    const resetDetailView = () => {
-      resetScrollInContainer(detail);
-      scrollElementToPageTop(detail);
-    };
-
-    const timeout = window.setTimeout(() => {
-      runAfterLayout(resetDetailView);
-    }, DESIGN_STRIP_TRANSITION_MS);
-
-    return () => window.clearTimeout(timeout);
-  }, [item.id, scrollToken, isLocked]);
-
   if (isLocked) {
     return (
       <section
-        ref={detailRef}
         className="designs-detail designs-detail--nda"
         aria-labelledby={`design-detail-${item.id}`}
       >
         <NdaGate
           title={item.title}
           summary={item.overview}
-          skills={item.skills}
           onUnlock={onUnlock}
           error={unlockError}
           onClearError={onClearUnlockError}
@@ -657,7 +677,6 @@ function DesignDetail({
 
   return (
     <section
-      ref={detailRef}
       className={`designs-detail${centerImages ? " designs-detail--centered" : ""}`}
       aria-labelledby={`design-detail-${item.id}`}
     >
@@ -671,7 +690,7 @@ function DesignDetail({
         <p className="designs-detail-lead-copy">{item.description}</p>
       </header>
 
-      <div className="designs-detail-meta">
+      <div className="designs-detail-meta designs-detail-meta--mobile">
         <div className="designs-detail-field">
           <span className="designs-detail-label">Role</span>
           <p className="designs-detail-value">{item.role}</p>
@@ -748,9 +767,6 @@ export default function DesignsPage() {
     const fromHash = resolveDesignIdFromHash(window.location.hash);
     return fromHash ?? designItems[0]?.id ?? "";
   });
-  const [scrollToken, setScrollToken] = useState(() =>
-    resolveDesignIdFromHash(window.location.hash) ? 1 : 0,
-  );
   const activeItem = designItems.find((item) => item.id === activeId) ?? designItems[0];
   const activeContent = activeItem ? designContentById[activeItem.id] : undefined;
   const isCentered = Boolean(activeContent?.centered);
@@ -760,17 +776,12 @@ export default function DesignsPage() {
   useEffect(() => {
     const fromHash = resolveDesignIdFromHash(location.hash);
     if (!fromHash) return;
-
-    setActiveId((current) => {
-      if (current !== fromHash) setScrollToken((token) => token + 1);
-      return fromHash;
-    });
+    setActiveId(fromHash);
   }, [location.hash]);
 
   const selectDesign = (id: string) => {
     if (id === activeId) return;
     setActiveId(id);
-    setScrollToken((token) => token + 1);
     setMobilePickerOpen(false);
     window.history.replaceState(null, "", `#${id}`);
   };
@@ -869,7 +880,6 @@ export default function DesignsPage() {
                 key={activeItem.id}
                 item={activeItem}
                 centerImages={isCentered}
-                scrollToken={scrollToken}
                 isLocked={isActiveLocked}
                 onUnlock={unlock}
                 unlockError={unlockError}

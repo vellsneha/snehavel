@@ -77,7 +77,7 @@ export const experienceItems: ExperienceItem[] = [
     period: "2023 - 2024",
     role: "Organizer",
     company: "MLH FrostHacks",
-    companyUrl: "https://unstop.com/hackathons/frost-hacks-institute-of-aeronautical-engineering-iare-hyderabad-836326",
+    companyUrl: "https://frosthacks.netlify.app/",
     logo: "https://framerusercontent.com/images/3yYM6l5e6DfZTiQCgzCPazab94.png?width=782&height=781",
     description:
       "We just wanted to do something memorable before graduating, and this ended up being exactly that. What started as a plan for 150 participants quickly scaled to 300, and suddenly it was very real.",

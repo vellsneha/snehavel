@@ -1044,11 +1044,29 @@ html[data-home-ratio="desktop"] .home-gif-wrap,
   gap: 6px;
 }
 
-.home-project-trophy {
-  width: 1.75em;
-  height: 1.75em;
+.home-project-winner {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.home-project-star {
+  width: 0.85em;
+  height: 0.85em;
   object-fit: contain;
   flex-shrink: 0;
+  image-rendering: pixelated;
+}
+
+.home-project-winner em {
+  font-family: var(--font-sans);
+  font-size: 0.72em;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: var(--text-subtle);
+  line-height: 1;
 }
 
 .home-project-desc {

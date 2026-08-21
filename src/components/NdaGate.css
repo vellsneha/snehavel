@@ -10,7 +10,7 @@
   flex-direction: column;
   gap: clamp(16px, 2vh, 22px);
   padding: clamp(28px, 3.5vh, 40px) clamp(24px, 3vw, 36px);
-  border: 1px solid var(--border-light);
+  border: none;
   border-radius: 6px;
   background:
     linear-gradient(
@@ -19,7 +19,17 @@
       transparent 42%
     ),
     color-mix(in srgb, var(--surface-elevated) 88%, transparent);
-  box-shadow: var(--shadow-float);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.02),
+    0 3px 10px rgba(0, 0, 0, 0.035),
+    0 8px 20px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"] .nda-gate-card {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    0 4px 14px rgba(0, 0, 0, 0.16),
+    0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
 .nda-gate-badge {
@@ -46,7 +56,6 @@
 
 .nda-gate-title {
   margin: 0;
-  max-width: 16ch;
   font-family: var(--font-display);
   font-size: clamp(30px, 4vh, 44px);
   font-weight: 600;
@@ -92,27 +101,6 @@
   font-family: var(--font-sans);
   font-size: clamp(14px, 1.55vh, 16px);
   line-height: 1.65;
-  color: var(--text-secondary);
-}
-
-.nda-gate-skills {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.nda-gate-skills li {
-  padding: 6px 10px;
-  border: 1px solid var(--border-subtle);
-  border-radius: 999px;
-  background: var(--card-bg-muted);
-  font-family: var(--font-mono);
-  font-size: clamp(10px, 1.1vh, 12px);
-  font-weight: 500;
-  line-height: 1.4;
   color: var(--text-secondary);
 }
 

@@ -307,7 +307,7 @@ export default function ProjectCaseStudy({ item }: { item: ProjectItem }) {
         )}
       </div>
 
-      <div className="case-study-meta">
+      <div className="case-study-meta case-study-meta--mobile">
         <div className="case-study-meta-field">
           <span className="case-study-meta-label">Role</span>
           <p className="case-study-meta-value">{item.role}</p>

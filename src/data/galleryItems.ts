@@ -10,6 +10,7 @@ import tedxImage from "../../gallery/TEDX.jpeg?url";
 import tedxTeamImage from "../../gallery/TedXIARE Team.jpeg?url";
 import edamWorkshopImage from "../../gallery/UI UX Workshop e-DAM.jpeg?url";
 import edamTeamImage from "../../gallery/e-DAM Team.jpeg?url";
+import devDaysImage from "../../gallery/DevDaysHydxSwechaxTensorFlow.jpeg?url";
 
 export type GalleryItem = {
   id: string;
@@ -76,6 +77,14 @@ export const galleryItems: GalleryItem[] = [
     image: gdscImage,
     aspectRatio: 1872 / 3326,
     hue: 215,
+  },
+  {
+    id: "devdays",
+    title: "DevDays Hyd",
+    meta: "Swecha × TensorFlow",
+    image: devDaysImage,
+    aspectRatio: 2048 / 1536,
+    hue: 28,
   },
   {
     id: "suzuki",

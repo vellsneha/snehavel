@@ -1,4 +1,4 @@
-import trophyIcon from "../../icons8-trophy-100.png?url";
+import starIcon from "../../star.png?url";
 import { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import LayoutIsland from "@social/utils/LayoutIsland";
@@ -274,12 +274,15 @@ export default function HomePage() {
                           <p className="home-project-title">
                             {project.title}
                             {project.featured ? (
-                              <img
-                                src={trophyIcon}
-                                alt=""
-                                className="home-project-trophy"
-                                aria-hidden="true"
-                              />
+                              <span className="home-project-winner">
+                                <img
+                                  src={starIcon}
+                                  alt=""
+                                  className="home-project-star"
+                                  aria-hidden="true"
+                                />
+                                <em>winner</em>
+                              </span>
                             ) : null}
                           </p>
                           <p className="home-project-desc">{project.description}</p>

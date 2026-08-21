@@ -74,7 +74,6 @@
   font-weight: 600;
   line-height: 1.2;
   color: var(--text-heading);
-  max-width: 22ch;
 }
 
 /* Vertical text strips - matches designs page */
@@ -83,8 +82,8 @@
   grid-template-columns: var(--strip-columns);
   align-items: stretch;
   gap: clamp(6px, 0.7vw, 10px);
-  min-height: clamp(140px, 22vh, 200px);
-  height: clamp(140px, 22vh, 200px);
+  min-height: clamp(220px, 32vh, 340px);
+  height: clamp(220px, 32vh, 340px);
   width: 100%;
   flex-shrink: 0;
   transition: grid-template-columns 1.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -187,8 +186,11 @@
   min-height: 0;
   width: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   justify-content: flex-start;
+  gap: clamp(14px, 2vh, 20px);
+  overflow: auto;
   padding: clamp(12px, 1.4vw, 20px) clamp(14px, 1.6vw, 22px);
   background: none !important;
   background-color: transparent !important;
@@ -197,14 +199,70 @@
 .projects-strip-preview-title {
   width: 100%;
   font-family: var(--font-display);
-  font-size: clamp(28px, 5.5vh, 56px);
+  font-size: clamp(28px, 4.8vh, 48px);
   font-weight: 600;
   line-height: 0.95;
   letter-spacing: -0.03em;
   color: var(--text-heading);
   text-align: left;
-  word-break: break-word;
-  hyphens: auto;
+  flex-shrink: 0;
+}
+
+.projects-strip-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vh, 18px) clamp(14px, 1.8vw, 22px);
+  width: 100%;
+  min-width: 0;
+}
+
+.projects-strip-field {
+  min-width: 0;
+}
+
+.projects-strip-label {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: clamp(9px, 1vh, 11px);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.projects-strip-value {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(13px, 1.45vh, 15px);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  white-space: pre-line;
+}
+
+.projects-strip-skills {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.projects-strip-skills li {
+  padding: 4px 9px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: clamp(10px, 1.1vh, 12px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  color: var(--text-secondary);
+  background: var(--card-bg-muted);
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .projects-strip-body {
@@ -213,13 +271,6 @@
   background: none !important;
   background-color: transparent !important;
   border-top: none;
-}
-
-.projects-strip-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
 }
 
 .projects-strip-title {
@@ -336,6 +387,10 @@
   gap: clamp(16px, 2vw, 28px);
   padding-top: clamp(4px, 0.6vh, 8px);
   border-top: none;
+}
+
+.projects-detail-meta--mobile {
+  display: none;
 }
 
 .projects-detail-field {
@@ -589,6 +644,10 @@
 
   .projects-accordion {
     display: none;
+  }
+
+  .projects-detail-meta--mobile {
+    display: grid;
   }
 
   .projects-strip {

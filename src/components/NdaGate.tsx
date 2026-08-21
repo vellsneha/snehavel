@@ -5,7 +5,6 @@ import "./NdaGate.css";
 type NdaGateProps = {
   title: string;
   summary: string;
-  skills: string[];
   onUnlock: (password: string) => Promise<boolean>;
   error: string | null;
   onClearError: () => void;
@@ -14,7 +13,6 @@ type NdaGateProps = {
 export default function NdaGate({
   title,
   summary,
-  skills,
   onUnlock,
   error,
   onClearError,
@@ -48,15 +46,6 @@ export default function NdaGate({
           <div className="nda-gate-preview-block">
             <p className="nda-gate-preview-label">What I learned</p>
             <p className="nda-gate-preview-text">{summary}</p>
-          </div>
-
-          <div className="nda-gate-preview-block">
-            <p className="nda-gate-preview-label">Skills built</p>
-            <ul className="nda-gate-skills">
-              {skills.map((skill) => (
-                <li key={skill}>{skill}</li>
-              ))}
-            </ul>
           </div>
         </div>
 

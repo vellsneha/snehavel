@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import PageLayout from "../components/PageLayout";
 import ProjectCaseStudy from "../components/ProjectCaseStudy";
@@ -8,27 +8,6 @@ import "../styles/projectHero.css";
 import "./ProjectsPage.css";
 
 const visibleProjectItems = projectItems.filter((item) => !item.hidden);
-
-/** Matches projects accordion slide duration (1.2s). */
-const PROJECT_STRIP_TRANSITION_MS = 1200;
-const SCROLLABLE_MOCKUP_SELECTOR = ".safari-content, .phone-mockup__viewport";
-
-function resetScrollInContainer(root: ParentNode) {
-  root.querySelectorAll<HTMLElement>(SCROLLABLE_MOCKUP_SELECTOR).forEach((element) => {
-    element.scrollTop = 0;
-  });
-}
-
-function scrollElementToPageTop(element: Element, offset = 12) {
-  const top = element.getBoundingClientRect().top + window.scrollY;
-  window.scrollTo({ top: Math.max(0, top - offset), behavior: "auto" });
-}
-
-function runAfterLayout(callback: () => void) {
-  requestAnimationFrame(() => {
-    requestAnimationFrame(callback);
-  });
-}
 
 function ProjectStrip({
   item,
@@ -64,6 +43,28 @@ function ProjectStrip({
         {isExpanded ? (
           <div className="projects-strip-preview">
             <span className="projects-strip-preview-title">{item.title}</span>
+            <div className="projects-strip-meta">
+              <div className="projects-strip-field">
+                <span className="projects-strip-label">Role</span>
+                <p className="projects-strip-value">{item.role}</p>
+              </div>
+              <div className="projects-strip-field">
+                <span className="projects-strip-label">Timeline</span>
+                <p className="projects-strip-value">{item.timeline}</p>
+              </div>
+              <div className="projects-strip-field">
+                <span className="projects-strip-label">Team</span>
+                <p className="projects-strip-value">{item.team}</p>
+              </div>
+              <div className="projects-strip-field">
+                <span className="projects-strip-label">Skills</span>
+                <ul className="projects-strip-skills">
+                  {item.skills.map((skill) => (
+                    <li key={skill}>{skill}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         ) : null}
 
@@ -83,36 +84,10 @@ function ProjectStrip({
   );
 }
 
-function ProjectDetail({
-  item,
-  scrollToken = 0,
-}: {
-  item: ProjectItem;
-  scrollToken?: number;
-}) {
-  const detailRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (scrollToken === 0) return;
-
-    const detail = detailRef.current;
-    if (!detail) return;
-
-    const resetDetailView = () => {
-      resetScrollInContainer(detail);
-      scrollElementToPageTop(detail);
-    };
-
-    const timeout = window.setTimeout(() => {
-      runAfterLayout(resetDetailView);
-    }, PROJECT_STRIP_TRANSITION_MS);
-
-    return () => window.clearTimeout(timeout);
-  }, [item.id, scrollToken]);
-
+function ProjectDetail({ item }: { item: ProjectItem }) {
   if (item.sections?.length) {
     return (
-      <div ref={detailRef} className="projects-detail-anchor">
+      <div className="projects-detail-anchor">
         <ProjectCaseStudy item={item} />
       </div>
     );
@@ -121,7 +96,7 @@ function ProjectDetail({
   const eyebrow = `${item.tags.slice(0, 2).join(" · ").toUpperCase()} · ${item.status.toUpperCase()} ${item.date.split(" ").pop()}`;
 
   return (
-    <div ref={detailRef} className="projects-detail-anchor">
+    <div className="projects-detail-anchor">
       <section className="projects-detail" aria-labelledby={`project-detail-${item.id}`}>
         <p className="projects-detail-eyebrow">{eyebrow}</p>
 
@@ -171,7 +146,7 @@ function ProjectDetail({
           )}
         </div>
 
-        <div className="projects-detail-meta">
+        <div className="projects-detail-meta projects-detail-meta--mobile">
           <div className="projects-detail-field">
             <span className="projects-detail-label">Role</span>
             <p className="projects-detail-value">{item.role}</p>
@@ -210,20 +185,13 @@ export default function ProjectsPage() {
     const fromHash = resolveProjectIdFromHash(window.location.hash);
     return fromHash ?? visibleProjectItems[0]?.id ?? "";
   });
-  const [scrollToken, setScrollToken] = useState(() =>
-    resolveProjectIdFromHash(window.location.hash) ? 1 : 0,
-  );
   const activeItem =
     visibleProjectItems.find((item) => item.id === activeId) ?? visibleProjectItems[0];
 
   useEffect(() => {
     const fromHash = resolveProjectIdFromHash(location.hash);
     if (!fromHash) return;
-
-    setActiveId((current) => {
-      if (current !== fromHash) setScrollToken((token) => token + 1);
-      return fromHash;
-    });
+    setActiveId(fromHash);
     setMobilePickerOpen(false);
   }, [location.hash]);
 
@@ -233,7 +201,6 @@ export default function ProjectsPage() {
       return;
     }
     setActiveId(id);
-    setScrollToken((token) => token + 1);
     setMobilePickerOpen(false);
     window.history.replaceState(null, "", `#${id}`);
   };
@@ -320,9 +287,7 @@ export default function ProjectsPage() {
             ))}
           </div>
 
-          {activeItem ? (
-            <ProjectDetail key={activeItem.id} item={activeItem} scrollToken={scrollToken} />
-          ) : null}
+          {activeItem ? <ProjectDetail key={activeItem.id} item={activeItem} /> : null}
         </div>
       </div>
     </PageLayout>
