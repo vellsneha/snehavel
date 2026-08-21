@@ -59,14 +59,14 @@
   flex: 1;
   width: 100%;
   column-count: 3;
-  column-gap: clamp(28px, 3.5vw, 48px);
+  column-gap: clamp(56px, 7vw, 96px);
 }
 
 .gallery-masonry-item {
   break-inside: avoid;
   page-break-inside: avoid;
   min-width: 0;
-  margin: 0 0 clamp(28px, 4vh, 48px);
+  margin: 0 0 clamp(64px, 8vh, 100px);
   opacity: 0;
   transform: translate3d(0, 18px, 0);
   transition:
@@ -138,11 +138,11 @@
 @media (max-width: 900px) {
   .gallery-masonry {
     column-count: 2;
-    column-gap: clamp(20px, 3vw, 32px);
+    column-gap: clamp(40px, 5vw, 64px);
   }
 
   .gallery-masonry-item {
-    margin-bottom: clamp(22px, 3.5vh, 36px);
+    margin-bottom: clamp(48px, 6.5vh, 80px);
   }
 }
 
