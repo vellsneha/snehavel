@@ -425,14 +425,19 @@ function DesignSectionBlock({
         </ul>
       ) : null}
       {section.boxes?.length ? (
-        <div className="designs-explain-boxes">
-          {section.boxes.map((box) => (
-            <div key={box.title} className="designs-explain-box">
-              <h4 className="designs-explain-box-title">{box.title}</h4>
-              <p className="designs-explain-box-body">{box.body}</p>
-            </div>
+        <ol className="designs-explain-boxes">
+          {section.boxes.map((box, index) => (
+            <li key={box.title} className="designs-explain-box">
+              <span className="designs-explain-box-index">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div className="designs-explain-box-content">
+                <h4 className="designs-explain-box-title">{box.title}</h4>
+                <p className="designs-explain-box-body">{box.body}</p>
+              </div>
+            </li>
           ))}
-        </div>
+        </ol>
       ) : null}
       {section.screens?.length ? (
         <DesignScreenGallery

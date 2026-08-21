@@ -651,9 +651,12 @@
 }
 
 .designs-explain-boxes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(12px, 1.5vw, 16px);
+  gap: clamp(14px, 1.8vw, 20px);
   width: 100%;
 }
 
@@ -673,19 +676,34 @@
 
 .designs-explain-box {
   display: flex;
-  flex-direction: column;
-  gap: clamp(8px, 1vh, 10px);
+  gap: clamp(12px, 1.4vw, 16px);
   min-width: 0;
-  padding: clamp(14px, 1.6vh, 18px);
-  border: 1px solid color-mix(in srgb, var(--text-heading) 12%, transparent);
-  border-radius: 12px;
-  background: transparent;
+  padding: clamp(16px, 2vh, 20px);
+  border-radius: 6px;
+  background: var(--card-bg-soft);
+  border: 1px solid var(--border-light);
+}
+
+.designs-explain-box-index {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 1.2vh, 13px);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--text-subtle);
+}
+
+.designs-explain-box-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
 }
 
 .designs-explain-box-title {
   margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(16px, 1.8vh, 20px);
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 1.5vh, 16px);
   font-weight: 600;
   line-height: 1.2;
   color: var(--text-heading);
@@ -694,10 +712,10 @@
 .designs-explain-box-body {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: clamp(12px, 1.35vh, 14px);
+  font-size: clamp(13px, 1.4vh, 15px);
   font-weight: 400;
   line-height: 1.5;
-  color: var(--text-secondary);
+  color: var(--text-muted);
 }
 
 .designs-detail-section {
