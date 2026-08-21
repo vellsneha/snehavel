@@ -1,52 +1,8 @@
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import PageLayout from "../components/PageLayout";
 import { galleryItems, type GalleryItem } from "../data/galleryItems";
 import "./GalleryPage.css";
-
-function useColumnCount() {
-  const [count, setCount] = useState(3);
-
-  useEffect(() => {
-    const narrow = window.matchMedia("(max-width: 560px)");
-    const medium = window.matchMedia("(max-width: 900px)");
-
-    const update = () => {
-      if (narrow.matches) setCount(1);
-      else if (medium.matches) setCount(2);
-      else setCount(3);
-    };
-
-    update();
-    narrow.addEventListener("change", update);
-    medium.addEventListener("change", update);
-    return () => {
-      narrow.removeEventListener("change", update);
-      medium.removeEventListener("change", update);
-    };
-  }, []);
-
-  return count;
-}
-
-function splitIntoColumns(items: GalleryItem[], columnCount: number) {
-  const columns = Array.from({ length: columnCount }, () => [] as GalleryItem[]);
-  const heights = Array.from({ length: columnCount }, () => 0);
-  // Relative units: image height ≈ 1 / aspectRatio (width/height), plus caption + gap.
-  const captionHeight = 0.18;
-  const gapHeight = 0.35;
-
-  items.forEach((item) => {
-    let shortest = 0;
-    for (let i = 1; i < columnCount; i += 1) {
-      if (heights[i] < heights[shortest]) shortest = i;
-    }
-    columns[shortest].push(item);
-    heights[shortest] += 1 / item.aspectRatio + captionHeight + gapHeight;
-  });
-
-  return columns;
-}
 
 function GalleryMasonryItem({
   item,
@@ -92,6 +48,7 @@ function GalleryMasonryItem({
       style={
         {
           "--reveal-delay": `${Math.min(index % 6, 5) * 70}ms`,
+          "--media-aspect": String(item.aspectRatio),
         } as CSSProperties
       }
     >
@@ -111,7 +68,6 @@ function GalleryMasonryItem({
           className="gallery-masonry-media gallery-masonry-media--placeholder"
           style={
             {
-              aspectRatio: item.aspectRatio,
               "--placeholder-color": `hsl(${item.hue}, 58%, 82%)`,
               "--placeholder-color-dark": `hsl(${item.hue}, 42%, 32%)`,
             } as CSSProperties
@@ -126,17 +82,6 @@ function GalleryMasonryItem({
 }
 
 export default function GalleryPage() {
-  const columnCount = useColumnCount();
-  const columns = useMemo(
-    () => splitIntoColumns(galleryItems, columnCount),
-    [columnCount],
-  );
-  const itemIndexById = useMemo(() => {
-    const map = new Map<string, number>();
-    galleryItems.forEach((item, index) => map.set(item.id, index));
-    return map;
-  }, []);
-
   return (
     <PageLayout className="page page-gallery">
       <div className="gallery-page">
@@ -149,16 +94,8 @@ export default function GalleryPage() {
         </header>
 
         <div className="gallery-masonry">
-          {columns.map((column, columnIndex) => (
-            <div key={columnIndex} className="gallery-masonry-column">
-              {column.map((item) => (
-                <GalleryMasonryItem
-                  key={item.id}
-                  item={item}
-                  index={itemIndexById.get(item.id) ?? 0}
-                />
-              ))}
-            </div>
+          {galleryItems.map((item, index) => (
+            <GalleryMasonryItem key={item.id} item={item} index={index} />
           ))}
         </div>
       </div>

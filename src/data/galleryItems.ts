@@ -4,7 +4,6 @@ import gdscImage from "../../gallery/GDSC.webp?url";
 import ironsiteImage from "../../gallery/IRONSITE Hackathon.jpeg?url";
 import smithFoodBankImage from "../../gallery/SMITHxCAPITALONE AREA FOODBANK.jpg?url";
 import suzukiImage from "../../gallery/SUZUKI.jpeg?url";
-import suzuki2Image from "../../gallery/SUZUKI2.jpg?url";
 import technicaImage from "../../gallery/TECHNICA.jpeg?url";
 import tedxImage from "../../gallery/TEDX.jpeg?url";
 import tedxTeamImage from "../../gallery/TedXIARE Team.jpeg?url";
@@ -32,16 +31,16 @@ export const galleryItems: GalleryItem[] = [
     hue: 198,
   },
   {
-    id: "technica",
-    title: "Technica",
-    meta: "FinGraph · UMD · Nov 2025",
-    image: technicaImage,
-    aspectRatio: 1066 / 757,
-    hue: 38,
+    id: "tedx",
+    title: "TEDx IARE",
+    meta: "Nature vs Nurture",
+    image: tedxImage,
+    aspectRatio: 1600 / 1200,
+    hue: 12,
   },
   {
     id: "smith-foodbank",
-    title: "Smith × Capital Area Food Bank",
+    title: "Smith × Capital Area Food Bank Hackathon",
     meta: "FeedForward · Runner-up · Aug 2025",
     image: smithFoodBankImage,
     aspectRatio: 4000 / 6000,
@@ -49,19 +48,19 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     id: "feedforward-bank",
-    title: "FeedForward",
+    title: "FeedForward Poster",
     meta: "Capital Area Food Bank",
     image: feedforwardBankImage,
     aspectRatio: 1200 / 1600,
     hue: 168,
   },
   {
-    id: "tedx",
-    title: "TEDx IARE",
-    meta: "Nature vs Nurture",
-    image: tedxImage,
-    aspectRatio: 1600 / 1200,
-    hue: 12,
+    id: "technica",
+    title: "Technica Hackathon",
+    meta: "FinGraph · UMD · Nov 2025",
+    image: technicaImage,
+    aspectRatio: 1066 / 757,
+    hue: 38,
   },
   {
     id: "tedx-team",
@@ -73,7 +72,7 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     id: "gdsc",
-    title: "GDSC",
+    title: "GDSC Team",
     meta: "Google Developer Student Clubs",
     image: gdscImage,
     aspectRatio: 1872 / 3326,
@@ -89,7 +88,7 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     id: "frosthacks",
-    title: "Frost Hacks",
+    title: "Frost Hacks Team",
     meta: "MLH · Organizer · 2023 - 2024",
     image: frostHacksImage,
     aspectRatio: 2048 / 1536,
@@ -113,24 +112,16 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     id: "suzuki",
-    title: "Suzuki",
+    title: "Final Pitch",
     image: suzukiImage,
-    meta: "AdVantage · Team showcase",
+    meta: "AdVantage · Suzuki · IIM",
     aspectRatio: 1536 / 2048,
     hue: 145,
   },
   {
-    id: "suzuki-2",
-    title: "Suzuki",
-    image: suzuki2Image,
-    meta: "AdVantage · Team showcase",
-    aspectRatio: 3024 / 4032,
-    hue: 145,
-  },
-  {
     id: "advantage-suzuki",
-    title: "AdVantage × Suzuki",
-    meta: "Community demo · Innovation Center",
+    title: "AdVantage Showcase at IITH",
+    meta: "Suzuki Innovation Center",
     image: advantageSuzukiImage,
     aspectRatio: 1600 / 1200,
     hue: 145,
