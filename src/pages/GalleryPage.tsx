@@ -31,9 +31,20 @@ function useColumnCount() {
 
 function splitIntoColumns(items: GalleryItem[], columnCount: number) {
   const columns = Array.from({ length: columnCount }, () => [] as GalleryItem[]);
-  items.forEach((item, index) => {
-    columns[index % columnCount].push(item);
+  const heights = Array.from({ length: columnCount }, () => 0);
+  // Relative units: image height ≈ 1 / aspectRatio (width/height), plus caption + gap.
+  const captionHeight = 0.18;
+  const gapHeight = 0.35;
+
+  items.forEach((item) => {
+    let shortest = 0;
+    for (let i = 1; i < columnCount; i += 1) {
+      if (heights[i] < heights[shortest]) shortest = i;
+    }
+    columns[shortest].push(item);
+    heights[shortest] += 1 / item.aspectRatio + captionHeight + gapHeight;
   });
+
   return columns;
 }
 

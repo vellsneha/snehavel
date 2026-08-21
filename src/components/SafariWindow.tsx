@@ -106,6 +106,8 @@ export function SafariWindow({
     video.addEventListener("durationchange", onDuration);
     video.addEventListener("loadedmetadata", onDuration);
 
+    video.playbackRate = 1.5;
+
     if (isActive) {
       void video.play().catch(() => setIsPlaying(false));
     } else {

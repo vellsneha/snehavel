@@ -716,6 +716,9 @@ function DesignDetail({
       {content?.lead ? (
         <div className={`designs-detail-lead${centerImages ? " designs-detail-lead--page-center" : ""}`}>
           <DesignScreenFrame screen={content.lead} />
+          {content.lead.caption ? (
+            <p className="designs-detail-lead-credit">{content.lead.caption}</p>
+          ) : null}
         </div>
       ) : null}
 

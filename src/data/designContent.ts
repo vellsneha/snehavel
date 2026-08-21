@@ -256,6 +256,7 @@ export const designContentById: Record<string, DesignContent> = {
       src: feedHome,
       alt: "FeedForward home page",
       url: "feedforward.app",
+      caption: "started off reusing a wix template",
     },
     sections: [
       {

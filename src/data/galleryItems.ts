@@ -11,6 +11,7 @@ import tedxTeamImage from "../../gallery/TedXIARE Team.jpeg?url";
 import edamWorkshopImage from "../../gallery/UI UX Workshop e-DAM.jpeg?url";
 import edamTeamImage from "../../gallery/e-DAM Team.jpeg?url";
 import devDaysImage from "../../gallery/DevDaysHydxSwechaxTensorFlow.jpeg?url";
+import frostHacksImage from "../../gallery/Frost Hacks.jpeg?url";
 
 export type GalleryItem = {
   id: string;
@@ -87,6 +88,30 @@ export const galleryItems: GalleryItem[] = [
     hue: 28,
   },
   {
+    id: "frosthacks",
+    title: "Frost Hacks",
+    meta: "MLH · Organizer · 2023 - 2024",
+    image: frostHacksImage,
+    aspectRatio: 2048 / 1536,
+    hue: 210,
+  },
+  {
+    id: "edam-workshop",
+    title: "UI/UX Workshop",
+    meta: "e-DAM",
+    image: edamWorkshopImage,
+    aspectRatio: 1206 / 1159,
+    hue: 280,
+  },
+  {
+    id: "edam-team",
+    title: "e-DAM Team",
+    meta: "e-DAM",
+    image: edamTeamImage,
+    aspectRatio: 1280 / 960,
+    hue: 280,
+  },
+  {
     id: "suzuki",
     title: "Suzuki",
     image: suzukiImage,
@@ -109,21 +134,5 @@ export const galleryItems: GalleryItem[] = [
     image: advantageSuzukiImage,
     aspectRatio: 1600 / 1200,
     hue: 145,
-  },
-  {
-    id: "edam-workshop",
-    title: "UI/UX Workshop",
-    meta: "e-DAM",
-    image: edamWorkshopImage,
-    aspectRatio: 1206 / 1159,
-    hue: 280,
-  },
-  {
-    id: "edam-team",
-    title: "e-DAM Team",
-    meta: "e-DAM",
-    image: edamTeamImage,
-    aspectRatio: 1280 / 960,
-    hue: 280,
   },
 ];

@@ -238,7 +238,7 @@ export default function ProjectsPage() {
 
         <div className="projects-main">
           <p className="projects-intro-lead">
-            Building, learning, and figuring things out as I go.
+            Building, learning, and figuring out as I go.
           </p>
 
           <div className={`projects-mobile-picker${mobilePickerOpen ? " is-open" : ""}`}>
