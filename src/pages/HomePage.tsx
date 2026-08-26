@@ -1,5 +1,5 @@
 import starIcon from "../../star.png?url";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import LayoutIsland from "@social/utils/LayoutIsland";
 import WeatherGif from "../components/WeatherGif";
@@ -37,14 +37,23 @@ const skills = [
   "LLM Fine-tuning",
 ];
 
+const homeProjects = projects.filter((project) => !project.hidden);
+
 export default function HomePage() {
   const [rightPanel, setRightPanel] = useState<RightPanelTab>("projects");
   const pageRef = useRef<HTMLDivElement>(null);
+  const projectsListRef = useRef<HTMLUListElement>(null);
   const [homeRatio, setHomeRatio] = useState<HomeRatio>(() =>
     typeof window !== "undefined" ? homeRatioFromWidth(window.innerWidth) : "desktop",
   );
+  const [visibleProjectCount, setVisibleProjectCount] = useState(homeProjects.length);
   const BLOG_LINK_VISIBLE = false;
   const PUBLICATIONS_LINK_VISIBLE = false;
+
+  const visibleHomeProjects = useMemo(
+    () => homeProjects.slice(0, visibleProjectCount),
+    [visibleProjectCount],
+  );
 
   useLayoutEffect(() => {
     const page = pageRef.current;
@@ -67,6 +76,39 @@ export default function HomePage() {
       delete document.documentElement.dataset.homeRatio;
     };
   }, []);
+
+  // Desktop locked viewport: drop trailing projects until the list fits with no scrollbar.
+  useLayoutEffect(() => {
+    if (rightPanel !== "projects" || homeRatio !== "desktop") {
+      setVisibleProjectCount(homeProjects.length);
+      return;
+    }
+
+    const list = projectsListRef.current;
+    if (!list) return;
+
+    const resetAndFit = () => {
+      setVisibleProjectCount(homeProjects.length);
+    };
+
+    resetAndFit();
+    const observer = new ResizeObserver(resetAndFit);
+    observer.observe(list);
+    window.addEventListener("resize", resetAndFit);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", resetAndFit);
+    };
+  }, [rightPanel, homeRatio]);
+
+  useLayoutEffect(() => {
+    if (rightPanel !== "projects" || homeRatio !== "desktop") return;
+    const list = projectsListRef.current;
+    if (!list) return;
+    if (list.scrollHeight > list.clientHeight + 1 && visibleProjectCount > 1) {
+      setVisibleProjectCount((count) => count - 1);
+    }
+  }, [visibleProjectCount, rightPanel, homeRatio, visibleHomeProjects]);
 
   return (
     <PageLayout className="page page-home">
@@ -266,8 +308,8 @@ export default function HomePage() {
 
               <div className="home-right-panel" role="tabpanel">
                 {rightPanel === "projects" ? (
-                  <ul className="home-projects-list">
-                    {projects.map((project) => {
+                  <ul className="home-projects-list" ref={projectsListRef}>
+                    {visibleHomeProjects.map((project) => {
                       const opensOnProjectsPage = Boolean(project.projectPage);
                       const content = (
                         <div>

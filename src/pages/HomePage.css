@@ -638,18 +638,16 @@ body:has(.page-home) {
 
 .home-placeholder-stack {
   padding: 0;
-  gap: clamp(10px, 1.2vh, 14px);
+  gap: clamp(8px, 1vh, 14px);
   border: none;
   background: transparent;
-  overflow-x: hidden;
-  overflow-y: auto;
-  scrollbar-width: thin;
+  overflow: hidden;
 }
 
 .home-placeholder-item {
   display: flex;
   flex-direction: column;
-  gap: clamp(6px, 0.8vh, 8px);
+  gap: clamp(4px, 0.6vh, 8px);
   flex: 1 1 0;
   min-height: 0;
   position: relative;
@@ -676,13 +674,12 @@ body:has(.page-home) {
 .home-learning-video-wrap {
   flex: 1 1 0;
   width: 100%;
-  min-height: clamp(110px, 14vh, 150px);
-  height: clamp(110px, 14vh, 150px);
+  min-height: 0;
+  height: auto;
   position: relative;
   overflow: hidden;
   border-radius: 4px;
   background: var(--card-bg-soft);
-  flex-shrink: 0;
 }
 
 .home-learning-video {
@@ -831,9 +828,8 @@ html[data-home-ratio="desktop"] .home-side-stack .home-card-gallery,
 
 html[data-home-ratio="desktop"] .home-placeholder-stack,
 .home-page[data-home-ratio="desktop"] .home-placeholder-stack {
-  gap: clamp(10px, 1.2vh, 14px);
-  overflow-x: hidden;
-  overflow-y: auto;
+  gap: clamp(8px, 1vh, 14px);
+  overflow: hidden;
   height: 100%;
 }
 
@@ -847,7 +843,7 @@ html[data-home-ratio="desktop"] .home-learning-video-wrap,
 .home-page[data-home-ratio="desktop"] .home-learning-video-wrap {
   flex: 1 1 0;
   height: auto;
-  min-height: clamp(110px, 14vh, 150px);
+  min-height: 0;
   max-height: none;
 }
 
@@ -1005,12 +1001,10 @@ html[data-home-ratio="desktop"] .home-gif-wrap,
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: clamp(8px, 1.2vh, 14px);
+  gap: clamp(6px, 1vh, 14px);
   flex: 1;
   min-height: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  scrollbar-width: thin;
+  overflow: hidden;
   justify-content: flex-start;
 }
 
@@ -1032,12 +1026,12 @@ html[data-home-ratio="desktop"] .home-gif-wrap,
 }
 
 .home-project-title {
-  margin: 0 0 clamp(3px, 0.5vh, 6px);
-  font-size: clamp(14px, 1.5vh, 17px);
+  margin: 0 0 clamp(2px, 0.35vh, 6px);
+  font-size: clamp(13px, 1.45vh, 17px);
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--text-heading);
-  line-height: 1.3;
+  line-height: 1.25;
   transition: color 0.2s ease;
   display: inline-flex;
   align-items: center;
@@ -1072,9 +1066,9 @@ html[data-home-ratio="desktop"] .home-gif-wrap,
 .home-project-desc {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: clamp(12px, 1.35vh, 14px);
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.4;
   color: var(--text-muted);
 }
 
@@ -1420,6 +1414,10 @@ body:has(.home-page[data-home-ratio="mobile"]) {
   min-height: 0;
   width: 100%;
   margin-top: 40px;
+}
+
+.home-page[data-home-ratio="desktop"] .home-projects-list {
+  overflow: hidden;
 }
 
 .home-page[data-home-ratio="mid"] .home-right-panel,
