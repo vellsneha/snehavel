@@ -1,5 +1,6 @@
 import starIcon from "../../star.png?url";
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { Link } from "react-router-dom";
 import LayoutIsland from "@social/utils/LayoutIsland";
 import WeatherGif from "../components/WeatherGif";
@@ -89,32 +90,40 @@ export default function HomePage() {
     if (!list || !panel) return;
 
     let lastHeight = -1;
-    const resetAndFit = () => {
+    let lastWidth = -1;
+    const fitToPanel = () => {
       const height = panel.clientHeight;
-      if (height === lastHeight) return;
+      const width = panel.clientWidth;
+      if (height <= 0) return;
+      // Width matters too — descriptions wrap and change item heights.
+      if (height === lastHeight && width === lastWidth) return;
       lastHeight = height;
-      setVisibleProjectCount(homeProjects.length);
+      lastWidth = width;
+
+      // Remount full list, then trim synchronously so ResizeObserver can't fight mid-trim.
+      flushSync(() => {
+        setVisibleProjectCount(homeProjects.length);
+      });
+
+      let count = homeProjects.length;
+      while (count > 1 && list.scrollHeight > list.clientHeight + 1) {
+        count -= 1;
+        flushSync(() => {
+          setVisibleProjectCount(count);
+        });
+      }
     };
 
-    resetAndFit();
-    const observer = new ResizeObserver(resetAndFit);
+    fitToPanel();
+    const observer = new ResizeObserver(fitToPanel);
     // Observe the panel (grid-sized), not the list — trimming list items must not retrigger a reset.
     observer.observe(panel);
-    window.addEventListener("resize", resetAndFit);
+    window.addEventListener("resize", fitToPanel);
     return () => {
       observer.disconnect();
-      window.removeEventListener("resize", resetAndFit);
+      window.removeEventListener("resize", fitToPanel);
     };
   }, [rightPanel, homeRatio]);
-
-  useLayoutEffect(() => {
-    if (rightPanel !== "projects" || homeRatio !== "desktop") return;
-    const list = projectsListRef.current;
-    if (!list) return;
-    if (list.scrollHeight > list.clientHeight + 1 && visibleProjectCount > 1) {
-      setVisibleProjectCount((count) => count - 1);
-    }
-  }, [visibleProjectCount, rightPanel, homeRatio, visibleHomeProjects]);
 
   return (
     <PageLayout className="page page-home">

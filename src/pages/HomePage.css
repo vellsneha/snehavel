@@ -642,6 +642,13 @@ body:has(.page-home) {
   border: none;
   background: transparent;
   overflow: hidden;
+  scrollbar-width: none;
+}
+
+.home-placeholder-stack::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .home-placeholder-item {
@@ -799,7 +806,7 @@ html[data-home-ratio="desktop"] .home-card-large,
   grid-row: 2 / 4;
   align-self: stretch;
   height: 100%;
-  min-height: clamp(180px, 22vh, 280px);
+  min-height: 0;
   overflow: hidden;
 }
 
@@ -1005,7 +1012,14 @@ html[data-home-ratio="desktop"] .home-gif-wrap,
   flex: 1;
   min-height: 0;
   overflow: hidden;
+  scrollbar-width: none;
   justify-content: flex-start;
+}
+
+.home-projects-list::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .home-project-item {
@@ -1418,6 +1432,12 @@ body:has(.home-page[data-home-ratio="mobile"]) {
 
 .home-page[data-home-ratio="desktop"] .home-projects-list {
   overflow: hidden;
+  scrollbar-width: none;
+}
+
+.home-page[data-home-ratio="desktop"] .home-right-panel {
+  overflow: hidden;
+  min-height: 0;
 }
 
 .home-page[data-home-ratio="mid"] .home-right-panel,
