@@ -85,15 +85,21 @@ export default function HomePage() {
     }
 
     const list = projectsListRef.current;
-    if (!list) return;
+    const panel = list?.parentElement;
+    if (!list || !panel) return;
 
+    let lastHeight = -1;
     const resetAndFit = () => {
+      const height = panel.clientHeight;
+      if (height === lastHeight) return;
+      lastHeight = height;
       setVisibleProjectCount(homeProjects.length);
     };
 
     resetAndFit();
     const observer = new ResizeObserver(resetAndFit);
-    observer.observe(list);
+    // Observe the panel (grid-sized), not the list — trimming list items must not retrigger a reset.
+    observer.observe(panel);
     window.addEventListener("resize", resetAndFit);
     return () => {
       observer.disconnect();
