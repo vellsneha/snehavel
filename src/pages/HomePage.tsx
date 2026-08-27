@@ -249,6 +249,7 @@ export default function HomePage() {
                             key={entry.id}
                             to={`/projects#${entry.id}`}
                             className="home-placeholder-item home-placeholder-link"
+                            data-learning-id={entry.id}
                           >
                             <LearningVideo
                               src={entry.media}

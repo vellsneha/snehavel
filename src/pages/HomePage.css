@@ -696,7 +696,13 @@ body:has(.page-home) {
   height: 100%;
   border: none;
   object-fit: cover;
+  object-position: center;
   display: block;
+}
+
+/* OpenCLIP title sits at the top of the frame — keep it visible when height shrinks. */
+.home-placeholder-link[data-learning-id="openclip"] .home-learning-video {
+  object-position: top center;
 }
 
 .home-placeholder-meta {
