@@ -38,7 +38,7 @@ const skills = [
   "LLM Fine-tuning",
 ];
 
-const homeProjects = projects.filter((project) => !project.hidden);
+const desktopHomeProjects = projects.filter((project) => !project.hidden);
 
 export default function HomePage() {
   const [rightPanel, setRightPanel] = useState<RightPanelTab>("projects");
@@ -47,14 +47,15 @@ export default function HomePage() {
   const [homeRatio, setHomeRatio] = useState<HomeRatio>(() =>
     typeof window !== "undefined" ? homeRatioFromWidth(window.innerWidth) : "desktop",
   );
-  const [visibleProjectCount, setVisibleProjectCount] = useState(homeProjects.length);
+  const [visibleProjectCount, setVisibleProjectCount] = useState(desktopHomeProjects.length);
   const BLOG_LINK_VISIBLE = false;
   const PUBLICATIONS_LINK_VISIBLE = false;
 
-  const visibleHomeProjects = useMemo(
-    () => homeProjects.slice(0, visibleProjectCount),
-    [visibleProjectCount],
-  );
+  const visibleHomeProjects = useMemo(() => {
+    // Mobile/mid scroll naturally — show every project. Desktop trims to fit.
+    if (homeRatio !== "desktop") return projects;
+    return desktopHomeProjects.slice(0, visibleProjectCount);
+  }, [visibleProjectCount, homeRatio]);
 
   useLayoutEffect(() => {
     const page = pageRef.current;
@@ -81,7 +82,7 @@ export default function HomePage() {
   // Desktop locked viewport: drop trailing projects until the list fits with no scrollbar.
   useLayoutEffect(() => {
     if (rightPanel !== "projects" || homeRatio !== "desktop") {
-      setVisibleProjectCount(homeProjects.length);
+      setVisibleProjectCount(desktopHomeProjects.length);
       return;
     }
 
@@ -102,10 +103,10 @@ export default function HomePage() {
 
       // Remount full list, then trim synchronously so ResizeObserver can't fight mid-trim.
       flushSync(() => {
-        setVisibleProjectCount(homeProjects.length);
+        setVisibleProjectCount(desktopHomeProjects.length);
       });
 
-      let count = homeProjects.length;
+      let count = desktopHomeProjects.length;
       while (count > 1 && list.scrollHeight > list.clientHeight + 1) {
         count -= 1;
         flushSync(() => {
