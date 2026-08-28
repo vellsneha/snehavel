@@ -9,6 +9,7 @@ export const CONTACT_EMAIL = "work.vellsneha@gmail.com";
 export const SOCIAL_PROFILES = [
   "https://github.com/vellsneha",
   "https://www.linkedin.com/in/snehavellelath",
+  "https://x.com/itsvells",
   "https://devpost.com/vellsneha",
 ] as const;
 
