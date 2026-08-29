@@ -586,7 +586,7 @@
           color-mix(in srgb, var(--bg-base) 96%, transparent)
         )
         padding-box,
-      linear-gradient(135deg, var(--accent-red-strong), var(--accent-strong)) border-box;
+      linear-gradient(135deg, var(--accent-red-strong), color-mix(in srgb, var(--accent-red-strong) 72%, white)) border-box;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     box-shadow: var(--shadow-float);
