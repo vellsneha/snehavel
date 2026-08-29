@@ -1203,7 +1203,11 @@
 
   .designs-layout {
     grid-template-columns: 1fr;
-    gap: clamp(16px, 2vh, 24px);
+    gap: clamp(28px, 3.5vh, 44px);
+  }
+
+  .designs-intro {
+    padding-top: 0;
   }
 
   .designs-intro-lead {
@@ -1258,7 +1262,16 @@
   }
 
   .designs-detail {
-    --design-content-gutter: clamp(18px, 5vw, 28px);
+    --design-content-gutter: 0;
+    gap: clamp(16px, 2vh, 24px);
+    padding: 0;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .designs-detail--nda {
+    padding-top: 0;
   }
 
   .designs-detail-skills {
