@@ -579,8 +579,14 @@
     max-width: min(220px, calc(100vw - 24px));
     padding: 10px 14px;
     border-radius: 18px;
-    border: 1.5px solid var(--accent-red);
-    background: color-mix(in srgb, var(--bg-base) 96%, transparent);
+    border: 1px solid transparent;
+    background:
+      linear-gradient(
+          color-mix(in srgb, var(--bg-base) 96%, transparent),
+          color-mix(in srgb, var(--bg-base) 96%, transparent)
+        )
+        padding-box,
+      linear-gradient(135deg, var(--accent-red-strong), var(--accent-strong)) border-box;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     box-shadow: var(--shadow-float);
